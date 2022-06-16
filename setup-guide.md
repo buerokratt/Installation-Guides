@@ -437,6 +437,73 @@ docker run PLACEHOLDER:IMAGE_NAME \
     -v ./key.key:/usr/local/tomcat/conf/key.key
 ```
 
+### Logstash
+In order to add feedback rating dashboard, there is feedback_rating_dashboard.ndjson file in logstash folder.
+To import this file open opensearch dashboards in browser, from left side menu navigate to Stack Management -> Saved Objects
+and there is Import button where you can add this file.
+
+Logstash configuration (`logstash.conf`)
+```json
+input {
+  jdbc {
+     jdbc_driver_library => "/usr/share/logstash/postgresql-42.3.5.jar"
+     jdbc_driver_class => "org.postgresql.Driver"
+     jdbc_connection_string => "jdbc:postgresql://database_container_name:5432/byk"
+     jdbc_user => "byk"
+     jdbc_password => "123"
+     type => "chat"
+     schedule => "*/5 * * * *"
+     statement => "SELECT feedback_rating::INT, * FROM public.chat WHERE created > current_timestamp - interval '5 minutes'"
+    }
+  jdbc {
+     jdbc_driver_library => "/usr/share/logstash/postgresql-42.3.5.jar"
+     jdbc_driver_class => "org.postgresql.Driver"
+     jdbc_connection_string => "jdbc:postgresql://database_container_name:5432/byk"
+     jdbc_user => "byk"
+     jdbc_password => "123"
+     type => "message"
+     schedule => "*/5 * * * *"
+     statement => "SELECT * FROM public.message WHERE created > current_timestamp - interval '5 minutes'"
+    }
+}
+output {
+  if [type] == "chat" {
+      opensearch {
+        hosts => "https://opensearch_container_name:9200"
+        index => "logstash-logs-chats-%{+YYYY.MM.dd.HH.mm.ss}"
+        document_id => index
+        doc_as_upsert => true
+        auth_type => {
+          type => "basic"
+          user => "admin"
+          password => "admin"
+        }
+        action => "create"
+        ecs_compatibility => disabled
+        ssl => true
+        ssl_certificate_verification => false
+     }
+ }
+ if [type] == "message" {
+    opensearch {
+        hosts => "https://opensearch_container_name:9200"
+        index => "logstash-logs-message-%{+YYYY.MM.dd.HH.mm.ss}"
+        document_id => index
+        doc_as_upsert => true
+        auth_type => {
+          type => "basic"
+          user => "admin"
+          password => "admin"
+        }
+        action => "create"
+        ecs_compatibility => disabled
+        ssl => true
+        ssl_certificate_verification => false
+     }
+ }
+}
+```
+
 ### Setup to enable bot training
 Currently the bot training data and ruuter component cannot coexist on the same system and need to be placed on separate systems to enable proper use. 
 Necessary steps to ensure training functionalities work properly:
