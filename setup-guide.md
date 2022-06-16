@@ -434,7 +434,7 @@ Necessary steps to ensure training functionalities work properly:
    * generate ssh key for ruuter system and add public key to authorized_keys of training system user folder
    * generate ssh key for training system and add public key to authorized_keys of ruuter system user folder
  * copy necessary bot files to training system (it is recommended to copy the files straight to the training users home directory to mitigate permission errors)
-   * necessary files can be found here: https://bitbucket.ria.ee/projects/BYK/repos/rasa-cicd/browse 
+   * necessary files can be found here: https://koodivaramu.eesti.ee/buerokratt/plug-and-play
    * set `training_bot_directory_name` value in ruuter urls.env.json as the directory path `chatbot` folder was copied to - path is referenced from the training user home directory
 
 # Using
@@ -459,7 +459,7 @@ Liquibase creates a empty table called 'establishment' which stores all the poss
 New destinations must be added manually, with the fields `name`, `url` and `base_id` filled. base_id is the unique indentifier for each entry.
 ```sql
 INSERT INTO establishment (name, url, base_id )
-VALUES ('ruuter-dev-1', 'byk-ruuter-01.dev.riaint.ee', 'base-id-1');
+VALUES ('ruuter-dev-1', 'byk-ruuter-01.PLACEHOLDER', 'base-id-1');
 ```
 
 #### write only
