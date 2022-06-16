@@ -443,7 +443,7 @@ To import this file open opensearch dashboards in browser, from left side menu n
 and there is Import button where you can add this file.
 
 Logstash configuration (`logstash.conf`)
-```json
+```
 input {
   jdbc {
      jdbc_driver_library => "/usr/share/logstash/postgresql-42.3.5.jar"
