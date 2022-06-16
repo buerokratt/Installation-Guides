@@ -295,7 +295,7 @@ Mount certificates into container as `/etc/ssl/certs/cert.crt` and `/etc/ssl/cer
 
 Update `env-config.js` url-s linking to your setups components.
 For example:
-```json
+```
 {
     RUUTER_API_URL: 'https://PLACEHOLDER private-ruuter_container_name:8443',
     TIM_API_URL: 'https://PLACEHOLDER TIM_URL',
@@ -305,7 +305,7 @@ For example:
 ```
 Update `nginx.conf` `add_header` values linking to your setups components.
 For example:
-```json
+```
 server {
     server_name localhost;
     listen 443 ssl;
