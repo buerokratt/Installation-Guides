@@ -23,15 +23,15 @@ Sort of project overview
 * action-server
 
 ### Images in Dockerhub
-* https://hub.docker.com/repository/docker/riaee/byk-users-db
-* https://hub.docker.com/repository/docker/riaee/byk-ruuter
-* https://hub.docker.com/repository/docker/riaee/byk-chatbot-public-ruuter
-* https://hub.docker.com/repository/docker/riaee/byk-chatbot-private-ruuter
-* https://hub.docker.com/repository/docker/riaee/byk-tim
-* https://hub.docker.com/repository/docker/riaee/byk-resql
-* https://hub.docker.com/repository/docker/riaee/byk-chat-widget
-* https://hub.docker.com/repository/docker/riaee/byk-customer-service
-* https://hub.docker.com/repository/docker/riaee/byk-dmapper
+* https://hub.docker.com/r/riaee/byk-users-db
+* https://hub.docker.com/r/riaee/byk-ruuter
+* https://hub.docker.com/r/riaee/byk-chatbot-public-ruuter
+* https://hub.docker.com/r/riaee/byk-chatbot-private-ruuter
+* https://hub.docker.com/r/riaee/byk-tim
+* https://hub.docker.com/r/riaee/byk-resql
+* https://hub.docker.com/r/riaee/byk-dmapper
+* https://hub.docker.com/r/riaee/byk-chat-widget
+* https://hub.docker.com/r/riaee/byk-customer-service
 
 ## Table of Contents
 
