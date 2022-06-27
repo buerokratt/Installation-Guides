@@ -15,7 +15,7 @@ Monitoring system is built:
 Monitoring will be deployed by using docker-compose  
 
 docker-compose.yml  
-``` ersion: "3"
+``` version: "3"
 
 networks:
   loki:
@@ -196,6 +196,43 @@ scrape_configs:
         regex: '/(.*)'
         target_label: 'container'
 ``` 
+loki-config.yml  
+```
+---
+server:
+  http_listen_port: 3100
+memberlist:
+  join_members:
+    - loki:7946
+schema_config:
+  configs:
+    - from: 2021-08-01
+      store: boltdb-shipper
+      object_store: s3
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
+common:
+  path_prefix: /loki
+  replication_factor: 1
+  storage:
+    s3:
+      endpoint: minio:9000
+      insecure: true
+      bucketnames: loki-data
+      access_key_id: loki
+      secret_access_key: supersecret
+      s3forcepathstyle: true
+  ring:
+    kvstore:
+      store: memberlist
+ruler:
+  storage:
+    s3:
+      bucketnames: loki-ruler
+```
+
 
 ##### Note  
 Promtail scrape_config line must be modified, so that the pulled logs modification happens in here. (Work in progress)   
