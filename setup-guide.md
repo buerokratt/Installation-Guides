@@ -63,7 +63,11 @@ Cookie domain determines from which domain traffic is allowed into Buerokratt sy
 ### Databases
 
 #### SQL Databases
-Component TIM database gets set up on first run automatically. Users database, used by RESQL, needs some manual steps:
+2 components are using PostgreSQL databases: TIM and RESQL.
+
+Component **TIM** database gets set up on first run automatically. 
+
+Users database, used by **RESQL**, needs some manual steps:
 * Creating DB structure
 ```
 docker run -it --network=bykstack PLACEHOLDER USERS_DB_SETUP_IMAGE bash
