@@ -73,13 +73,12 @@ Users database, used by **RESQL**, needs some manual steps:
 docker run -it --network=bykstack PLACEHOLDER USERS_DB_SETUP_IMAGE bash
 liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=PLACEHOLDER USERS_DB_PASSWORD --changelog-file=/master.yml update
 ```
-* Adding first user and configuration
+* Adding configuration
 
 ```
 docker run -it --network=bykstack ubuntu:latest bash
 apt-get -y update && apt-get -y install postgresql-client
 psql -d byk -U byk -h users-db -p 5432
-insert into user_authority(user_id, authority_name) values ('EE60001019906', '{ROLE_ADMINISTRATOR}'); # Values are here as example
 insert into configuration(key, value) values ('bot_institution_id', 'PLACEHOLDER BOT_NAME');
 CREATE EXTENSION hstore;
 ```
