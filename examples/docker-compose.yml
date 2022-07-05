@@ -5,8 +5,19 @@ services:
     container_name: byk-public-ruuter
     image: riaee/byk-chatbot-public-ruuter:v0.2.84
     environment:
-      - ruuter.cookie.sameSitePolicy=None
+      - csrf.enabled=false 
+      - csrf.tim_userinfo_url=
+      - csrf.ruuter_services_whitelist=
       - legacy-portal-integration.sessionCookieDomain=buerokratt.ee
+      - allowed.requested.method.types=POST
+      - ruuter.cors.allowedOrigins=https://buerokratt.ee,https://admin.buerokratt.ee,https://tim.buerokratt.ee
+      - maxRequestSizeBytes=10000000000
+      - default.requested.method.type=POST
+      - incoming.request.external.validation.enabled=false
+      - requested.method.type.error.http.response.code=200
+      - verify.requested.method.type=false
+      - incoming.request.external.validation.endpoint=
+      - headers.contentSecurityPolicy=
       - logging.level.root=INFO
     volumes:
       - ./ruuter/server.xml:/usr/local/tomcat/conf/server.xml:ro
@@ -25,6 +36,26 @@ services:
     environment:
       - legacy-portal-integration.sessionCookieDomain=buerokratt.ee
       - logging.level.root=INFO
+      - ruuter.cors.allowedOrigins=https://buerokratt.ee,https://admin.buerokratt.ee
+      - headers.contentSecurityPolicy=
+      - maxRequestSizeBytes=10000000000
+      - incoming.request.external.validation.enabled=false 
+      - incoming.request.external.validation.endpoint=
+      - verify.requested.method.type=false
+      - allowed.requested.method.types=POST
+      - default.requested.method.type=POST 
+      - requested.method.type.error.http.response.code=200
+      - csrf.enabled=false
+      - csrf.tim_userinfo_url=
+      - csrf.ruuter_services_whitelist=
+      - ip-whitelist.routes[0].ips[0]=127.0.0.1
+      - ip-whitelist.routes[0].patterns[0]=/functions/* 
+      - ip-whitelist.routes[1].ips[0]=127.0.0.1
+      - ip-whitelist.routes[1].patterns[0]=/get-location-coordinates 
+      - ip-whitelist.routes[1].patterns[1]=/get-weather-data 
+      - ip-whitelist.routes[1].patterns[2]=/get-weather-station-id 
+      - ip-whitelist.routes[1].patterns[3]=/get-weather 
+      - ip-whitelist.routes[1].patterns[4]=/param_string_length
     volumes:
       - ./ruuter/server.xml:/usr/local/tomcat/conf/server.xml:ro
       - ./ruuter/private.urls.docker.json:/usr/local/tomcat/urls.env.json:ro
