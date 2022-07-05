@@ -1,6 +1,7 @@
 version: '3.9'
 
 services:
+
   byk-public-ruuter:
     container_name: byk-public-ruuter
     image: riaee/byk-chatbot-public-ruuter:v0.2.84
@@ -30,6 +31,12 @@ services:
     restart: always
     networks:
       - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        
   byk-private-ruuter:
     container_name: byk-private-ruuter
     image: riaee/byk-chatbot-private-ruuter:v0.2.1
@@ -66,6 +73,12 @@ services:
     restart: always
     networks:
       - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        
   byk-dmapper:
     container_name: byk-dmapper
     image: riaee/byk-dmapper:v0.2.9
@@ -80,6 +93,12 @@ services:
     restart: always
     networks:
       - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        
   byk-widget:
     container_name: byk-widget
     image: riaee/byk-chat-widget:v0.2.1
@@ -106,6 +125,12 @@ services:
     restart: always
     networks:
       - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        
   byk-tim:
     container_name: byk-tim
     image: riaee/byk-tim:v0.2.4
@@ -142,6 +167,12 @@ services:
     restart: always
     networks:
       - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        
   byk-resql:
     container_name: byk-resql
     image: riaee/byk-resql:v0.3.6
@@ -160,6 +191,12 @@ services:
     restart: always
     networks:
       - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        
   byk-chatbot-opensearch-node1:
     image: opensearchproject/opensearch:1.2.4
     container_name: chatbot-opensearch
@@ -188,6 +225,11 @@ services:
     restart: always
     networks:
       - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
 
   byk-chatbot-dashboards:
     image: opensearchproject/opensearch-dashboards:1.2.0
@@ -205,6 +247,11 @@ services:
     restart: always
     networks:
       - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
 
   byk-logstash:
     image: riaee/byk:chatbot-logstash-20220616
@@ -220,6 +267,11 @@ services:
     restart: always
     networks:
       - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
 
 volumes:
   opensearch-data:
