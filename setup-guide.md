@@ -131,9 +131,10 @@ Update `urls.env.json` url-s linking to your setups components.
 For example:
 ```json
 {
+  "analytics_url": "https://PLACEHOLDER ANALYTICS URL",
   "elastic_url": "http://localhost:9200",
   "dmapper_url": "http://dmapper:8081",
-  "ruuter_url": "http://private-ruuter:8443",
+  "ruuter_url": "http://localhost:8443",
   "tim_url": "http://tim:8085",
   "resql_url": "http://resql:8082",
   "bot_url": "http://bot:5005",
@@ -141,6 +142,9 @@ For example:
   "training_user": "training-machine-user",
   "training_prv_key": "~/location/of/private/ssh/key",
   "training_bot_directory_name": "location/of/bot/files"
+  "gazetteer_url":"https://inaadress.maaamet.ee/inaadress",
+  "publicapi_url": "https://publicapi.envir.ee/v1/combinedWeatherData",
+  "ilmmicroservice_url": "https://ilmmicroservice.envir.ee/api/forecasts"
 }
 
 ```
@@ -152,6 +156,26 @@ docker run PLACEHOLDER:IMAGE_NAME \
     -e legacy-portal-integration.sessionCookieDomain=PLACEHOLDER YOUR_DOMAIN \
     -e logging.level.root=PLACEHOLDER DESIRED_LOGGING_LEVEL \
     -e ruuter.cookie.sameSitePolicy=None \
+    -e ruuter.cors.allowedOrigins=PLACEHOLDER ALLOWED ORIGINS \
+    -e headers.contentSecurityPolicy= \
+    -e maxRequestSizeBytes=10000000000 \
+    -e incoming.request.external.validation.enabled=false \ 
+    -e incoming.request.external.validation.endpoint= \
+    -e verify.requested.method.type=false \
+    -e allowed.requested.method.types=POST \
+    -e default.requested.method.type=POST \
+    -e requested.method.type.error.http.response.code=200 \
+    -e csrf.enabled=false \
+    -e csrf.tim_userinfo_url= \
+    -e csrf.ruuter_services_whitelist= \
+    -e ip-whitelist.routes[0].ips[0]=127.0.0.1 \
+    -e ip-whitelist.routes[0].patterns[0]=/functions/* \
+    -e ip-whitelist.routes[1].ips[0]=127.0.0.1 \
+    -e ip-whitelist.routes[1].patterns[0]=/get-location-coordinates \
+    -e ip-whitelist.routes[1].patterns[1]=/get-weather-data \
+    -e ip-whitelist.routes[1].patterns[2]=/get-weather-station-id \
+    -e ip-whitelist.routes[1].patterns[3]=/get-weather \
+    -e ip-whitelist.routes[1].patterns[4]=/param_string_length \
     -v ./server.xml:/usr/local/tomcat/conf/server.xml \
     -v ./urls.env.json:/usr/local/tomcat/urls.env.json \
     -v ./cert.crt:/usr/local/tomcat/conf/cert.crt \
@@ -165,12 +189,20 @@ Update `urls.env.json` url-s linking to your setups components.
 For example:
 ```json
 {
+  "analytics_url": "https://PLACEHOLDER ANALYTICS URL",
   "elastic_url": "http://PLACEHOLDER NOSQL_DB address/container name:9200",
   "dmapper_url": "http://PLACEHOLDER dmapper_container_name:8081",
-  "ruuter_url": "http://PLACEHOLDER public-ruuter_container_name:8443",
+  "ruuter_url": "http://localhost:8443",
   "tim_url": "http://PLACEHOLDER tim_container_name:8085",
   "resql_url": "http://PLACEHOLDER resql_container_name:8082",
   "bot_url": "http://PLACEHOLDER bot_container_name:5005",
+  "training_url":"PLACEHOLDER TRAINING VMs IP",
+  "training_user":"ubuntu",
+  "training_prv_key": "~/location/of/private/ssh/key",
+  "training_bot_directory_name": "location/of/bot/files"
+  "gazetteer_url":"https://inaadress.maaamet.ee/inaadress",
+  "publicapi_url": "https://publicapi.envir.ee/v1/combinedWeatherData",
+  "ilmmicroservice_url": "https://ilmmicroservice.envir.ee/api/forecasts"
 }
 
 ```
@@ -181,6 +213,18 @@ docker run PLACEHOLDER:IMAGE_NAME \
     -p 8443:8443 \
     -e legacy-portal-integration.sessionCookieDomain=PLACEHOLDER YOUR_DOMAIN \
     -e logging.level.root=PLACEHOLDER DESIRED_LOGGING_LEVEL \
+    -e csrf.enabled=false \
+    -e csrf.tim_userinfo_url= \
+    -e csrf.ruuter_services_whitelist= \
+    -e allowed.requested.method.types=POST \
+    -e ruuter.cors.allowedOrigins=PLACEHOLDER ALLOWED ORIGINS \
+    -e maxRequestSizeBytes=10000000000 \
+    -e default.requested.method.type=POST \
+    -e incoming.request.external.validation.enabled=false \
+    -e requested.method.type.error.http.response.code=200 \
+    -e verify.requested.method.type=false \
+    -e incoming.request.external.validation.endpoint= \
+    -e headers.contentSecurityPolicy= \
     -v ./server.xml:/usr/local/tomcat/conf/server.xml \
     -v ./urls.env.json:/usr/local/tomcat/urls.env.json \
     -v ./cert.crt:/usr/local/tomcat/conf/cert.crt \
@@ -364,9 +408,13 @@ Update `env-config.js` url-s linking to your setups components.
 For example:
 ```
 {
-    RUUTER_API_URL: 'https://PLACEHOLDER private-ruuter_container_name:8443',
+    RUUTER_API_URL: 'https://PLACEHOLDER PRIVATE_RUUTER_URL',
     TIM_API_URL: 'https://PLACEHOLDER TIM_URL',
     TARA_REDIRECT_URL: 'https://PLACEHOLDER TIM_URL/oauth2/authorization/tara?callback_url=https://PLACEHOLDER ADMIN_URL/auth/callback',
+    ANALYTICS_URL: https://PLACEHOLDER ANALYTICS_URL,
+    MONITORING_URL: https://PLACEHOLDER MONITORING_URL,
+    PASSWORD_AUTH_ENABLED: false,
+    INSTITUTION_FORWARDING_ENABLED: false,
 }
 
 ```
