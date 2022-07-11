@@ -9,10 +9,12 @@ Monitoring system is built:
 * Prometheus (metrics); 
 * Grafana (visualization);
 * Promtail (discover; ship);
-* MinIO (storage);
+* MinIO (storage); or smilar
 
 #### Containers  
-Monitoring will be deployed by using docker-compose  
+Monitoring will be deployed by using docker-compose
+
+* Disclaimer - currently the example is a working test enviorment. To run it live, changes are needed
 
 docker-compose.yml  
 ``` version: "3"
