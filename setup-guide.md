@@ -659,6 +659,7 @@ VALUES ('ruuter-dev-1', 'byk-ruuter-01.PLACEHOLDER', 'base-id-1');
 
 
 ### Client side log collecting
+Work in Progress!!
 Client infrastructure will contain a log collecting and shipping modules. 
 Promtail will collect, transform and ships logs to Loki, which will push logs to central logging system that will pull those logs, depending on the interval set up in that system.
 Client side log collection ``` docker-compose ``` will be shown in examples
