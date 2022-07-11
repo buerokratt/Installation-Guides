@@ -657,6 +657,51 @@ INSERT INTO establishment (name, url, base_id )
 VALUES ('ruuter-dev-1', 'byk-ruuter-01.PLACEHOLDER', 'base-id-1');
 ```
 
+
+#### Client side log collecting
+Client infrastructure will contain a log collecting and shipping modules. 
+Promtail will collect, transform and ships logs to Loki, which will push logs to central logging system that will pull those logs, depending on the interval set up in that system.
+Client side log collection ``` docker-compose ``` will be shown in examples
+
+Loki configuration (`loki-config.yml`)
+```
+---
+server:
+  http_listen_port: 3100
+memberlist:
+  join_members:
+    - loki:7946
+schema_config:
+  configs:
+    - from: DATE YYYY-MM-DD
+      store: boltdb-shipper
+      object_store: s3
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
+common:
+  path_prefix: /PREFIXNAME
+  replication_factor: 1
+  storage:
+    s3:
+      endpoint: minio:9000
+      insecure: true
+      bucketnames: loki-data
+      access_key_id: USERNAME
+      secret_access_key: PASSWORD
+      s3forcepathstyle: true
+  ring:
+    kvstore:
+      store: memberlist
+ruler:
+  storage:
+    s3:
+      bucketnames: loki-ruler
+ ```
+
+
+
 #### Write only
 The table is designed as write only, so existing fields are changed by adding a new row with the same `base_id` and changing the rest of the fields as neccesary.
 
