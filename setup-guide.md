@@ -21,6 +21,7 @@ Sort of project overview
 * [RESQL](https://github.com/buerokratt/RESQL)
 * bot
 * action-server
+* Client side log collecting
 
 ### Images in Dockerhub
 * https://hub.docker.com/r/riaee/byk-users-db
