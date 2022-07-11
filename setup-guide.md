@@ -45,9 +45,10 @@ Sort of project overview
 
 ## Installing
 The components can be run manually or using tools like [Docker-compose](https://docs.docker.com/compose/). [Here](examples/docker-compose.yml) is example `docker-compose.yml` file. As there is builtin functionality using SSH to transfer data between machines no container orchestration tools can be used in fully functional setup.
-As the system can be grouped into 2 parts also 2 machines are needed.
-- Bot ~10GB RAM and 10CPU
+As the system can be grouped into 3 parts also 3 machines are needed.
+- Bot ~5GB RAM and 5CPU
 - Bykstack ~10GB RAM and 7CPU
+- Bot-training ~5GB RAM and 5CPU
 
 Additional ressources are needed for SQL database and traffic forwarder/reverse-proxy
 
