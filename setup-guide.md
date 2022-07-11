@@ -658,8 +658,11 @@ INSERT INTO establishment (name, url, base_id )
 VALUES ('ruuter-dev-1', 'byk-ruuter-01.PLACEHOLDER', 'base-id-1');
 ```
 
+#### Write only
+The table is designed as write only, so existing fields are changed by adding a new row with the same `base_id` and changing the rest of the fields as neccesary.
 
-### Client side log collecting
+
+# Client side log collecting
 Work in Progress!!
 Client infrastructure will contain a log collecting and shipping modules. 
 Promtail will collect, transform and ships logs to Loki, which will push logs to central logging system that will pull those logs, depending on the interval set up in that system.
@@ -753,8 +756,7 @@ pipeline_stages:
 ```
 
 
-#### Write only
-The table is designed as write only, so existing fields are changed by adding a new row with the same `base_id` and changing the rest of the fields as neccesary.
+
 
 # License
 
