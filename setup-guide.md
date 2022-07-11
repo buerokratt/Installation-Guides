@@ -629,11 +629,12 @@ Necessary steps to ensure training functionalities work properly:
  * copy necessary bot files to training system (it is recommended to copy the files straight to the training users home directory to mitigate permission errors)
    * necessary files can be found here: https://koodivaramu.eesti.ee/buerokratt/plug-and-play
    * set `training_bot_directory_name` value in ruuter urls.env.json as the directory path `chatbot` folder was copied to - path is referenced from the training user home directory
+   * create a blacklist file to contain certain intents that cannot be edited inside the training module ``` (/home/user/chatbot/data/blacklist) ```
 
 # Using
 Describe how to use running software
 
-###Forwarding
+### Forwarding
 
 #### Intro
 Front-end forwarding functionality can be enabled from customer-service, by changing the env variable
@@ -647,7 +648,7 @@ INSTITUTION_FORWARDING_ENABLED: true
 
 ```
 
-#### forwarding setup
+#### Forwarding setup
 Liquibase creates a empty table called 'establishment' which stores all the possible destinations to where a users chat can be forwaded.
 New destinations must be added manually, with the fields `name`, `url` and `base_id` filled. base_id is the unique indentifier for each entry.
 ```sql
@@ -655,7 +656,7 @@ INSERT INTO establishment (name, url, base_id )
 VALUES ('ruuter-dev-1', 'byk-ruuter-01.PLACEHOLDER', 'base-id-1');
 ```
 
-#### write only
+#### Write only
 The table is designed as write only, so existing fields are changed by adding a new row with the same `base_id` and changing the rest of the fields as neccesary.
 
 # License
