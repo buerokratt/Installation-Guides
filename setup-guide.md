@@ -5,8 +5,8 @@ Sort of project overview
 ## List of dependencies
 
 ### External components
-* Docker
-* docker-compose
+* Docker with plugin docker-compose
+
 ### Databases
 * PostgreSQL
 * Opensearch
