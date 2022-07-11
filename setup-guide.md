@@ -5,7 +5,7 @@ Sort of project overview
 ## List of dependencies
 
 ### External components
-* Docker with plugin docker-compose
+* Docker with docker-compose plugin. 
 
 ### Databases
 * PostgreSQL
