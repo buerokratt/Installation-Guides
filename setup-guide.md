@@ -631,7 +631,7 @@ Necessary steps to ensure training functionalities work properly:
  * copy necessary bot files to training system (it is recommended to copy the files straight to the training users home directory to mitigate permission errors)
    * necessary files can be found here: https://koodivaramu.eesti.ee/buerokratt/plug-and-play
    * set `training_bot_directory_name` value in ruuter urls.env.json as the directory path `chatbot` folder was copied to - path is referenced from the training user home directory
-   * create a blacklist file to contain certain intents that cannot be edited inside the training module ``` (/home/user/chatbot/data/blacklist) ```
+   * create a blacklist file to contain certain intents/rules/responses that cannot be edited inside the training module ``` (/home/user/chatbot/data/blacklist) ```
 
 # Using
 Describe how to use running software
