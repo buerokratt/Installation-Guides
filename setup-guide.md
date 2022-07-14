@@ -153,8 +153,7 @@ For example:
 #### Running the container
 In order to create container from image bring it up like so:
 ```
-docker run PLACEHOLDER:IMAGE_NAME \
-    -p 8443:8443 \
+docker run -p 8443:8443 \
     -e legacy-portal-integration.sessionCookieDomain=PLACEHOLDER YOUR_DOMAIN \
     -e logging.level.root=PLACEHOLDER DESIRED_LOGGING_LEVEL \
     -e ruuter.cookie.sameSitePolicy=None \
@@ -179,10 +178,11 @@ docker run PLACEHOLDER:IMAGE_NAME \
     -e ip-whitelist.routes[1].patterns[3]=/get-weather \
     -e ip-whitelist.routes[1].patterns[4]=/param_string_length \
     -v ./server.xml:/usr/local/tomcat/conf/server.xml \
-    -v ./urls.env.json:/usr/local/tomcat/urls.env.json \
-    -v ./cert.crt:/usr/local/tomcat/conf/cert.crt \
-    -v ./key.key:/usr/local/tomcat/conf/key.key \
-    -v ./location/of/private/ssh/key:/root/.ssh/id_training
+    -v /path_to/urls.env.json:/usr/local/tomcat/urls.env.json \
+    -v /path_to/cert.crt:/usr/local/tomcat/conf/cert.crt \
+    -v /path_to/key.key:/usr/local/tomcat/conf/key.key \
+    -v /path_to/location/of/private/ssh/key:/root/.ssh/id_training \
+    PLACEHOLDER:IMAGE_NAME
 ```
 ### Public-ruuter
 Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
