@@ -1,0 +1,96 @@
+version: '3.0'
+
+services:
+
+  train-bot:
+    container_name: train-bot
+    image: riaee/byk:bot-v1.7.33
+    environment:
+      - RASA_MAX_CACHE_SIZE=0
+    ports:
+      - 5006:5005
+    volumes:
+      - ./chatbot-train/:/app
+    command:
+      - train
+    networks:
+      - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '3'
+          memory: 2.5G
+        reservations:
+          cpus: '0.25'
+          memory: 450M
+
+  test-bot:
+    container_name: test-bot
+    image: riaee/byk:bot-v4.6.22
+    environment:
+      - RASA_MAX_CACHE_SIZE=0
+    ports:
+      - 5006:5005
+    volumes:
+      - ./chatbot-train/:/app
+    command:
+      - test
+      - --out
+      - results/test
+    networks:
+      - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2G
+        reservations:
+          cpus: '0.25'
+          memory: 450M
+
+  test-bot-cv:
+    container_name: test-bot-cross-validate
+    image: riaee/byk:bot-v5.1.21
+    environment:
+      - RASA_MAX_CACHE_SIZE=0
+    ports:
+      - 5007:5005
+    volumes:
+      - ./chatbot-train/:/app
+    command:
+      - test
+      - --cross-validation
+      - --folds
+      - "8"
+      - --out
+      - results/test-cross-validate
+    networks:
+      - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.40'
+          memory: 2G
+        reservations:
+          cpus: '0.25'
+          memory: 450M
+
+networks:
+  bykstack:
+    name: bykstack
+    driver: bridge
