@@ -6,6 +6,8 @@ The bot that talks to user.
 
 - [List of dependencies](#list-of-dependencies)
 - [Installing](#installing)
+  - [Bot](#bot)
+  - [Action server](#action-server)
 - [License](#license)
 - [How to Contribute](#how-to-contribute)
 
@@ -13,6 +15,7 @@ The bot that talks to user.
 
 - Docker with compose plugin
 - ssh server
+
 ## Installing
 
 The bot consists of 2 containers: bot and action server. They should be in one docker network. Example docker-compose file is [here](./examples/docker-compose.yml). 
@@ -99,7 +102,9 @@ Directory `bot_data` in the example has specific bot data in it. The directory t
     ├── test_custom_fallback_policy.yml
     └── test_loba_stories.yml
 ```
+
 **NB!** If models directory is empty bot training is needed. Refer to [Bot-training](../bot_training/readme.md)
+
 ### Bot
 
 The bot is relaying on fastText pre-trained word vector. [List](https://github.com/facebookresearch/fastText/blob/master/docs/crawl-vectors.md#models) of fastText models. Download and mount model (binary version) according to bots language into the container.
