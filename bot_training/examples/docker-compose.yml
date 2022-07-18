@@ -1,4 +1,4 @@
-version: '3.0'
+version: '3.9'
 
 services:
 
@@ -53,38 +53,6 @@ services:
       resources:
         limits:
           cpus: '1.5'
-          memory: 2G
-        reservations:
-          cpus: '0.25'
-          memory: 450M
-
-  test-bot-cv:
-    container_name: test-bot-cross-validate
-    image: riaee/byk:bot-v5.1.21
-    environment:
-      - RASA_MAX_CACHE_SIZE=0
-    ports:
-      - 5007:5005
-    volumes:
-      - ./chatbot-train/:/app
-    command:
-      - test
-      - --cross-validation
-      - --folds
-      - "8"
-      - --out
-      - results/test-cross-validate
-    networks:
-      - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
-    deploy:
-      resources:
-        limits:
-          cpus: '1.40'
           memory: 2G
         reservations:
           cpus: '0.25'
