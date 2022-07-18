@@ -126,7 +126,7 @@ docker run \
     -p 5005:5005 \
     -v ./cc.et.300.bin:/app/fasttext_et_model/cc.et.300.bin:ro \
     -v ./bot_data/:/app \
-    PLACEHOLDER:IMAGE_NAME
+    PLACEHOLDER:IMAGE_NAME run
 ```
 
 ### Action server
@@ -138,7 +138,7 @@ docker run \
     -p 5055:5055 \
     -v ./bot_data/actions:/app/actions \
     -v ./bot_data/data:/app/data \
-    PLACEHOLDER:IMAGE_NAME
+    PLACEHOLDER:IMAGE_NAME start --actions actions
 ```
 ## License
 
