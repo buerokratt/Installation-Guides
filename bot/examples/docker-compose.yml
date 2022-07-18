@@ -1,36 +1,9 @@
 version: '3.9'
 services:
 
-  train-bot:
-    container_name: train-bot
-    image: riaee/byk:loba-bot-v0.111
-    ports:
-      - 5005:5005
-    volumes:
-      - ./bot_data/:/app
-    command:
-      - train 
-      - --fixed-model-name
-      - loba-model
-    networks:
-      - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
-    deploy:
-      resources:
-        limits:
-          cpus: '3'
-          memory: 2.5G
-        reservations:
-          cpus: '0.25'
-          memory: 450M
-
   run-action-server:
     container_name: bot-action-server
-    image: riaee/byk:loba-action-server-v0.122
+    image: riaee/byk:bot-action-server-v0.122
     ports:
       - 5055:5055
     volumes:
@@ -59,17 +32,14 @@ services:
 
   byk-bot:
     container_name: byk-bot
-    image: riaee/byk:loba-bot-v0.133
+    image: riaee/byk:bot-v0.133
     ports:
       - 5005:5005
     volumes:
       - ./bot_data/:/app
-      - ./cc.et.300.bin:/app/fasttext_et_model/cc.et.300.bin #https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.et.300.bin.gz
+      - ./cc.et.300.bin:/app/fasttext_et_model/cc.et.300.bin:ro #https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.et.300.bin.gz
     command:
       - run
-    depends_on:
-      train-bot:
-        condition: service_completed_successfully
     restart: always
     networks:
       - bykstack
