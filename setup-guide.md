@@ -58,6 +58,18 @@ As the system can be grouped into 3 parts also 3 machines are needed:
 
 Additional ressources are needed for SQL database and traffic forwarder/reverse-proxy
 
+## Exposing to the internet
+
+Only selected components need traffic from internet:
+- Bykstack:
+  - Public-ruuter
+  - Private-ruuter
+  - Tim
+  - Widget
+  - Customer-support
+
+### Overview of traffic flow on the system
+![Overview-Light](./images/overview.light.editable.png#gh-light-mode-only)![Overview-Dark](./images/overview.dark.editable.png#gh-dark-mode-only)
 
 ### Databases
 
