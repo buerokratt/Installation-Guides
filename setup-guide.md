@@ -2,15 +2,6 @@
 Describe what it is and what it is used for
 Sort of project overview
 
-## List of dependencies
-
-### External components
-* Docker with docker-compose plugin. 
-
-### Databases
-* PostgreSQL
-* Opensearch
-
 ### Components
 * [private-ruuter ??](https://github.com/buerokratt/Ruuter)??
 * [public-ruuter ??](https://github.com/buerokratt/Ruuter)??
@@ -36,8 +27,10 @@ Sort of project overview
 
 ## Table of Contents
 
-- [List of dependencies](#list-of-dependencies)
 - [Installing](#installing)
+  - [Resource requirements](#approximate-resource-requirements)
+  - [Overview of the system](#overview-of-traffic-flow-on-the-system)
+  - [Setting up DB](#databases)
 - [Using](#using)
 - [Services](#services)
 - [License](#license)
@@ -71,7 +64,7 @@ Only selected components need traffic from internet:
 ### Overview of traffic flow on the system
 ![Overview-Light](./images/overview.light.editable.png#gh-light-mode-only)![Overview-Dark](./images/overview.dark.editable.png#gh-dark-mode-only)
 
-### Databases
+## Databases
 
 #### SQL Databases
 2 components are using PostgreSQL databases: TIM and RESQL.
