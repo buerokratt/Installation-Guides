@@ -112,6 +112,7 @@ services:
     restart: always
     networks:
       - bykstack
+
   byk-customer-service:
     container_name: byk-customer-service
     image: riaee/byk-customer-service:v0.2.3
@@ -197,82 +198,6 @@ services:
         max-size: "50m"
         max-file: "3"
         
-  byk-chatbot-opensearch-node1:
-    image: opensearchproject/opensearch:1.2.4
-    container_name: chatbot-opensearch
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536 # maximum number of open files for the OpenSearch user, set to at least 65536 on modern systems
-        hard: 65536
-    volumes:
-      - opensearch-data:/usr/share/opensearch/data
-      - ./opensearch/jvm.options:/usr/share/opensearch/config/jvm.options:ro
-      - ./opensearch/opensearch.yml:/usr/share/opensearch/config/opensearch.yml:ro
-      - ./config/root-ca.pem:/usr/share/opensearch/config/root-ca.pem:ro
-      - ./config/admin.pem:/usr/share/opensearch/config/admin.pem:ro
-      - ./config/admin-key.pem:/usr/share/opensearch/config/admin-key.pem:ro
-      - ./config/node1.pem:/usr/share/opensearch/config/node1.pem:ro
-      - ./config/node1-key.pem:/usr/share/opensearch/config/node1-key.pem:ro
-      - ./securityconfig/config.yml:/usr/share/opensearch/plugins/opensearch-security/securityconfig/config.yml:ro
-      - ./securityconfig/roles.yml:/usr/share/opensearch/plugins/opensearch-security/securityconfig/roles.yml:ro
-      - ./securityconfig/roles_mapping.yml:/usr/share/opensearch/plugins/opensearch-security/securityconfig/roles_mapping.yml:ro
-    ports:
-      - "9200:9200"
-      - "9600:9600" # required for Performance Analyzer
-    restart: always
-    networks:
-      - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
-
-  byk-chatbot-dashboards:
-    image: opensearchproject/opensearch-dashboards:1.2.0
-    container_name: chatbot-dashboards
-    volumes:
-      - ./opensearch-dashboards/dashboards.yml:/usr/share/opensearch-dashboards/config/opensearch_dashboards.yml:ro
-      - ./config/root-ca.pem:/usr/share/opensearch-dashboards/config/root-ca.pem:ro
-      - ./config/tls.crt:/usr/share/opensearch-dashboards/config/tls.crt:ro
-      - ./config/tls.key:/usr/share/opensearch-dashboards/config/tls.key:ro
-      - ./assets:/usr/share/opensearch-dashboards/assets:ro
-    ports:
-      - "5601:5601"
-    expose:
-      - "5601"
-    restart: always
-    networks:
-      - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
-
-  byk-logstash:
-    image: riaee/byk:chatbot-logstash-20220616
-    container_name: chatbot-logstash
-    volumes:
-      - ./logstash/logstash.conf:/usr/share/logstash/config/logstash.conf:ro
-      - ./logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-    command: bash -c "logstash -f /usr/share/logstash/config/logstash.conf"
-    ports:
-      - "8087:8443"
-    depends_on:
-      - byk-chatbot-opensearch-node1
-    restart: always
-    networks:
-      - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
-
 volumes:
   opensearch-data:
     driver: local
