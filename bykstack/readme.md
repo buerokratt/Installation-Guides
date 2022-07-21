@@ -28,8 +28,16 @@ Stack of components handling chat.
 
 The Bykstack consists of 10 containers. They should be in one docker network. Example docker-compose file is [here](./examples/docker-compose.yml).
 
+**All** components need encrypted traffic between reverse-proxy and its endpoint. Please generate key-cert pairs for every component separately.
+### Logging levels
 
-### Private-ruuter
+At the moment all components are developed using [Spring](https://spring.io/) framework. Logging level are `ERROR` `WARN` `INFO` `DEBUG` `TRACE`
+
+### CookieDomain
+
+Cookie domain determines from which domain traffic is allowed into Buerokratt system. Top level domain is not recommended due to security concerns. And in the other hand defining domain and sub domains too tightly disables traffic between chat-widgets on different sub domains.
+
+## Private-ruuter
 Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
 
 Update `urls.env.json` url-s linking to your setups components.
@@ -51,7 +59,7 @@ For example:
 }
 ```
 
-#### Running the container
+### Running the container
 
 In order to create container from image bring it up like so:
 ```
@@ -87,7 +95,7 @@ docker run \
     -v /path_to/location/of/private/ssh/key:/root/.ssh/id_training \
     PLACEHOLDER:IMAGE_NAME
 ```
-### Public-ruuter
+## Public-ruuter
 Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
 
 Update `urls.env.json` url-s linking to your setups components.
@@ -109,7 +117,7 @@ For example:
 }
 
 ```
-#### Running the container
+### Running the container
 In order to create container from image bring it up like so:
 ```
 docker run \
@@ -135,10 +143,10 @@ docker run \
     PLACEHOLDER:IMAGE_NAME
 ```
 
-### DataMapper
+## DataMapper
 Mount certificates into container as `/usr/local/tomcat/conf/tls.crt` and `/usr/local/tomcat/conf/tls.key`
 
-#### Running the container
+### Running the container
 In order to create container from image bring it up like so:
 ```
 docker run \
@@ -151,7 +159,7 @@ docker run \
     PLACEHOLDER:IMAGE_NAME
 ```
 
-### Widget
+## Widget
 Mount certificates into container as `/etc/tls/tls.crt` and `/etc/tls/tls.key`
 
 Update `index.html` url-s linking to your setups components.
@@ -233,7 +241,7 @@ server {
     return 301 https://$host$request_uri;
 }
 ```
-#### Running the container
+### Running the container
 In order to create container from image bring it up like so:
 ```
 docker run \
@@ -245,7 +253,7 @@ docker run \
     PLACEHOLDER:IMAGE_NAME 
 ```
 
-### Customer-service
+## Customer-service
 
 Mount certificates into container as `/etc/ssl/certs/cert.crt` and `/etc/ssl/certs/key.key`
 
@@ -294,7 +302,7 @@ server {
 }
 ```
 
-#### Running the container
+### Running the container
 
 In order to create container from image bring it up like so:
 ```
@@ -307,16 +315,16 @@ docker run \
     PLACEHOLDER:IMAGE_NAME 
 ```
 
-### TIM
+## TIM
 Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
 
 Generate `jwtkeystore.jks` and mount it into the container as `/usr/local/tomcat/jwtkeystore.jks`. The password inserted at `jwtkeystore.jks` creation is used as environmental variable in the container.
 
-#### Certificates generation
+### Certificates generation
 
 **Note!** Both keystore password and alias password should be the same.
 
-##### Certificate for JWT signature
+#### Certificate for JWT signature
 ```
 keytool -genkeypair -alias jwtsign -keyalg RSA -keysize 2048 -keystore "jwtkeystore.jks" -validity 3650
 ```
@@ -329,14 +337,14 @@ jwt-integration.signature.keyStoreType=JKS
 jwt-integration.signature.keyAlias=jwtsign
 ```
 
-##### Regenerating Certificates
+#### Regenerating Certificates
 
 To generate a new key pair with certificate:
 1. backup the original keystore file.
 2. run certificate generation `keytool` command from previous step(s)
 3. update configuration with new keystore file and password
 
-##### Changing Keystore password
+#### Changing Keystore password
 
 To change keystore password,
 1. run the following command
@@ -346,7 +354,7 @@ keytool -keystore <keystore file name> -storepasswd
 ```
 2. update configuration with new password
 
-#### Running the container
+### Running the container
 In order to create container from image bring it up like so:
 ```
 docker run  \
@@ -380,10 +388,10 @@ docker run  \
     PLACEHOLDER:IMAGE_NAME
 ```
 
-### RESQL
+## RESQL
 Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
 
-#### Running the container
+### Running the container
 In order to create container from image bring it up like so:
 ```
 docker run \
