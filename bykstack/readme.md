@@ -13,9 +13,6 @@ Stack of components handling chat.
   - [customer-service](#test-bot)
   - [tim](#test-bot)
   - [resql](#test-bot)
-  - [analytics-be](#test-bot)
-  - [analytics-fe](#test-bot)
-  - [data-mover](#test-bot)
 - [License](#license)
 - [How to Contribute](#how-to-contribute)
 
@@ -39,7 +36,6 @@ Update `urls.env.json` url-s linking to your setups components.
 For example:
 ```json
 {
-  "analytics_url": "https://PLACEHOLDER ANALYTICS_FE_URL",
   "dmapper_url": "https://byk-dmapper:8443",
   "ruuter_url": "http://localhost:8443",
   "tim_url": "https://byk-tim:8443",
@@ -98,7 +94,6 @@ Update `urls.env.json` url-s linking to your setups components.
 For example:
 ```json
 {
-  "analytics_url": "https://PLACEHOLDER ANALYTICS_FE_URL",
   "dmapper_url": "https://byk-dmapper:8443",
   "ruuter_url": "http://localhost:8443",
   "tim_url": "https://byk-tim:8443",
@@ -261,10 +256,8 @@ For example:
     RUUTER_API_URL: 'https://PLACEHOLDER PRIVATE_RUUTER_URL',
     TIM_API_URL: 'https://PLACEHOLDER TIM_URL',
     TARA_REDIRECT_URL: 'https://PLACEHOLDER TIM_URL/oauth2/authorization/tara?callback_url=https://PLACEHOLDER CUSTOMER_SERVICE_URL/auth/callback',
-    ANALYTICS_URL: https://PLACEHOLDER ANALYTICS_URL,
     MONITORING_URL: https://PLACEHOLDER MONITORING_URL,
     PASSWORD_AUTH_ENABLED: false,
-    INSTITUTION_FORWARDING_ENABLED: false,
 }
 
 ```
@@ -323,7 +316,6 @@ Generate `jwtkeystore.jks` and mount it into the container as `/usr/local/tomcat
 
 **Note!** Both keystore password and alias password should be the same.
 
-
 ##### Certificate for JWT signature
 ```
 keytool -genkeypair -alias jwtsign -keyalg RSA -keysize 2048 -keystore "jwtkeystore.jks" -validity 3650
@@ -357,7 +349,7 @@ keytool -keystore <keystore file name> -storepasswd
 #### Running the container
 In order to create container from image bring it up like so:
 ```
-docker run PLACEHOLDER:IMAGE_NAME \
+docker run  \
     -p 8085:8443 \
     -e security.allowlist.jwt=PLACEHOLDER ALL_IP_ADDRESSES_WHERE_TRAFFIC_IS_ALLOWED,PLACEHOLDER CONTAINER_NAMES_IF_IN_THE_SAME_NETWORK \
     -e spring.datasource.url=jdbc:postgresql://PLACEHOLDER TIM_DB_ADRESS/tim \
@@ -384,7 +376,8 @@ docker run PLACEHOLDER:IMAGE_NAME \
     -v ./server.xml:/usr/local/tomcat/conf/server.xml \
     -v ./jwtkeystore.jks:/usr/local/tomcat/jwtkeystore.jks \
     -v ./cert.crt:/usr/local/tomcat/conf/cert.crt \
-    -v ./key.key:/usr/local/tomcat/conf/key.key
+    -v ./key.key:/usr/local/tomcat/conf/key.key \
+    PLACEHOLDER:IMAGE_NAME
 ```
 
 ### RESQL
@@ -403,131 +396,6 @@ docker run \
     PLACEHOLDER:IMAGE_NAME
 ```
 
-### Analytics-BE
-
-#### Running the container
-In order to create container from image bring it up like so:
-```
-docker run \
-    -p 9200:9200 \
-    -e SPRING_APPLICATION_JSON: '{"sqlms":{"saved-queries-dir":"./templates/","datasources":[{"name":"byk","jdbcUrl":"jdbc:postgresql://PLACEHOLDER USER_DB_ADDRESS:5433/byk?sslmode=require","username":"byk","password":"PLACEHOLDER USERS_DB_PASSWORD","driverClassName":"org.postgresql.Driver"}]}}' \
-    -e logging.level.org.springframework.boot=PLACEHOLDER DESIRED_LOGGING_LEVEL \
-    -v ./server.xml:/usr/local/tomcat/conf/server.xml \
-    -v ./cert.crt:/usr/local/tomcat/conf/cert.crt \
-    -v ./key.key:/usr/local/tomcat/conf/key.key \
-    PLACEHOLDER:IMAGE_NAME
-```
-
-### Analytics-FE
-##### Opensearch and Dashboards
-Official documentation for the Opensearch security plugin configuration [https://opensearch.org/docs/latest/security-plugin/configuration/](https://opensearch.org/docs/latest/security-plugin/configuration/)
-
-##### Topology
-The Opensearch and Dashboards containers **must run on the same host machine** as Ruuter containers. Opensearch's cookie (`security_authentication`) is generated via a configuration and Opensearch sets the domain based on where the request is coming from.
-
-##### Resource settings
-Add the following row to `/etc/sysctl.conf`, to increase memory available to docker  
-`vm.max_map_count=262144`
-
-Add the following rows to `/etc/security/limits.conf`, to unlock JVM memory  
-```
-# allow user 'opensearch' mlockall
-opensearch soft memlock unlimited
-opensearch hard memlock unlimited
-```
-
-##### TLS
-OpenSearch uses TLS in two layers: http and transport (inter-node)
-[https://opensearch.org/docs/latest/security-plugin/configuration/generate-certificates/](https://opensearch.org/docs/latest/security-plugin/configuration/generate-certificates/)
-
-Generate your certificates with generate-certificates.sh, `opensearch.yml` is configured to use those certificates. Each node needs their own node certificate and CN on the subject line should be unique for each new node. [https://opensearch.org/docs/latest/security-plugin/configuration/tls#configure-node-certificates](https://opensearch.org/docs/latest/security-plugin/configuration/tls#configure-node-certificates)
-
-**root-ca.pem**: This is the certificate of the root CA that signed all other TLS certificates  
-**node1.pem**: This is the certificate that this node uses when communicating with other nodes on the transport layer (inter-node traffic)  
-**node1-key.pem**: The private key for the node1.pem node certificate  
-**admin.pem**: This is the admin TLS certificate used when making changes to the security configuration. This certificate gives you full access to the cluster  
-**admin-key.pem**: The private key for the admin TLS certificate  
-
-##### Authentication
-Authentication is determined by config.yml. Described in depth here [https://opensearch.org/docs/latest/security-plugin/configuration/configuration/](https://opensearch.org/docs/latest/security-plugin/configuration/configuration/)  
-
-Dashboards authenticates itself to OpenSearch with basic authentication, described with "basic_internal_auth_domain". Users will be authenticated with TIM generated JWT, described with "jwt_auth_domain". It will be important to customize the signing key parameter with the key retrieved from https://TIM_URL/jwt/verification-key.  
-
-##### Apply all YAML configurations
-Start the Opensearch node(s) and run securityadmin.sh inside the docker container. This command uses the default
-certificates:  
-`./plugins/opensearch-security/tools/securityadmin.sh -cd plugins/opensearch-security/securityconfig/ -icl -nhnv -cacert config/root-ca.pem -cert config/admin.pem -key config/admin-key.pem`
-
-
-
-
-
-### Data mover
-In order to add feedback rating dashboard, there is feedback_rating_dashboard.ndjson file in logstash folder.
-To import this file open opensearch dashboards in browser, from left side menu navigate to Stack Management -> Saved Objects
-and there is Import button where you can add this file.
-
-Logstash configuration (`logstash.conf`)
-```
-input {
-  jdbc {
-     jdbc_driver_library => "/usr/share/logstash/postgresql-42.3.5.jar"
-     jdbc_driver_class => "org.postgresql.Driver"
-     jdbc_connection_string => "jdbc:postgresql://database_container_name:5432/byk"
-     jdbc_user => "byk"
-     jdbc_password => "123"
-     type => "chat"
-     schedule => "*/5 * * * *"
-     statement => "SELECT feedback_rating::INT, * FROM public.chat WHERE created > current_timestamp - interval '5 minutes'"
-    }
-  jdbc {
-     jdbc_driver_library => "/usr/share/logstash/postgresql-42.3.5.jar"
-     jdbc_driver_class => "org.postgresql.Driver"
-     jdbc_connection_string => "jdbc:postgresql://database_container_name:5432/byk"
-     jdbc_user => "byk"
-     jdbc_password => "123"
-     type => "message"
-     schedule => "*/5 * * * *"
-     statement => "SELECT * FROM public.message WHERE created > current_timestamp - interval '5 minutes'"
-    }
-}
-output {
-  if [type] == "chat" {
-      opensearch {
-        hosts => "https://opensearch_container_name:9200"
-        index => "logstash-logs-chats-%{+YYYY.MM.dd.HH.mm.ss}"
-        document_id => index
-        doc_as_upsert => true
-        auth_type => {
-          type => "basic"
-          user => "admin"
-          password => "admin"
-        }
-        action => "create"
-        ecs_compatibility => disabled
-        ssl => true
-        ssl_certificate_verification => false
-     }
- }
- if [type] == "message" {
-    opensearch {
-        hosts => "https://opensearch_container_name:9200"
-        index => "logstash-logs-message-%{+YYYY.MM.dd.HH.mm.ss}"
-        document_id => index
-        doc_as_upsert => true
-        auth_type => {
-          type => "basic"
-          user => "admin"
-          password => "admin"
-        }
-        action => "create"
-        ecs_compatibility => disabled
-        ssl => true
-        ssl_certificate_verification => false
-     }
- }
-}
-```
 ## License
 
 [MIT](../LICENSE)
