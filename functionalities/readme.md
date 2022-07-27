@@ -3,7 +3,6 @@
 ## List of services
 
 - [Weather service](#weather-service)
-- [Forwarding](#forwarding)
 
 ## Weather service
 
