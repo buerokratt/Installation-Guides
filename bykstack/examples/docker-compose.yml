@@ -43,7 +43,7 @@ services:
     environment:
       - legacy-portal-integration.sessionCookieDomain=buerokratt.ee
       - logging.level.root=INFO
-      - ruuter.cors.allowedOrigins=https://buerokratt.ee,https://admin.buerokratt.ee
+      - ruuter.cors.allowedOrigins=https://buerokratt.ee,https://admin.buerokratt.ee,https://seire.buerokratt.ee
       - headers.contentSecurityPolicy=
       - maxRequestSizeBytes=10000000000
       - incoming.request.external.validation.enabled=false 
@@ -190,6 +190,26 @@ services:
       - ./resql/cert.crt:/usr/local/tomcat/conf/cert.crt:ro
       - ./resql/key.key:/usr/local/tomcat/conf/key.key:ro
     restart: always
+    networks:
+      - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+
+  byk-monitor:
+    container_name: byk-monitor
+    image: riaee/byk:monitoring-v65.22.17
+    ports:
+      - 81:80
+      - 8444:8443
+    restart: always
+    volumes:
+      - ./monitor/cert.crt:/etc/tls/tls.crt
+      - ./monitor/key.key:/etc/tls/tls.key
+      - ./monitor/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./monitor/env-config.js:/usr/share/nginx/html/monitoring/env-config.js
     networks:
       - bykstack
     logging:

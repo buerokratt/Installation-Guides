@@ -13,6 +13,7 @@ Stack of components handling chat.
   - [customer-service](#test-bot)
   - [tim](#test-bot)
   - [resql](#test-bot)
+  - [monitoring-module](#monitoring-module)
 - [License](#license)
 - [How to Contribute](#how-to-contribute)
 
@@ -26,7 +27,7 @@ Stack of components handling chat.
 
 ## Installing
 
-The Bykstack consists of 10 containers. They should be in one docker network. Example docker-compose file is [here](./examples/docker-compose.yml).
+The Bykstack consists of 11 containers. They should be in one docker network. Example docker-compose file is [here](./examples/docker-compose.yml).
 
 **All** components need encrypted traffic between reverse-proxy and its endpoint. Please generate key-cert pairs for every component separately.
 ### Logging levels
@@ -467,6 +468,65 @@ docker run \
     -v ./server.xml:/usr/local/tomcat/conf/server.xml \
     -v ./cert.crt:/usr/local/tomcat/conf/cert.crt \
     -v ./key.key:/usr/local/tomcat/conf/key.key \
+    PLACEHOLDER:IMAGE_NAME
+```
+
+## Monitoring module
+Mount certificates into container as `/etc/tls/tls.crt` and `/etc/tls/tls.key`
+
+Update `env-config.js` url-s linking to your setups components.
+For example:
+```
+window._env_ = {
+    RUUTER_API_URL: 'https://PLACEHOLDER PRIV-RUUTER_URL',
+};
+
+```
+
+Update `nginx.conf` `add_header` values linking to your setups components.
+For example:
+```
+server {
+    server_name localhost;
+    listen 8443 ssl;
+    ssl_certificate /etc/tls/tls.crt;
+    ssl_certificate_key /etc/tls/tls.key;
+
+    server_tokens off;
+    add_header Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; font-src 'self' data:; img-src 'self' data:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' PLACEHOLDER PRIV-RUUTER_URL PLACEHOLDER TIM_URL PLACEHOLDER CUSTOMER_SERVICE_URL";
+
+    location / {
+      root /usr/share/nginx/html/monitoring;
+      try_files $uri /index.html;
+    }
+
+    location /status {
+      access_log off;
+      default_type text/plain;
+      add_header Content-Type text/plain;
+      return 200 "alive";
+    }
+}
+
+server {
+    listen 80;
+    server_name localhost;
+    return 301 https://$host$request_uri;
+}
+```
+
+**NB** Private-Ruuter needs to have monitoring url in allowedOrigins list.
+
+### Running the container
+In order to create container from image bring it up like so:
+```
+docker run \
+    -p 81:80 \
+    -p 8444:8443 \
+    -v ./monitor/nginx.conf:/etc/nginx/conf.d/default.conf \
+    -v ./monitor/env-config.js:/usr/share/nginx/html/monitoring/env-config.js \
+    -v ./monitor/cert.crt:/etc/tls/tls.crt \
+    -v ./monitor/key.key:/etc/tls/tls.key \
     PLACEHOLDER:IMAGE_NAME
 ```
 
