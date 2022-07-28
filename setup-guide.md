@@ -60,6 +60,7 @@ Only selected components need traffic from internet:
   - Tim
   - Widget
   - Customer-support
+  - Monitoring-module
 
 ### Overview of traffic flow on the system
 ![Overview-Light](./images/overview.light.editable.png#gh-light-mode-only)![Overview-Dark](./images/overview.dark.editable.png#gh-dark-mode-only)
