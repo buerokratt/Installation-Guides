@@ -3,7 +3,7 @@
 <br>
 <br>
 
-Question: How do I apply for TARA contract?
+**Question:** How do I apply for TARA contract?
 Answer: Steps to attain this, is here - https://www.ria.ee/et/riigi-infosusteem/eid/partnerile.html#tara
 <br>
 Question: What authentication methods will I have when getting TARA ?
