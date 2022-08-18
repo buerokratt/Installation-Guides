@@ -122,3 +122,6 @@ d9a02b7de5f4   riaee/byk-chat-widget:14              "/docker-entrypoint.…"   
 1388f20c5613   riaee/byk-resql:11                    "catalina.sh run"        4 minutes ago   Created                     8080/tcp, 0.0.0.0:8082->8443/tcp, :::8082->8443/tcp                                     byk-resql
 bc0dd35d3451   riaee/byk:monitoring-20220802         "/docker-entrypoint.…"   4 minutes ago   Created                     443/tcp, 0.0.0.0:81->80/tcp, :::81->80/tcp, 0.0.0.0:8444->8443/tcp, :::8444->8443/tcp   byk-monitor
 ```
+
+- [x] Open Backoffice GUI in browser
+Open `https://localhost:3001/` in your browser of choice. You should see Bürokratt's Backoffice GUI.
