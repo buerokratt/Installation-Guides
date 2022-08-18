@@ -3,8 +3,7 @@
 ## Seeding DB
 
 ```
-docker run -it --network=bykstack riaee/byk-users-db:liquibase28 bash
--->
+docker run -it --network=bykstack riaee/byk-users-db:liquibase20220615 bash
 liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=PASSWORD_PLACEHOLDER --changelog-file=/master.yml update
 
 ```
