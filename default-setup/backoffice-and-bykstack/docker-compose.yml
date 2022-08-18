@@ -31,11 +31,6 @@ services:
     restart: always
     networks:
       - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
         
   byk-private-ruuter:
     container_name: byk-private-ruuter
@@ -73,11 +68,6 @@ services:
     restart: always
     networks:
       - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
         
   byk-dmapper:
     container_name: byk-dmapper
@@ -93,11 +83,6 @@ services:
     restart: always
     networks:
       - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
         
   byk-widget:
     container_name: byk-widget
@@ -126,11 +111,6 @@ services:
     restart: always
     networks:
       - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
         
   byk-tim:
     container_name: byk-tim
@@ -168,11 +148,6 @@ services:
     restart: always
     networks:
       - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
         
   byk-resql:
     container_name: byk-resql
@@ -192,11 +167,6 @@ services:
     restart: always
     networks:
       - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
 
   byk-monitor:
     container_name: byk-monitor
@@ -212,15 +182,7 @@ services:
       - ./monitor/env-config.js:/usr/share/nginx/html/monitoring/env-config.js
     networks:
       - bykstack
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "50m"
-        max-file: "3"
         
-volumes:
-  opensearch-data:
-    driver: local
 networks:
   bykstack:
     name: bykstack
