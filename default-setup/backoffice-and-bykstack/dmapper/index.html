@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="byk-va"></div>
+<script>
+  window._env_ = {
+    RUUTER_API_URL: 'https://localhost PUBLIC-RUUTER_URL',
+    TIM_AUTHENTICATION_URL: 'https://localhost TIM_URL/oauth2/authorization/tara?callback_url=https://localhost URL_WHERE_TO_WIDGET_IS_INSTALLED',
+    OFFICE_HOURS: {
+      TIMEZONE: 'Europe/Tallinn',
+      BEGIN: 0,
+      END: 24,
+      DAYS: [1, 2, 3, 4, 5],
+    },
+  };
+</script>
+<script id="script-bundle" type="text/javascript" src="./widget_bundle.js" crossorigin=""></script>
+</body>
+<style>
+  .background {
+    background: #004d40;
+    width: 100vw;
+    height: 100vh;
+  }
+</style>
+</html>
