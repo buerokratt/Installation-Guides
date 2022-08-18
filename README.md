@@ -76,19 +76,11 @@ default-setup
 ```
 
 #### Setting up Bykstack and Backoffice GUI
-> Continue in Terminal
 
-- [x] Make sure you are in a folder called `Installation-GUides`
-```
-pwd
-```
-
-```
-/Installation-Guides
-``` 
+> Continue in folder `Installation-GUides` by using Terminal 
 
 - [x] Move to folder `default-setup`
-- [x] Make sure there is a folder called `default-setup`
+- [x] Make sure there is a folder called `grep bykstack-with-backoffice-gui`
 ```
 ls | grep bykstack-with-backoffice-gui
 ```
