@@ -5,7 +5,7 @@
 ```
 docker run -it --network=bykstack riaee/byk-users-db:liquibase28 bash
 -->
-liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=xqcadyKfG3D87TQAhgMcYgpuk2rt5v --changelog-file=/master.yml update
+liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=PASSWORD_PLACEHOLDER --changelog-file=/master.yml update
 
 ```
 
