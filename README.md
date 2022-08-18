@@ -7,7 +7,7 @@ The intended target of this document is an IT-personnel familiar with [Ubuntu](h
 
 
 ### Limitations of this document
-This document shows covers the installation Bürokratt on [Ubuntu](https://ubuntu.com/) and by using [Linux Terminal](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview).
+This document covers the installation of Bürokratt on [Ubuntu](https://ubuntu.com/) and by using [Linux Terminal](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview).
 
 
 ### Glossary
@@ -20,6 +20,8 @@ This document shows covers the installation Bürokratt on [Ubuntu](https://ubunt
 `Bot` - automated chatbot, responds to End Users without human interference
 
 `Training-bot` - the same as `Bot` but is used only for training purposes
+
+`Terminal` - [Linux command line tool](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
 
 
 ### Prerequisites
@@ -49,7 +51,7 @@ Docker Compose version v2.6.1
 #### Prerequisites
 - [x] Create a directory on you personal computer or virtual server where to download Bürokratt's source code
 - [x] Move to this directory
-- [x] While being in this directory, open [Terminal](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
+- [x] While being in this directory, open Terminal
 - [x] Clone the source code of Bürokratt
 ```
 git clone https://github.com/buerokratt/Installation-Guides.git
@@ -58,5 +60,34 @@ git clone https://github.com/buerokratt/Installation-Guides.git
 ```
 cd Installation-Guides
 ```
+- [x] Make sure there is a folder called `default-setup`
+```
+user@ubuntu:~$ ls | grep default-setup
+```
+
+```
+default-setup
+```
 
 #### Setting up Bykstack and Backoffice GUI
+> Continue in Terminal
+
+- [x] Make sure you are in a folder called `Installation-GUides`
+```
+user@ubuntu:~$ pwd
+/home/Installation-Guides
+```
+- [x] Move to folder `default-setup`
+- [x] Make sure there is a folder called `default-setup`
+```
+user@ubuntu:~$ ls | grep bykstack-with-backoffice-gui
+```
+
+```
+bykstack-with-backoffice-gui
+```
+- [x] Move to folder `bykstack-with-backoffice-gui`
+```
+user@ubuntu:~$ cd bykstack-with-backoffice-gui
+```
+- [x] Use Docker Compose to set everything up
