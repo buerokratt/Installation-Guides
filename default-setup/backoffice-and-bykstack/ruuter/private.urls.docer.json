@@ -1,0 +1,14 @@
+{
+    "dmapper_url": "https://byk-dmapper:8443",
+    "ruuter_url": "http://localhost:8443",
+    "tim_url": "https://byk-tim:8443",
+    "resql_url": "https://byk-resql:8443",
+    "bot_url": "http://PLACEHOLDER BOT_IP:5005",
+    "training_url": "PLACEHOLDER TRAINIG_BOT",
+    "training_user": "PLACEHOLDER TRAINING_BOT_USERNAME",
+    "training_prv_key": "PLACEHOLDER TRAINIG_BOT_PRIVATE_SSH_KEY_PATH",
+    "training_bot_directory_name": "PLACEHOLDER TRAINING_DATA_DIRECTORY",
+    "gazetteer_url":"https://inaadress.maaamet.ee/inaadress",
+    "publicapi_url": "https://publicapi.envir.ee/v1/combinedWeatherData",
+    "ilmmicroservice_url": "https://ilmmicroservice.envir.ee/api/forecasts"
+  }
