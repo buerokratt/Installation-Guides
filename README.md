@@ -34,14 +34,20 @@ This document covers the installation of Bürokratt on [Ubuntu](https://ubuntu.c
 #### Docker must be installed
 > At least version `20.10.17`
 ```
-user@ubuntu:~$ docker -v
+docker -v
+```
+
+```
 Docker version 20.10.17, build 100c701
 ```
 
 #### Docker Compose must be installed
 > At least version `2.6.1`
 ```
-user@ubuntu:~$ docker-compose -v
+docker-compose -v
+```
+
+```
 Docker Compose version v2.6.1
 ```
 
@@ -62,7 +68,7 @@ cd Installation-Guides
 ```
 - [x] Make sure there is a folder called `default-setup`
 ```
-user@ubuntu:~$ ls | grep default-setup
+ls | grep default-setup
 ```
 
 ```
@@ -74,20 +80,29 @@ default-setup
 
 - [x] Make sure you are in a folder called `Installation-GUides`
 ```
-user@ubuntu:~$ pwd
-/home/Installation-Guides
+pwd
 ```
+
+```
+/Installation-Guides
+``` 
+
 - [x] Move to folder `default-setup`
 - [x] Make sure there is a folder called `default-setup`
 ```
-user@ubuntu:~$ ls | grep bykstack-with-backoffice-gui
+ls | grep bykstack-with-backoffice-gui
 ```
 
 ```
 bykstack-with-backoffice-gui
 ```
+
 - [x] Move to folder `bykstack-with-backoffice-gui`
 ```
-user@ubuntu:~$ cd bykstack-with-backoffice-gui
+cd bykstack-with-backoffice-gui
 ```
+
 - [x] Use Docker Compose to set everything up
+```
+sudo docker-compose up -d
+```
