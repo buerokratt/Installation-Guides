@@ -113,14 +113,14 @@ sudo docker ps -a | grep byk-
 ```
 
 ```
-345045515b2c   riaee/byk-tim:07                      "catalina.sh run"        4 minutes ago   Created                     8080/tcp, 0.0.0.0:8085->8443/tcp, :::8085->8443/tcp                                     byk-tim
-06d0a1e5db93   riaee/byk-chatbot-public-ruuter:03    "catalina.sh run"        4 minutes ago   Created                     8080/tcp, 0.0.0.0:8080->8443/tcp, :::8080->8443/tcp                                     byk-public-ruuter
-4d456da8f574   riaee/byk-dmapper:10                  "catalina.sh run"        4 minutes ago   Created                     8080/tcp, 0.0.0.0:8081->8443/tcp, :::8081->8443/tcp                                     byk-dmapper
-a44d482ae918   riaee/byk-customer-service:17         "/docker-entrypoint.…"   4 minutes ago   Created                     80/tcp, 0.0.0.0:3001->443/tcp, :::3001->443/tcp                                         byk-customer-service
-e1272ee93df0   riaee/byk-chatbot-private-ruuter:03   "catalina.sh run"        4 minutes ago   Created                     8080/tcp, 0.0.0.0:8443->8443/tcp, :::8443->8443/tcp                                     byk-private-ruuter
-d9a02b7de5f4   riaee/byk-chat-widget:14              "/docker-entrypoint.…"   4 minutes ago   Created                     80/tcp, 0.0.0.0:3000->443/tcp, :::3000->443/tcp                                         byk-widget
-1388f20c5613   riaee/byk-resql:11                    "catalina.sh run"        4 minutes ago   Created                     8080/tcp, 0.0.0.0:8082->8443/tcp, :::8082->8443/tcp                                     byk-resql
-bc0dd35d3451   riaee/byk:monitoring-20220802         "/docker-entrypoint.…"   4 minutes ago   Created                     443/tcp, 0.0.0.0:81->80/tcp, :::81->80/tcp, 0.0.0.0:8444->8443/tcp, :::8444->8443/tcp   byk-monitor
+345045515b2c   riaee/byk-tim:07                      "catalina.sh run"        Up 2 minutes                     8080/tcp, 0.0.0.0:8085->8443/tcp, :::8085->8443/tcp                                     byk-tim
+06d0a1e5db93   riaee/byk-chatbot-public-ruuter:03    "catalina.sh run"        Up 2 minutes                     8080/tcp, 0.0.0.0:8080->8443/tcp, :::8080->8443/tcp                                     byk-public-ruuter
+4d456da8f574   riaee/byk-dmapper:10                  "catalina.sh run"        Up 2 minutes                     8080/tcp, 0.0.0.0:8081->8443/tcp, :::8081->8443/tcp                                     byk-dmapper
+a44d482ae918   riaee/byk-customer-service:17         "/docker-entrypoint.…"   Up 2 minutes                     80/tcp, 0.0.0.0:3001->443/tcp, :::3001->443/tcp                                         byk-customer-service
+e1272ee93df0   riaee/byk-chatbot-private-ruuter:03   "catalina.sh run"        Up 2 minutes                     8080/tcp, 0.0.0.0:8443->8443/tcp, :::8443->8443/tcp                                     byk-private-ruuter
+d9a02b7de5f4   riaee/byk-chat-widget:14              "/docker-entrypoint.…"   Up 2 minutes                     80/tcp, 0.0.0.0:3000->443/tcp, :::3000->443/tcp                                         byk-widget
+1388f20c5613   riaee/byk-resql:11                    "catalina.sh run"        Up 2 minutes                     8080/tcp, 0.0.0.0:8082->8443/tcp, :::8082->8443/tcp                                     byk-resql
+bc0dd35d3451   riaee/byk:monitoring-20220802         "/docker-entrypoint.…"   Up 2 minutes                     443/tcp, 0.0.0.0:81->80/tcp, :::81->80/tcp, 0.0.0.0:8444->8443/tcp, :::8444->8443/tcp   byk-monitor
 ```
 
 - [x] Open Backoffice GUI in browser
