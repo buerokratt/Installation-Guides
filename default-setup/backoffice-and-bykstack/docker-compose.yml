@@ -4,7 +4,7 @@ services:
 
   byk-public-ruuter:
     container_name: byk-public-ruuter
-    image: riaee/byk-chatbot-public-ruuter:v0.2.84
+    image: riaee/byk-chatbot-public-ruuter:03
     environment:
       - csrf.enabled=false 
       - csrf.tim_userinfo_url=
@@ -34,7 +34,7 @@ services:
         
   byk-private-ruuter:
     container_name: byk-private-ruuter
-    image: riaee/byk-chatbot-private-ruuter:v0.2.1
+    image: riaee/byk-chatbot-private-ruuter:03
     environment:
       - legacy-portal-integration.sessionCookieDomain=buerokratt.ee
       - logging.level.root=INFO
@@ -71,7 +71,7 @@ services:
         
   byk-dmapper:
     container_name: byk-dmapper
-    image: riaee/byk-dmapper:v0.2.9
+    image: riaee/byk-dmapper:10
     environment:
       - logging.level.root=INFO
     ports:
@@ -86,7 +86,7 @@ services:
         
   byk-widget:
     container_name: byk-widget
-    image: riaee/byk-chat-widget:v0.2.1
+    image: riaee/byk-chat-widget:14
     ports:
       - 3000:443
     volumes:
@@ -100,7 +100,7 @@ services:
 
   byk-customer-service:
     container_name: byk-customer-service
-    image: riaee/byk-customer-service:v0.2.3
+    image: riaee/byk-customer-service:17
     ports:
       - 3001:443
     volumes:
@@ -114,7 +114,7 @@ services:
         
   byk-tim:
     container_name: byk-tim
-    image: riaee/byk-tim:v0.2.4
+    image: riaee/byk-tim:07
     environment:
       - security.allowlist.jwt=byk-public-ruuter,byk-private-ruuter,byk-dmapper,byk-widget,byk-customer-service,byk-resql
       - spring.datasource.url=jdbc:postgresql://tim-postgresql:5432/tim
@@ -151,7 +151,7 @@ services:
         
   byk-resql:
     container_name: byk-resql
-    image: riaee/byk-resql:v0.3.6
+    image: riaee/byk-resql:11
     environment:
       - sqlms.datasources.[0].name=byk
       - sqlms.datasources.[0].jdbcUrl=jdbc:postgresql://users-db:5433/byk?sslmode=require
@@ -170,7 +170,7 @@ services:
 
   byk-monitor:
     container_name: byk-monitor
-    image: riaee/byk:monitoring-v65.22.17
+    image: riaee/byk:monitoring-20220802
     ports:
       - 81:80
       - 8444:8443
