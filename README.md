@@ -80,7 +80,7 @@ default-setup
 > Continue in folder `Installation-GUides` by using Terminal 
 
 - [x] Move to folder `default-setup`
-- [x] Make sure there is a folder called `grep bykstack-with-backoffice-gui`
+- [x] Make sure there is a folder called `bykstack-with-backoffice-gui`
 ```
 ls | grep bykstack-with-backoffice-gui
 ```
