@@ -80,18 +80,21 @@ default-setup
 > Continue in folder `Installation-GUides` by using Terminal 
 
 - [x] Move to folder `default-setup`
-- [x] Make sure there is a folder called `bykstack-with-backoffice-gui`
 ```
-ls | grep bykstack-with-backoffice-gui
+cd default-setup
+```
+- [x] Make sure there is a folder called `backoffice-and-bykstack`
+```
+ls | grep backoffice-and-bykstack
 ```
 
 ```
-bykstack-with-backoffice-gui
+backoffice-and-bykstack
 ```
 
-- [x] Move to folder `bykstack-with-backoffice-gui`
+- [x] Move to folder `backoffice-and-bykstack`
 ```
-cd bykstack-with-backoffice-gui
+cd backoffice-and-bykstack
 ```
 
 - [x] Use Docker Compose to set everything up
