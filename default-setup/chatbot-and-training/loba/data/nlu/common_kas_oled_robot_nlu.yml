@@ -1,0 +1,74 @@
+version: "3.0"
+nlu:
+- intent: common_kas_oled_robot
+  examples: |
+    - kas sa oled robot
+    - kas sa oled inimene
+    - Kas sa oled päris inimene
+    - kas saoled inimene
+    - kas saoled iniminee
+    - kassaoledinimene
+    - Kas sa oled inimen
+    - kas soovid suhelda
+    - Kas oled robot
+    - kas oled inimene
+    - kas oled bürokratt
+    - Kas ma räägin inimesega
+    - mis bot sa oled selliie
+    - kas sa oled elus
+    - Kas sa oled inimene ?
+    - Kas sa oled robot?
+    - kes oled
+    - kes sa oled
+    - Kas ma räägin inimesega
+    - Kas sa oled gay?
+    - Kas olede juturobot?
+    - oled Sa robot?
+    - kas Sa oled AI?
+    - kas Sa oled arvuti?
+    - mis sa oled
+    - KAs sa oled elus?
+    - mis on su nimi
+    - Mis on sinu nimi
+    - sinu nimi
+    - su nimi
+    - su nimi?
+    - Mis su nimi on?
+    - mis su nimi on
+    - Kes sa oled?
+    - mis su nimi
+    - kes sina oled?
+    - kes sina siis veel selline oled?
+    - kes sa siis oled
+    - kes Sa ise oled?
+    - Kas sa kardad?
+    - milline on sinu lemmikmuusika ?
+    - MIs sind veel rõõmsaks teeb?
+    - kas sa oled õnnelik
+    - Kas sulle meeldib küsimustele vastata?
+    - Igav ei ole sul?
+    - kas sul on tunded?
+    - mi soost sa oled
+    - kas sa oled daam
+    - Mis soost sa oled? Kas mees või naine?
+    - mis soost oled
+    - kas sa oled mees või naine
+    - kas sa oled poiss või tüdruk
+    - mis soost sa oled
+    - mis su sugu on
+    - mis soost sa siis oled ka
+    - kas sa oled mees
+    - kas sa oled naine
+    - kas sa oled naine või mees
+    - kas sa oled poiss
+    - kas sa oled tüdruk
+    - Millised on su silmad Bürokratt?
+    - millised su silmad on
+    - millised su juuksed on
+    - kui pikk sa oled
+    - Millised su silmad on?
+    - kas sa oled ilus
+    - Kas sul lapsi on Bürokratt?
+    - kas sa oled mees
+    - kas ma suhtlen inimesega?
+    - kas ma suhtlen robotiga

@@ -1,0 +1,36 @@
+version: "3.0"
+nlu: 
+- intent: common_hädaabi_number
+  examples: |
+    - päästetelefon
+    - kiirabi number
+    - politsei number
+    - tuletõrjuja number
+    - mis numbrilt saan kiirabi
+    - mis numbrile pean politsei jaoks helistama?
+    - Mis numbrilt ma saan kiirabi kutsuda?
+    - kiirabi telefoninumber
+    - kiirabi teleoninumber
+    - päästeameti telefoninumber
+    - politsei telefoninumber
+    - Vajan kiirabi
+    - kust ma hädaabi numbri saan
+    - mis on ametlik hädaabi number
+    - unustasin praeguse hädaabi numbri
+    - mis on politsei number
+    - mis on kiirabi number
+    - mis on tuletõrje number
+    - hädaabi kontakt
+    - kuidas ma politseid kätte saaks
+    - kuidas pöörduda politseisse
+    - kas kiirabi number on 112
+    - kas politsei number on 110 või 112
+    - mul on vaja kiirabi
+    - kasutusel olev hädaabi number
+    - pääste järele pöördumine
+    - häirekeskus
+    - häirekäskuse kontakt
+    - hädaabi number
+    - häirekeskuse number
+    - kas hädaabi number töötab 24/7
+    - kas häirekeskus töötab ööpäeva ringselt

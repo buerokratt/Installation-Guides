@@ -1,0 +1,49 @@
+version: "3.0"
+nlu:
+- intent: common_abi_küsimine
+  examples: |
+    - mul on abi vaja
+    - mul on probleem
+    - minul on probleem
+    - kas saad probleemiga aidata
+    - kas võin probleemiga küsida
+    - kas võiksie mind aidata palun
+    - mul on abi tarvis
+    - vabandage, kas saate mind korra aidata
+    - ma ei saa ühe asjaga hakkama
+    - ma ei saa hakkama
+    - ma ei saa oma asja tehtud
+    - ma ei saa ühte asja tehtud
+    - mul on vaja nõu
+    - oleks abi tarvis
+    - abi vaja kiirelt
+    - äkki saate mind aidata
+    - kas sa saad mind aidata
+    - mul on küsimus
+    - kas küsida tohib
+    - Kas küsida võib
+    - kas saad mind aidata
+    - as küsida tohib
+    - Ka s küsida tohib
+    - mul on üks küsimus
+    - mul oleks abi vaja?
+    - See polnudki küsimus.
+    - Kuidas sa mind aidata saaksid?
+    - ei, tahan abi lihtsalt
+    - Mul on veel üks küsimus
+    - Kust ma abi saaks
+    - kust ma infot saan
+    - Mul on mure
+    - appii vaja
+    - apii vaja
+    - appi vaja
+    - appi vaja
+    - palun appii
+    - aidake
+    - aita mind
+    - palun aidake
+    - palun mul on abi vaja
+    - anna abi
+    - Mul on 1 kysimus
+    - kas oskate aidata murega palun?
+    - Sooviksin saada nõu ühe küsimusega

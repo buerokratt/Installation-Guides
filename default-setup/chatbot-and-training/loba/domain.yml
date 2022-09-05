@@ -1,0 +1,151 @@
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+  - andmekaitse_küsimused
+  - common_hüvasti_jätmine
+  - common_kinnitamine 
+  - common_eitamine
+  - common_tänamine
+  - common_kompliment_botile
+  - common_kuidas_läheb
+  - common_abi_küsimine
+  - common_kas_oled_robot
+  - common_mida_teha_oskad
+  - common_kelle_loodud
+  - common_tervitus
+  - common_kui_vana_oled
+  - common_milline_välimus
+  - common_roppused
+  - common_hädaabi_number
+  - common_vaimne_tervis
+  - common_mis_keeles
+  - common_covid_küsimused
+  - common_klienditeenindajale_suunamine
+  - common_teenus_ilm
+
+entities:
+  - asukoht
+slots:
+  common_teenus_ilm_asukoht:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: asukoht
+      intent: common_teenus_ilm
+    - type: from_entity
+      entity: asukoht
+      intent: nlu_fallback
+
+
+  affirm_deny:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: custom_fallback_form
+        requested_slot: affirm_deny
+      - active_loop: direct_to_customer_support_form
+        requested_slot: affirm_deny
+
+forms:
+  custom_fallback_form:
+    required_slots:
+        - affirm_deny
+  direct_to_customer_support_form:
+    required_slots:
+        - affirm_deny
+
+actions:
+- action_ask_custom_fallback_form_affirm_deny
+- action_check_confidence
+- action_react_to_affirm_deny_in_custom_fallback_form
+- action_react_to_affirm_deny_in_direct_to_customer_support_form
+
+responses:
+  utter_common_teenus_ilm:
+    - condition:
+        - type: slot
+          name: common_teenus_ilm_asukoht
+          value: null
+      text: "Hetkel oskan ma öelda ilma Eesti raames piirkonnapõhiselt. Palun sisestage korrektne piirkonna nimi."
+    - text: "#weather; {common_teenus_ilm_asukoht};"
+  utter_common_ilm_checkpoint:
+  - text: ""
+  utter_common_teenus_ilm_fallback:
+    - condition:
+        - type: slot
+          name: common_teenus_ilm_asukoht
+          value: null
+      text: "Kahjuks ei saanud ma praegu piirkonnast aru ja ei oska ilma kohta midagi öelda. Kuidas saan abiks olla?"
+    - text: "#weather; {common_teenus_ilm_asukoht};"
+  
+  
+  utter_fallback_kontroll:
+  - text: "Jäi arusaamatuks, kas soovisite, et suunan edasi?"
+
+  utter_not_confident:
+  - text: "Ma ei saanud päris täpselt aru."
+  
+  utter_ei_pakkunud_õigesti:
+  - text: "Ma ei saanud päris täpselt aru."
+
+  utter_ask_direct_to_customer_support_form_affirm_deny:
+  - text: "Kas suunan teid klienditeenindajale? (Jah/Ei)"
+
+  utter_common_klienditeenindajale_suunamine:
+  - text: "Suunan teid klienditeenindajale. Varuge natukene kannatust."
+
+  utter_common_ei_suuna_klienditeenindajale:
+  - text: "Selge. Kuidas saan veel abiks olla?"
+
+  utter_mille_kohta_küsimus_käis:
+  - text: "Kas küsimus käis selle teema kohta: {intent}? (Jah/Ei)"
+  
+  utter_andmekaitse_küsimused:
+  - text: "Isikuandmete töötlemine on reguleeritud isikuandmete kaitse seadusega (edaspidi IKS). IKS § 32 kohaselt teostab isikuandmete kaitse seaduses ja selle alusel kehtestatud õigusaktides sätestatud nõuete täitmise üle järelevalvet Andmekaitse Inspektsioon. Samuti lahendab Andmekaitse Inspektsioon ka isikuandmete töötlemise küsimustes  esitatavaid kaebusi ja nõustab pöördujaid nendes küsimustes. Täpsem info - https://www.aki.ee/et/inspektsioon-kontaktid/tootajate-kontaktid"
+
+  utter_common_hüvasti_jätmine:
+  - text: "Head aega!"
+  
+  utter_common_tänamine:
+  - text: "Meeldiv kuulda. Kuidas saan veel abiks olla?"
+
+  utter_common_kompliment_botile:
+  - text: "Aitäh!"
+  
+  utter_common_kuidas_läheb:
+  - text: "Mul läheb hästi, aitäh."
+
+  utter_common_abi_küsimine:
+  - text: "Kuidas saan abiks olla?"
+
+  utter_common_kas_oled_robot:
+  - text: "Olen Bürokratt, tehisintellektil põhinev virtuaalne abiline. Kõige paremini oskan vastata kui küsida täpseid, lühidaid küsimusi. Kuidas saan abiks olla?"
+
+  utter_common_mida_teha_oskad:
+  - text: "Olen Bürokratt, tehisintellektil põhinev virtuaalne abiline. Oskan hetkel vastata lihtsamatele pöördumistele. Mida rohkem minuga suheldakse, seda paremini oskan tulevikus vastata."
+
+  utter_common_kelle_loodud:
+  - text: "Mind täiendab ja koolitab Bürokrati meeskond. Loe lisaks https://kratid.ee"
+
+  utter_common_tervitus:
+  - text: "Kuidas saan abiks olla?"
+
+  utter_common_kui_vana_oled:
+  - text: "Bürokrati kontseptsioon avaldati 2020. aasta veebruaris Majandus- ja Kommunikatsiooniministeeriumi poolt."
+
+  utter_common_roppused:
+  - text: "Mind pole õpetatud sellist sõnavara kasutama."
+
+  utter_common_hädaabi_number:
+  - text: "Numbrile 112 vastab Häirekeskuse päästekorraldaja, riigiinfo telefonile vastavad Häirekeskuse vanemspetsialistid. Häirekeskus on sinu esimene abistaja, kui tahad appi kutsuda kiirabi, päästjaid või politseid ning kui vajad või soovid anda infot."
+
+  utter_common_mis_keeles:
+  - text: "Täna räägin eesti keeles, tulevikus õpin suhtlema ka teistes keeltes."
+
+  utter_common_covid_küsimused:
+  - text: "Kriisitelefoni number on 1247. Vajadusel leiab infot ka lingilt https://www.kriis.ee/"
