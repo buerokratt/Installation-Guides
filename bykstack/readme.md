@@ -27,7 +27,7 @@ Stack of components handling chat.
 
 ## Installing
 
-The Bykstack consists of 11 containers. They should be in one docker network. Example docker-compose file is [here](./examples/docker-compose.yml).
+The Bykstack consists of 11 containers. They should be in one docker network. Example docker-compose file is [here](../default-setup/backoffice-and-bykstack/docker-compose.yml).
 
 **All** components need encrypted traffic between reverse-proxy and its endpoint. Please generate key-cert pairs for every component separately.
 ### Logging levels
@@ -112,7 +112,7 @@ For example:
 ```json
 {
   "dmapper_url": "https://byk-dmapper:8443",
-  "ruuter_url": "http://localhost:8443",
+  "ruuter_url": "https://localhost:8443",
   "tim_url": "https://byk-tim:8443",
   "resql_url": "https://byk-resql:8443",
   "bot_url": "http://PLACEHOLDER BOT_IP:5005",
@@ -170,7 +170,7 @@ For example:
 ```json
 {
   "dmapper_url": "https://byk-dmapper:8443",
-  "ruuter_url": "http://localhost:8443",
+  "ruuter_url": "https://localhost:8443",
   "tim_url": "https://byk-tim:8443",
   "resql_url": "https://byk-resql:8443",
   "bot_url": "http://PLACEHOLDER BOT_IP:5005",
