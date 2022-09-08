@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+
+  train-bot:
+    container_name: train-bot
+    image: riaee/byk:bot-v1.7.33
+    environment:
+      - RASA_MAX_CACHE_SIZE=0
+    ports:
+      - 5006:5005
+    volumes:
+      - ./chatbot-train/:/app
+    command:
+      - train
+    networks:
+      - bykstack
+
+  test-bot:
+    container_name: test-bot
+    image: riaee/byk:bot-v4.6.22
+    environment:
+      - RASA_MAX_CACHE_SIZE=0
+    ports:
+      - 5006:5005
+    volumes:
+      - ./chatbot-train/:/app
+    command:
+      - test
+      - --out
+      - results/test
+    networks:
+      - bykstack
+
+networks:
+  bykstack:
+    name: bykstack
+    driver: bridge
