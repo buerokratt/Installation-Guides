@@ -112,7 +112,7 @@ For example:
 ```json
 {
   "dmapper_url": "https://byk-dmapper:8443",
-  "ruuter_url": "http://localhost:8443",
+  "ruuter_url": "https://localhost:8443",
   "tim_url": "https://byk-tim:8443",
   "resql_url": "https://byk-resql:8443",
   "bot_url": "http://PLACEHOLDER BOT_IP:5005",
@@ -170,7 +170,7 @@ For example:
 ```json
 {
   "dmapper_url": "https://byk-dmapper:8443",
-  "ruuter_url": "http://localhost:8443",
+  "ruuter_url": "https://localhost:8443",
   "tim_url": "https://byk-tim:8443",
   "resql_url": "https://byk-resql:8443",
   "bot_url": "http://PLACEHOLDER BOT_IP:5005",
