@@ -56,6 +56,7 @@ cp chatbot/domain.yml chatbot-train
 mkdir chatbot-train/models
 docker compose up train-bot
 docker compose up test-bot
+docker compose down
 
 ```
 The home directory tree looks somewhat like this:
