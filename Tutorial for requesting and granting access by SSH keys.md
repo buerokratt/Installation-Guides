@@ -16,3 +16,5 @@ ADD the SSH key into your inventory
 
 ##### Open terminal into your VM
 You should be asked preferred method of authentication, type "YES"
+
+Connection to your VM using terminal, has been established.
