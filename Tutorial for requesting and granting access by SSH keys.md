@@ -1,5 +1,5 @@
 ### About
-#### Tutorial on how to create and add ssh keys to a VM in Riigipilv enviorment  
+#### Tutorial on how to create and add SSH keys to a VM in Riigipilv enviorment  
 
 ##### SSH key generating: Linux and MacOSX
 
@@ -18,3 +18,13 @@ ADD the SSH key into your inventory
 You should be asked preferred method of authentication, type "YES"
 
 Connection to your VM using terminal, has been established.
+
+##### Adding SSH key into existing VM
+
+```
+cd ~/.ssh
+nano id_rsa.pub
+# Add the SSH key
+CTRL O
+CTRL X
+```
