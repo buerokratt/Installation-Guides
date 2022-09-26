@@ -1,5 +1,5 @@
 ### About
-#### Tutorial on how to create and add ssk keys to a VM in Riigipilv enviorment  
+#### Tutorial on how to create and add ssh keys to a VM in Riigipilv enviorment  
 
 ##### SSH key generating: Linux and MacOSX
 
