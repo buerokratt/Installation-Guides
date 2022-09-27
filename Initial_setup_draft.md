@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------
 
 ### About
-This document covers how and what to configure before starting the installation 
+This document covers how and what to configure before starting the installation. This is meant to accompany the README.md
 
 #### Bykstack structure
 
