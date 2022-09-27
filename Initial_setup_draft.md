@@ -78,8 +78,9 @@ This document covers how and what to configure before starting the installation
 
 ```
 #### CookieDomain 
-```
-server.xml
+Cookie domain determines from which domain traffic is allowed into Buerokratt system. Top level domain is not recommended due to security concerns. And in the other hand defining domain and sub domains too tightly disables traffic between chat-widgets on different sub domains.
+
+##### server.xml
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
