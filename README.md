@@ -97,6 +97,20 @@ backoffice-and-bykstack
 cd backoffice-and-bykstack
 ```
 
+- [x] Generate keys:
+```
+python3 generate-certs.py
+```
+
+- [X] Make sure, keys got generated
+```
+cat customer-support/key.key
+```
+
+```
+-----END PRIVATE KEY-----
+```
+
 - [x] Use Docker Compose to set everything up
 ```
 sudo docker-compose up -d
