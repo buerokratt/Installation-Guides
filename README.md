@@ -71,7 +71,8 @@ cd Installation-Guides
 ls | grep default-setup
 ```
 
-> ~/Installation-Guides default-setup
+> ~/Installation-Guides$ ls | grep default-setup
+> default-setup
 
 
 #### Setting up Bykstack and Backoffice GUI
