@@ -151,7 +151,7 @@ Cookie domain determines from which domain traffic is allowed into Buerokratt sy
   "tim_url": "https://byk-tim:8443",
   "resql_url": "https://byk-resql:8443",
   "bot_url": "http://your.bot BOT_IP:5005", #example: "bot_url": "http://your.bot BOT_IP:5005"
-  "training_url": "PLACEHOLDER TRAINIG_BOT",
+  "training_url": "your IP for TRAINIG_BOT", #example: 123.123.123.0
   "training_user": "PLACEHOLDER TRAINING_BOT_USERNAME",
   "training_prv_key": "PLACEHOLDER TRAINIG_BOT_PRIVATE_SSH_KEY_PATH",
   "training_bot_directory_name": "PLACEHOLDER TRAINING_DATA_DIRECTORY",
@@ -159,4 +159,21 @@ Cookie domain determines from which domain traffic is allowed into Buerokratt sy
   "publicapi_url": "https://publicapi.envir.ee/v1/combinedWeatherData",
   "ilmmicroservice_url": "https://ilmmicroservice.envir.ee/api/forecasts"
 }
+```
 ##### public.urls.docker.json
+```
+{
+  "dmapper_url": "https://byk-dmapper:8443",
+  "ruuter_url": "https://localhost:8443",
+  "tim_url": "https://byk-tim:8443",
+  "resql_url": "https://byk-resql:8443",
+  "bot_url": "http://your.bot BOT_IP:5005", #example: "bot_url": "http://your.bot BOT_IP:5005",
+  "training_url": "your IP for TRAINIG_BOT", #example: 123.123.123.0
+  "training_user": "PLACEHOLDER TRAINING_BOT_USERNAME",
+  "training_prv_key": "PLACEHOLDER TRAINIG_BOT_PRIVATE_SSH_KEY_PATH",
+  "training_bot_directory_name": "PLACEHOLDER TRAINING_DATA_DIRECTORY",
+  "gazetteer_url":"https://inaadress.maaamet.ee/inaadress",
+  "publicapi_url": "https://publicapi.envir.ee/v1/combinedWeatherData",
+  "ilmmicroservice_url": "https://ilmmicroservice.envir.ee/api/forecasts"
+}
+```
