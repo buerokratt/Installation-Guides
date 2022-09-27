@@ -97,7 +97,7 @@ backoffice-and-bykstack
 cd backoffice-and-bykstack
 ```
 
-- [x] Generate keys:
+- [x] Generate keys
 ```
 python3 generate-certs.py
 ```
