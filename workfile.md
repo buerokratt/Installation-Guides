@@ -152,3 +152,60 @@ networks:
     driver: bridge
 ```
 #### Liquibase install and configuring
+
+##### databases.yml
+```
+version: '3.9'
+services:
+  users-postgresql:
+    container_name: users-postgresql
+    image: postgres:14.1
+    environment:
+      - POSTGRES_USER=byk
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=byk
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 2345:5432
+    restart: always
+    networks:
+      - bykstack
+
+networks:
+  bykstack:
+    name: bykstack
+```
+
+##### Dockerfile
+```
+FROM anapsix/alpine-java
+
+ENV db_url=postgres:5432/byk
+ENV db_user=byk
+ENV db_user_pswd=123
+
+COPY liquibase.jar /home/liquibase.jar
+CMD ["java","-jar","/home/liquibase.jar", "--spring.datasource.url=jdbc:postgresql://${db_url}", "--spring.datasource.username=${db_user}", "--spring.datasource.password=${db_user_pswd}"]
+```
+
+##### liquibase.yml
+```
+version: '3.9'
+services:
+  byk-users-liquibase:
+    build:
+      context: .
+    environment:
+      - db_url=users-postgresql:5432/byk
+      - db_user=byk
+      - db_user_pswd=123
+    ports:
+      - 8000:8000
+    restart: always
+    networks:
+      - bykstack
+
+networks:
+  bykstack:
+    name: bykstack
+ ```
