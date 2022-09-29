@@ -192,7 +192,7 @@ networks:
 
 ##### Dockerfile
 ```
-FROM anapsix/alpine-java
+FROM riaee/byk-users-db:liquibase20220615
 
 ENV db_url=postgres:5432/byk
 ENV db_user=byk
