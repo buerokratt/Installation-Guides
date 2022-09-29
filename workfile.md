@@ -17,8 +17,7 @@ Installing the TIM separetaly. It is important, that the databases are installed
 
 ### Databases install
 #### tim-postresql.yml
-## Combined this and users-db.yml into databases.yml. 
-#### [See below](#databases.yml)
+### Combined this and users-db.yml into databases.yml. 
 ```
 version: '3.9'
 services:
