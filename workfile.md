@@ -50,5 +50,5 @@ The line 18 (has been commented out ATM)
 command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
 ```
 
-This line creats a SSL tunnel between TIM and its database, however, it also creates an error, where logs ell, that the TLS.crt and TLS.key should be owned by a root or admin.
+This line creats a SSL tunnel between TIM and its database, however, it also creates an error, where logs tell, that the TLS.crt and TLS.key should be owned by a root or admin.
 ###### Solution - currently working on it
