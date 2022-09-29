@@ -3,10 +3,16 @@
 ##### - Workflow is set by dates. Any additions should have name of the contributor
 ##### - After the final additions, document will be revised and written into a "how to guide"
 
-#### 29.09.22
+### Directory
+- [Rainer](#rainer)
+- [Varmo](#varmo)
+- [Georg](#georg)
+
+### 29.09.22
 ##### Varmo
 Installing the TIM separetaly. It is important, that the databases are installed beforehand, as the TIM relies on tim-postrgesql.
 
+### Databases install
 #### tim-postresql.yml
 ```
 version: '3.9'
@@ -44,7 +50,7 @@ networks:
  
 #### Blocker
 
-The line 18 (has been commented out ATM)
+The line that has been commented out:
 
 ```
 command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
@@ -52,3 +58,93 @@ command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-
 
 This line creats a SSL tunnel between TIM and its database, however, it also creates an error, where logs tell, that the TLS.crt and TLS.key should be owned by a root or admin.
 ###### Solution - currently working on it
+
+#### TIM standalone instal
+
+##### Step 1 - creating certificates
+Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
+
+Generate `jwtkeystore.jks` and mount it into the container as `/usr/local/tomcat/jwtkeystore.jks`. The password inserted at `jwtkeystore.jks` creation is used as environmental variable in the container.
+
+### Certificates generation
+
+**Note!** Both keystore password and alias password should be the same.
+
+##### Certificate for JWT signature
+```
+keytool -genkeypair -alias jwtsign -keyalg RSA -keysize 2048 -keystore "jwtkeystore.jks" -validity 3650
+```
+relevant configuration properties:
+
+```
+jwt-integration.signature.key-store=classpath:jwtkeystore.jks
+jwt-integration.signature.key-store-password=PLACEHOLDER JWT_PASSWORD
+jwt-integration.signature.keyStoreType=JKS
+jwt-integration.signature.keyAlias=jwtsign
+```
+
+#### Regenerating Certificates
+
+To generate a new key pair with certificate:
+1. backup the original keystore file.
+2. run certificate generation `keytool` command from previous step(s)
+3. update configuration with new keystore file and password
+
+#### Changing Keystore password
+
+To change keystore password,
+1. run the following command
+```
+keytool -keystore <keystore file name> -storepasswd
+# (old and new password asked)
+```
+2. update configuration with new password
+
+##### tim.yml
+```
+version: '3.9'
+
+services:        
+  byk-tim:
+    container_name: byk-tim
+    image: riaee/byk-tim:07
+    environment:
+      - security.allowlist.jwt=byk-public-ruuter,byk-private-ruuter,byk-dmapper,byk-widget,byk-customer-service,byk-resql
+      - spring.datasource.url=jdbc:postgresql://tim-postgresql:5432/tim
+      - spring.datasource.username=tim
+      - spring.datasource.password=BÄROLL
+      - security.oauth2.client.client-id=tara_client_id
+      - security.oauth2.client.client-secret=tara_client_secret
+      - security.oauth2.client.registered-redirect-uri=https://tim.byk.buerokratt.ee/authenticate
+      - security.oauth2.client.user-authorization-uri=https://tara.ria.ee/oidc/authorize
+      - security.oauth2.client.access-token-uri=https://tara.ria.ee/oidc/token
+      - security.oauth2.resource.jwk.key-set-uri=https://tara.ria.ee/oidc/jwks
+      - auth.success.redirect.whitelist=https://admin.byk.buerokratt.ee/auth/callback,https://byk.buerokratt.ee,https://byk.buerokratt.ee/auth/callback,https://admin.byk.buerokratt.ee
+      - frontpage.redirect.url=https://admin.byk.buerokratt.ee
+      - "headers.contentSecurityPolicy=upgrade-insecure-requests; default-src 'self' 'unsafe-inline' 'unsafe-eval' https://tim.byk.buerokratt.ee https://admin.byk.buerokratt.ee https://ruuter.byk.buerokratt.ee https://priv-ruuter.byk.buerokratt.ee byk-tim byk-public-ruuter byk-private-ruuter byk-customer-service; object-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://byk.buerokratt.ee https://admin.byk.buerokratt.ee https://tim.byk.buerokratt.ee; connect-src 'self' https://byk.buerokratt.ee https://tim.byk.buerokratt.eehttps://admin.byk.buerokratt.ee https://ruuter.byk.buerokratt.ee https://priv-ruuter.byk.buerokratt.ee; frame-src 'self'; media-src 'none'"
+      - legacy-portal-integration.legacyUrl=arendus.eesti.ee
+      - legacy-portal-integration.legacyPortalRefererMarker=https://arendus.eesti.ee/portaal
+      - cors.allowedOrigins=https://byk.buerokratt.ee,https://admin.byk.buerokratt.ee,https://ruuter.byk.buerokratt.ee,https://priv-ruuter.buerokratt.ee
+      - jwt-integration.signature.issuer=byk.buerokratt.ee
+      - jwt-integration.signature.key-store-password=safe_keystore_password
+      - jwt-integration.signature.key-store=file:/usr/local/tomcat/jwtkeystore.jks
+      - spring.profiles.active=dev
+      - legacy-portal-integration.sessionCookieDomain=buerokratt.ee
+      - logging.level.root=INFO
+    ports:
+      - 8085:8443
+    volumes:
+      - ./server.xml:/usr/local/tomcat/conf/server.xml:ro
+      - ./jwtkeystore.jks:/usr/local/tomcat/jwtkeystore.jks:ro
+      - ./cert.crt:/usr/local/tomcat/conf/cert.crt:ro
+      - ./key.key:/usr/local/tomcat/conf/key.key:ro
+    restart: always
+    networks:
+      - bykstack
+        
+        
+networks:
+  bykstack:
+    name: bykstack
+    driver: bridge
+```
