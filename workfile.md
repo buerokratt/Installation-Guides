@@ -3,10 +3,13 @@
 ##### - Workflow is set by dates. Any additions should have name of the contributor
 ##### - After the final additions, document will be revised and written into a "how to guide"
 
-### Directory
+### Directory by name
 - [Rainer](#rainer)
 - [Varmo](#varmo)
 - [Georg](#georg)
+
+### Directory by dates
+- [29.09.22](#29-09-22)
 
 ### 29.09.22
 ##### Varmo
