@@ -170,6 +170,19 @@ services:
     restart: always
     networks:
       - bykstack
+  tim-postgresql:
+    container_name: tim-postgresql
+    image: postgres:14.1
+    environment:
+      - POSTGRES_USER=tim
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=tim
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
+    restart: always
+    networks:
+      - bykstack
 
 networks:
   bykstack:
@@ -204,6 +217,7 @@ services:
     restart: always
     networks:
       - bykstack
+    
 
 networks:
   bykstack:
