@@ -76,7 +76,7 @@ Users-Database requires manual configuration.
 
 Modify `private.urls.env.json` url-s linking to your setups components.
 
-Open terminal
+Open terminal  
 Under the `ruuter` folder use command:
 ```
 nano private.urls.env.json
@@ -109,7 +109,7 @@ Type `Y` when it asks to save
 
 Modify `public.urls.env.json` url-s linking to your setups components.
 
-Open terminal
+Open terminal  
 Under the `ruuter` folder use command:
 ```
 nano public.urls.env.json
@@ -149,7 +149,7 @@ Where `RUUTER_API_URL` is URL pointing to the Public-ruuter, `TIM_AUTHENTICATION
   * `END`: End of office hours. If current time is after this hour (24H), the widget will not be displayed
   * `DAYS`: List of days in numbers, where 1=monday, 2=tuesday, 3=wednesday... If current day is in the list of days, the widget will be displayed according to `BEGIN` and `END` times.
 
-Open terminal
+Open terminal  
 Under the `widget` folder use command:
 ```
 nano index.html
@@ -198,7 +198,7 @@ Type `Y` when it asks to save
 ```
 In the file `nginx.conf` update header adding according to your setup so that all pages where the widget is installed are allowed to access. If wiget is installed into multiple pages add define extra line 
 
-Open terminal
+Open terminal  
 Under the `widget` folder use command:
 ```
 nano nginx.conf
@@ -249,8 +249,23 @@ server {
 
 Modify `env-config.js` url-s linking to your setups components.
 
+Open terminal    
+Under the `customer-support` folder use command:
 ```
-{
+nano env-config.json
+```
+Modify the lines `RUUTER_API_URL` `TIM_API_URL` `TARA_REDIRECT_URL` `MONITORING_URL` according to your information
+Save and close the file:
+```
+CTRL X
+```
+Type `Y` when it asks to save
+
+`env-config.js ecample`
+
+```
+window._env_ = {
+
     RUUTER_API_URL: 'https://PRIVATE_RUUTER_URL',
     TIM_API_URL: 'https://TIM_URL',
     TARA_REDIRECT_URL: 'https://TIM_URL/oauth2/authorization/tara?callback_url=https://CUSTOMER_SERVICE_URL/auth/callback',
@@ -261,6 +276,19 @@ Modify `env-config.js` url-s linking to your setups components.
 ```
 Modify `nginx.conf` `add_header` values linking to your setups components.
 
+Open terminal    
+Under the `customer-support` folder use command:
+```
+nano nginx.conf
+```
+Modify the lines `https://RUUTER_URL` `https://TIM_URL` `https://CUSTOMER_SERVICE_URL` `https://PRIV-RUUTER_URL` according to your information
+Save and close the file:
+```
+CTRL X
+```
+Type `Y` when it asks to save
+
+nginx.conf ecxample
 ```
 server {
     server_name localhost;
