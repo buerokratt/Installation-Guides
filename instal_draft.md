@@ -193,7 +193,7 @@ server {
     return 301 https://$host$request_uri;
 }
 ```
-## Customer-service configuration
+## Customer-support configuration
 
 Modify `env-config.js` url-s linking to your setups components.
 For example:
