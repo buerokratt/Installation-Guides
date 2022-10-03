@@ -1,7 +1,8 @@
-### About
-##### This is a configuration guide for Buerokratt install
+# About
+#### This is a configuration guide for Buerokratt install
+#### This document is addition to a install guide found [here](../main/README.md)
 
-######
+###### Note
 The Bykstack consists of 8 - containers, Bots - 3 containers They should be in one docker network. Example docker-compose file is [here](../main/default-setup/backoffice-and-bykstack/docker-compose.yml).
 
 ## Bykstack configuring
