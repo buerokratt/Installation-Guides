@@ -1,4 +1,4 @@
-#### About
+### About
 ##### This is a install guide for Buerokratt
 
 ######
@@ -12,7 +12,7 @@ Stack of components handling chat.
 
 - [List of dependencies](#list-of-dependencies)
 - [Installing](#installing)
-  - [tim](#tim)
+  - [TIM](#tim)
   - [Private-ruuter](#Private-ruuter)
   - [Public-ruuter](#Public-ruuter)
   - [Chat-widget](#Chat-widget)
@@ -22,7 +22,7 @@ Stack of components handling chat.
 
 ## List of dependencies
 
-- Docker with compose plugin
+- Docker and docker-compose plugin
 - ssh server
 - PostgreSQL DB system
 - [TARA](https://www.ria.ee/en/state-information-system/eid/partners.html#tara) contract
