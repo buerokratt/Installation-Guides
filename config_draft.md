@@ -17,7 +17,7 @@ The Bykstack consists of 8 - containers, Bots - 3 containers They should be in o
   - [Public-ruuter](#Public-ruuter-configuration)
   - [Chat-widget](#Chat-widget-configuration)
   - [Customer-support](#Customer-support-configuration)
-  - [RESQL](#RESQL)
+  
 - [License](#license)
 
 ## List of dependencies for installing bykstack
@@ -35,10 +35,13 @@ The Bykstack consists of 8 - containers, Bots - 3 containers They should be in o
 **Note!** Both keystore password and alias password should be the same.
 
 ##### Certificate for JWT signature
+
+Open terminal 
+In the folder `tim` run the following command
 ```
 keytool -genkeypair -alias jwtsign -keyalg RSA -keysize 2048 -keystore "jwtkeystore.jks" -validity 3650
 ```
-relevant configuration properties:
+*relevant configuration properties:
 
 ```
 jwt-integration.signature.key-store=classpath:jwtkeystore.jks
@@ -57,7 +60,7 @@ To generate a new key pair with certificate:
 #### Changing Keystore password
 
 To change keystore password,
-1. run the following command
+1. Open terminal and run the following command 
 ```
 keytool -keystore <keystore file name> -storepasswd
 ```
@@ -71,11 +74,12 @@ Users-Database requires manual configuration.
 
 ## Private-ruuter configuration
 
-Modify `urls.env.json` url-s linking to your setups components.
+Modify `private.urls.env.json` url-s linking to your setups components.
 
+Open terminal
 Under the `ruuter` folder use command:
 ```
-nano urls.env.json
+nano private.urls.env.json
 ```
 Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
 Save and close the file:
@@ -83,7 +87,8 @@ Save and close the file:
 CTRL X
 ```
 Type `Y` when it asks to save
- 
+
+`private.urls.docker.json` config file example
 ```json
 {
   "dmapper_url": "https://byk-dmapper:8443",
@@ -102,10 +107,12 @@ Type `Y` when it asks to save
 ```
 ## Public-ruuter configuration
 
-Modify `urls.env.json` url-s linking to your setups components.
+Modify `public.urls.env.json` url-s linking to your setups components.
+
+Open terminal
 Under the `ruuter` folder use command:
 ```
-nano urls.env.json
+nano public.urls.env.json
 ```
 Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
 Save and close the file:
@@ -114,6 +121,7 @@ CTRL X
 ```
 Type `Y` when it asks to save
 
+`public.urls.docker.json` config file example
 ```json
 {
   "dmapper_url": "https://byk-dmapper:8443",
@@ -141,6 +149,19 @@ Where `RUUTER_API_URL` is URL pointing to the Public-ruuter, `TIM_AUTHENTICATION
   * `END`: End of office hours. If current time is after this hour (24H), the widget will not be displayed
   * `DAYS`: List of days in numbers, where 1=monday, 2=tuesday, 3=wednesday... If current day is in the list of days, the widget will be displayed according to `BEGIN` and `END` times.
 
+Open terminal
+Under the `widget` folder use command:
+```
+nano index.html
+```
+Modify the lines `RUUTER_API_URL` and `TIM_AUTHENTICATION_URL` according to your information
+Save and close the file:
+```
+CTRL X
+```
+Type `Y` when it asks to save
+
+`index.html` config example
 
 ```html
 <!DOCTYPE html>
@@ -176,6 +197,18 @@ Where `RUUTER_API_URL` is URL pointing to the Public-ruuter, `TIM_AUTHENTICATION
 
 ```
 In the file `nginx.conf` update header adding according to your setup so that all pages where the widget is installed are allowed to access. If wiget is installed into multiple pages add define extra line 
+
+Open terminal
+Under the `widget` folder use command:
+```
+nano nginx.conf
+```
+Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
+Save and close the file:
+```
+CTRL X
+```
+Type `Y` when it asks to save
 
 
 ```
