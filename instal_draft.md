@@ -74,7 +74,7 @@ Users-Database requires manual configuration.
 ## Private-ruuter configuration
 
 Modify `urls.env.json` url-s linking to your setups components.
-For example:
+
 ```json
 {
   "dmapper_url": "https://byk-dmapper:8443",
@@ -94,7 +94,7 @@ For example:
 ## Public-ruuter configuration
 
 Modify `urls.env.json` url-s linking to your setups components.
-For example:
+
 ```json
 {
   "dmapper_url": "https://byk-dmapper:8443",
@@ -122,7 +122,7 @@ Where `RUUTER_API_URL` is URL pointing to the Public-ruuter, `TIM_AUTHENTICATION
   * `END`: End of office hours. If current time is after this hour (24H), the widget will not be displayed
   * `DAYS`: List of days in numbers, where 1=monday, 2=tuesday, 3=wednesday... If current day is in the list of days, the widget will be displayed according to `BEGIN` and `END` times.
 
-For example:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -158,7 +158,7 @@ For example:
 ```
 In the file `nginx.conf` update header adding according to your setup so that all pages where the widget is installed are allowed to access. If wiget is installed into multiple pages add define extra line 
 
-For example:
+
 ```
 server {
     server_name localhost;
@@ -196,7 +196,7 @@ server {
 ## Customer-support configuration
 
 Modify `env-config.js` url-s linking to your setups components.
-For example:
+
 ```
 {
     RUUTER_API_URL: 'https://PRIVATE_RUUTER_URL',
@@ -208,7 +208,7 @@ For example:
 
 ```
 Modify `nginx.conf` `add_header` values linking to your setups components.
-For example:
+
 ```
 server {
     server_name localhost;
