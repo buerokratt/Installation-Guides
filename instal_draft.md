@@ -112,6 +112,8 @@ TIM database (tim-postgresql is configures automatically during the first deploy
 Users-Database requires manual configuration.
 
 ### Run the following yml files in order after you change the passwords
+1. databases.yml
+2. liquibase.yml
 
 ##### databases.yml
 ```
