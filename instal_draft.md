@@ -66,7 +66,7 @@ keytool -keystore <keystore file name> -storepasswd
 Before installing TIM, you should deploy databases.
 TIM database (tim-postgresql is configures automatically during the first deployment)
 Users-Database requires manual configuration.
-### Run the [docker-compose.yml](#../main/default-setup/backoffice-and-bykstack/sql-db/docker-compose.yml) and then [liquibase.yml](#../main/default-setup/backoffice-and-bykstack/sql-db/liquibase.yml)
+### Run the [docker-compose.yml](../main/default-setup/backoffice-and-bykstack/sql-db/docker-compose.yml) and then [liquibase.yml](../main/default-setup/backoffice-and-bykstack/sql-db/liquibase.yml)
 
 ## Private-ruuter configuration
 
