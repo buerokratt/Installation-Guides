@@ -189,7 +189,7 @@ networks:
  ## Private-ruuter
 Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
 
-Update `urls.env.json` url-s linking to your setups components.
+Modify `urls.env.json` url-s linking to your setups components.
 For example:
 ```json
 {
@@ -211,7 +211,7 @@ For example:
  ## Private-ruuter
 Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
 
-Update `urls.env.json` url-s linking to your setups components.
+Modify `urls.env.json` url-s linking to your setups components.
 For example:
 ```json
 {
@@ -317,7 +317,7 @@ server {
 
 Mount certificates into container as `/etc/ssl/certs/cert.crt` and `/etc/ssl/certs/key.key`
 
-Update `env-config.js` url-s linking to your setups components.
+Modify `env-config.js` url-s linking to your setups components.
 For example:
 ```
 {
@@ -329,7 +329,7 @@ For example:
 }
 
 ```
-Update `nginx.conf` `add_header` values linking to your setups components.
+Modify `nginx.conf` `add_header` values linking to your setups components.
 For example:
 ```
 server {
