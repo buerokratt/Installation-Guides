@@ -367,7 +367,7 @@ Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr
 
 # BOT's installation
 
-The bot consists of 2 containers: bot and action server. They should be in one docker network. Example docker-compose file is [here](./examples/docker-compose.yml). 
+The bot consists of 2 containers: bot and action server. They should be in one docker network. Example docker-compose file is [here](./default-setup/chatbot-and-training/docker-compose.yml). 
 
 Add Bot-training machines/users public ssh key into Bot machines/users `authorized_keys`. The Bot-training will transfer trained models and restart bot on demand through ssh.
 
