@@ -35,6 +35,7 @@ The Bykstack consists of 8 - containers, Bots - 3 containers They should be in o
 **Note!** Both keystore password and alias password should be the same.
 
 ##### Certificate for JWT signature
+# NOTE: I have still some work to do with JWT sig part. If i understand, I have to run the eytool command inside the `tim container` and then copy it into the `host`
 
 Open terminal   
 In the folder `tim` run the following command
