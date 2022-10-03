@@ -17,6 +17,7 @@ Stack of components handling chat.
   - [Public-ruuter](#Public-ruuter)
   - [Chat-widget](#Chat-widget)
   - [Customer-support](#Customer-support)
+  - [RESQL](#RESQL)
 - [License](#license)
 
 ## List of dependencies
@@ -110,7 +111,7 @@ Before installing TIM, you should deploy databases.
 TIM database (tim-postgresql is configures automatically during the first deployment)
 Users-Database requires manual configuration.
 
-### Run the foolowing yml files in order after you change the passwords
+### Run the following yml files in order after you change the passwords
 
 ##### databases.yml
 ```
@@ -359,18 +360,8 @@ server {
 }
 ```
 
-### Running the container
-
-In order to create container from image bring it up like so:
-```
-docker run \
-    -p 3001:443 \
-    -v ./nginx.conf:/etc/nginx/conf.d/default.conf \
-    -v ./env-config.js:/usr/share/nginx/html/customer-service/env-config.js \
-    -v ./cert.crt:/etc/ssl/certs/cert.crt \
-    -v ./key.key:/etc/ssl/certs/key.key \
-    PLACEHOLDER:IMAGE_NAME 
-```
+## RESQL
+Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
 
 
 
