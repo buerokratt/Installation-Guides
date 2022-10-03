@@ -1,26 +1,25 @@
 ### About
-##### This is a install guide for Buerokratt
+##### This is a configuration guide for Buerokratt install
 
 ######
 The Bykstack consists of 8 - containers, Bots - 3 containers They should be in one docker network. Example docker-compose file is [here](../main/default-setup/backoffice-and-bykstack/docker-compose.yml).
 
-## Bykstack install
+## Bykstack configuring
 
-Stack of components handling chat.
 
 ## Table of Contents
 
 - [List of dependencies](#list-of-dependencies)
-- [Installing](#installing)
+- Installing
   - [TIM](#tim)
-  - [Private-ruuter](#Private-ruuter)
+  - [Private-ruuter configuration](#Private-ruuter)
   - [Public-ruuter](#Public-ruuter)
   - [Chat-widget](#Chat-widget)
   - [Customer-support](#Customer-support)
   - [RESQL](#RESQL)
 - [License](#license)
 
-## List of dependencies
+## List of dependencies for installing bykstack
 
 - Docker and docker-compose plugin
 - ssh server
@@ -28,11 +27,7 @@ Stack of components handling chat.
 - [TARA](https://www.ria.ee/en/state-information-system/eid/partners.html#tara) contract
 - Reverse proxy
 
-# TIM
-##### Creating certificates
-Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
-
-Generate `jwtkeystore.jks` and mount it into the container as `/usr/local/tomcat/jwtkeystore.jks`. The password inserted at `jwtkeystore.jks` creation is used as environmental variable in the container.
+# TIM configuration
 
 ### Certificates generation
 
@@ -46,7 +41,7 @@ relevant configuration properties:
 
 ```
 jwt-integration.signature.key-store=classpath:jwtkeystore.jks
-jwt-integration.signature.key-store-password=PLACEHOLDER JWT_PASSWORD
+jwt-integration.signature.key-store-password=JWT_PASSWORD
 jwt-integration.signature.keyStoreType=JKS
 jwt-integration.signature.keyAlias=jwtsign
 ```
@@ -64,45 +59,6 @@ To change keystore password,
 1. run the following command
 ```
 keytool -keystore <keystore file name> -storepasswd
-# (old and new password asked)
-```
-2. update configuration with new password
-##### Step 1 - creating certificates
-Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
-
-Generate `jwtkeystore.jks` and mount it into the container as `/usr/local/tomcat/jwtkeystore.jks`. The password inserted at `jwtkeystore.jks` creation is used as environmental variable in the container.
-
-### Certificates generation
-
-**Note!** Both keystore password and alias password should be the same.
-
-##### Certificate for JWT signature
-```
-keytool -genkeypair -alias jwtsign -keyalg RSA -keysize 2048 -keystore "jwtkeystore.jks" -validity 3650
-```
-relevant configuration properties:
-
-```
-jwt-integration.signature.key-store=classpath:jwtkeystore.jks
-jwt-integration.signature.key-store-password=PLACEHOLDER JWT_PASSWORD
-jwt-integration.signature.keyStoreType=JKS
-jwt-integration.signature.keyAlias=jwtsign
-```
-
-#### Regenerating Certificates
-
-To generate a new key pair with certificate:
-1. backup the original keystore file.
-2. run certificate generation `keytool` command from previous step(s)
-3. update configuration with new keystore file and password
-
-#### Changing Keystore password
-
-To change keystore password,
-1. run the following command
-```
-keytool -keystore <keystore file name> -storepasswd
-# (old and new password asked)
 ```
 2. update configuration with new password
 
@@ -115,79 +71,7 @@ Users-Database requires manual configuration.
 1. databases.yml
 2. liquibase.yml
 
-##### databases.yml
-```
-version: '3.9'
-services:
-  users-postgresql:
-    container_name: users-postgresql
-    image: postgres:14.1
-    environment:
-      - POSTGRES_USER=byk
-      - POSTGRES_PASSWORD=123
-      - POSTGRES_DB=byk
-      - POSTGRES_HOST_AUTH_METHOD=trust
-    ports:
-      - 2345:5432
-    restart: always
-    networks:
-      - bykstack
-  tim-postgresql:
-    container_name: tim-postgresql
-    image: postgres:14.1
-    environment:
-      - POSTGRES_USER=tim
-      - POSTGRES_PASSWORD=123
-      - POSTGRES_DB=tim
-      - POSTGRES_HOST_AUTH_METHOD=trust
-    ports:
-      - 5432:5432
-    restart: always
-    networks:
-      - bykstack
-
-networks:
-  bykstack:
-    name: bykstack
-```
-
-##### Dockerfile
-```
-FROM riaee/byk-users-db:liquibase20220615
-
-ENV db_url=postgres:5432/byk
-ENV db_user=byk
-ENV db_user_pswd=123
-
-COPY liquibase.jar /home/liquibase.jar
-CMD ["java","-jar","/home/liquibase.jar", "--spring.datasource.url=jdbc:postgresql://${db_url}", "--spring.datasource.username=${db_user}", "--spring.datasource.password=${db_user_pswd}"]
-```
-
-##### liquibase.yml
-```
-version: '3.9'
-services:
-  byk-users-liquibase:
-    build:
-      context: .
-    environment:
-      - db_url=users-postgresql:5432/byk
-      - db_user=byk
-      - db_user_pswd=123
-    ports:
-      - 8000:8000
-    restart: always
-    networks:
-      - bykstack
-    
-
-networks:
-  bykstack:
-    name: bykstack
- ```
- 
- ## Private-ruuter
-Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
+## Private-ruuter configuration
 
 Modify `urls.env.json` url-s linking to your setups components.
 For example:
@@ -207,9 +91,7 @@ For example:
   "ilmmicroservice_url": "https://ilmmicroservice.envir.ee/api/forecasts"
 }
 ```
-## Public-ruuter
- ## Private-ruuter
-Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
+## Public-ruuter configuration
 
 Modify `urls.env.json` url-s linking to your setups components.
 For example:
@@ -230,9 +112,7 @@ For example:
 }
 ```
 
-## Chat-widget
-
-Mount certificates into container as `/etc/tls/tls.crt` and `/etc/tls/tls.key`
+## Chat-widget configuration
 
 Update `index.html` url-s linking to your setups components.
 Where `RUUTER_API_URL` is URL pointing to the Public-ruuter, `TIM_AUTHENTICATION_URL` is URL pointing to the TIM and the URL of the page wher widget is installed into, and:
@@ -254,8 +134,8 @@ For example:
 <div id="byk-va"></div>
 <script>
   window._env_ = {
-    RUUTER_API_URL: 'https://PLACEHOLDER PUBLIC-RUUTER_URL',
-    TIM_AUTHENTICATION_URL: 'https://PLACEHOLDER TIM_URL/oauth2/authorization/tara?callback_url=https://PLACEHOLDER URL_WHERE_TO_WIDGET_IS_INSTALLED',
+    RUUTER_API_URL: 'https://PUBLIC-RUUTER_URL',
+    TIM_AUTHENTICATION_URL: 'https://TIM_URL/oauth2/authorization/tara?callback_url=https://URL_WHERE_TO_WIDGET_IS_INSTALLED',
     OFFICE_HOURS: {
       TIMEZONE: 'Europe/Tallinn',
       BEGIN: 0,
@@ -313,9 +193,7 @@ server {
     return 301 https://$host$request_uri;
 }
 ```
-## Customer-service
-
-Mount certificates into container as `/etc/ssl/certs/cert.crt` and `/etc/ssl/certs/key.key`
+## Customer-service configuration
 
 Modify `env-config.js` url-s linking to your setups components.
 For example:
@@ -339,7 +217,7 @@ server {
     ssl_certificate_key /etc/ssl/certs/key.key;
 
     server_tokens off;
-    add_header Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; font-src 'self' data:; img-src 'self' data:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://PLACEHOLDER RUUTER_URL https://PLACEHOLDER TIM_URL https://PLACEHOLDER CUSTOMER_SERVICE_URL https://PLACEHOLDER PRIV-RUUTER_URL;";
+    add_header Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; font-src 'self' data:; img-src 'self' data:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://RUUTER_URL https://TIM_URL https://CUSTOMER_SERVICE_URL https://PRIV-RUUTER_URL;";
 
 
     location / {
@@ -361,9 +239,6 @@ server {
     return 301 https://$host$request_uri;
 }
 ```
-
-## RESQL
-Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
 
 # BOT's installation
 
@@ -562,8 +437,6 @@ The home directory tree looks somewhat like this:
 ├── deploy.sh
 ├── docker-compose.yml
 └── train.sh
-```
-
 ```
 
 ## License
