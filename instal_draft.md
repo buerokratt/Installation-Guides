@@ -10,12 +10,12 @@ The Bykstack consists of 8 - containers, Bots - 3 containers They should be in o
 ## Table of Contents
 
 - [List of dependencies](#list-of-dependencies)
-- Installing
-  - [TIM](#tim_configuration)
-  - [Private-ruuter](#Private-ruuter)
-  - [Public-ruuter](#Public-ruuter)
-  - [Chat-widget](#Chat-widget)
-  - [Customer-support](#Customer-support)
+- Config files examples
+  - [TIM](#tim-configuration)
+  - [Private-ruuter](#Private-ruuter-configuration)
+  - [Public-ruuter](#Public-ruuter-configuration)
+  - [Chat-widget](#Chat-widget-configuration)
+  - [Customer-support](#Customer-support-configuration)
   - [RESQL](#RESQL)
 - [License](#license)
 
