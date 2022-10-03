@@ -7,7 +7,7 @@ services:
     command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
     environment:
       - POSTGRES_USER=tim
-      - POSTGRES_PASSWORD=BÄROLL
+      - POSTGRES_PASSWORD=123
       - POSTGRES_DB=tim
     volumes:
       - ./tim-db/cert.crt:/etc/tls/tls.crt
@@ -24,7 +24,7 @@ services:
     command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
     environment:
       - POSTGRES_USER=byk
-      - POSTGRES_PASSWORD=PÄROLL
+      - POSTGRES_PASSWORD=123
       - POSTGRES_DB=byk
     volumes:
       - ./users-db/cert.crt:/etc/tls/tls.crt
