@@ -13,7 +13,7 @@ Stack of components handling chat.
 - [List of dependencies](#list-of-dependencies)
 - [Installing](#installing)
   - [tim](#tim)
-  - [Private-ruuter](#Private-ruuter
+  - [Private-ruuter](#Private-ruuter)
   - [Public-ruuter](#Public-ruuter)
   - [Chat-widget](#Chat-widget)
   - [Customer-support](#Customer-support)
