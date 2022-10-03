@@ -36,7 +36,7 @@ The Bykstack consists of 8 - containers, Bots - 3 containers They should be in o
 
 ##### Certificate for JWT signature
 
-Open terminal 
+Open terminal   
 In the folder `tim` run the following command
 ```
 keytool -genkeypair -alias jwtsign -keyalg RSA -keysize 2048 -keystore "jwtkeystore.jks" -validity 3650
