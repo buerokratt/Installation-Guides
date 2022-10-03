@@ -73,6 +73,17 @@ Users-Database requires manual configuration.
 
 Modify `urls.env.json` url-s linking to your setups components.
 
+Under the `ruuter` folder use command:
+```
+nano urls.env.json
+```
+Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
+Save and close the file:
+```
+CTRL X
+```
+Type `Y` when it asks to save
+ 
 ```json
 {
   "dmapper_url": "https://byk-dmapper:8443",
@@ -92,6 +103,16 @@ Modify `urls.env.json` url-s linking to your setups components.
 ## Public-ruuter configuration
 
 Modify `urls.env.json` url-s linking to your setups components.
+Under the `ruuter` folder use command:
+```
+nano urls.env.json
+```
+Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
+Save and close the file:
+```
+CTRL X
+```
+Type `Y` when it asks to save
 
 ```json
 {
