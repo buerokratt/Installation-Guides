@@ -365,6 +365,8 @@ server {
 ## RESQL
 Mount certificates into container as `/usr/local/tomcat/conf/cert.crt` and `/usr/local/tomcat/conf/key.key`
 
+# BOT's installation
+
 
 
 ## License
