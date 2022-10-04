@@ -71,9 +71,10 @@ Users-Database requires manual configuration.
 
 ## Private-ruuter configuration
 
-Modify `private.urls.env.json` url-s linking to your setups components.
+Modify `private.urls.docker.json` url-s linking to your setups components.
 
 Open terminal  
+``cd ruuter``
 Under the `ruuter` folder use command:
 ```
 nano private.urls.env.json
