@@ -31,6 +31,10 @@ This document covers the installation of Bürokratt on [Ubuntu](https://ubuntu.c
 - `Bot` ~3GB RAM and 4CPU
 - `Training-bot` ~3GB RAM and 4CPU
 
+Docker and docker-compose installation:
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
+
 #### Docker must be installed
 > At least version `20.10.17`
 ```
@@ -38,7 +42,7 @@ docker -v
 ```
 
 ```
-Docker version 20.10.17, build 100c701
+Docker version 1.29.2 build 5becea4c
 ```
 
 #### Docker Compose must be installed
