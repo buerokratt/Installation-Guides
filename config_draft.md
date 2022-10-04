@@ -73,11 +73,11 @@ Users-Database requires manual configuration.
 
 Modify `private.urls.docker.json` url-s linking to your setups components.
 
-Open terminal  
+Open terminal    
 ``cd ruuter``
 Under the `ruuter` folder use command:
 ```
-nano private.urls.env.json
+nano private.urls.docker.json
 ```
 Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
 Save and close the file:
@@ -105,12 +105,12 @@ Type `Y` when it asks to save
 ```
 ## Public-ruuter configuration
 
-Modify `public.urls.env.json` url-s linking to your setups components.
+Modify `public.urls.docker.json` url-s linking to your setups components.
 
 Open terminal  
 Under the `ruuter` folder use command:
 ```
-nano public.urls.env.json
+nano public.urls.docker.json
 ```
 Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
 Save and close the file:
