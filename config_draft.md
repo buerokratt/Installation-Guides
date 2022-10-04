@@ -23,7 +23,7 @@ The Bykstack consists of 8 - containers, Bots - 3 containers They should be in o
 ## List of dependencies for installing bykstack
 
 - Docker and docker-compose plugin
-- ssh server
+- ssh serve
 - PostgreSQL DB system
 - [TARA](https://www.ria.ee/en/state-information-system/eid/partners.html#tara) contract
 - Reverse proxy
@@ -35,37 +35,33 @@ The Bykstack consists of 8 - containers, Bots - 3 containers They should be in o
 **Note!** Both keystore password and alias password should be the same.
 
 ##### Certificate for JWT signature
-# NOTE: I have still some work to do with JWT sig part. If i understand, I have to run the eytool command inside the `tim container` and then copy it into the `host`
-
-Open terminal   
-In the folder `tim` run the following command
+# NOTE: Following steps have to be executed inside `TIM` container
+Open terminal
+Check your `TIM` container ID
+```
+docker ps -a
+```
+Run following command
+```
+docker exec -it tim-byk bash
+```
+Inside the container run following command
 ```
 keytool -genkeypair -alias jwtsign -keyalg RSA -keysize 2048 -keystore "jwtkeystore.jks" -validity 3650
 ```
-*relevant configuration properties:
+### Password you create is necessary for later
+#####  Note: 'first and last name' == CN => jwt-integration.signature.issuer
 
+
+After creating ertificates, run following command
 ```
-jwt-integration.signature.key-store=classpath:jwtkeystore.jks
-jwt-integration.signature.key-store-password=JWT_PASSWORD
-jwt-integration.signature.keyStoreType=JKS
-jwt-integration.signature.keyAlias=jwtsign
+docker cp <CONTAINER_ID>:/usr/local/tomcat/jwtkeystore.jks jwtkeystore.jks
 ```
-
-#### Regenerating Certificates
-
-To generate a new key pair with certificate:
-1. backup the original keystore file.
-2. run certificate generation `keytool` command from previous step(s)
-3. update configuration with new keystore file and password
-
-#### Changing Keystore password
-
-To change keystore password,
-1. Open terminal and run the following command 
+Exit the container
+Make sure, that the jwtkeystore.jks is in the `tim` folder if true, run following command
 ```
-keytool -keystore <keystore file name> -storepasswd
+sudo chown <YOUR-USERNAME> jwtkeystore.jks
 ```
-2. update configuration with new password
 
 ### Databases
 Before installing TIM, you should deploy databases.
