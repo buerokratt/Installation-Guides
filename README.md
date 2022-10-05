@@ -55,6 +55,15 @@ docker-compose -v
 Docker Compose version v2.6.1
 ```
 
+#### Ports
+Make sure, that following ports are allowed 
+ - 8081 Dmapper
+ - 3000 Chat-widget
+ - 3001 Customer-service
+ - 8082 Resql
+ - 8085 TIM
+ - 8443 Private ruuter
+ - 8080 Public ruuter
 
 ### Installation
 
