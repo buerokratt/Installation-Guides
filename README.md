@@ -36,7 +36,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-c
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
 
 #### Docker must be installed
-> At least version `20.10.17`
+> At least version `1.29.2`
 ```
 docker -v
 ```
