@@ -15,7 +15,7 @@ EXPOSE 5432
 ```
 Do instal and run the container, use following command
 ```
-docker build -t users-db-image . && docker run --name test -p 5432:5432 -d  users-db
+docker build -f usersdb.Dockerfile -t byk-users-db . && docker run --name users-db -p 5432:5432 -d byk-users-db
 ```
 
 
@@ -24,7 +24,7 @@ docker build -t users-db-image . && docker run --name test -p 5432:5432 -d  user
 Name the file `liquid.Dockerfile`
 ```
 FROM riaee/byk-users-db:liquibase20220615
-RUN liquibase --url=jdbc:postgresql://localhost:5432/byk?user=byk --password=password --changelog-file=/master.yml update
+RUN liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=password --changelog-file=/master.yml update
 
 ```
 
@@ -53,5 +53,6 @@ Do install and run the container, usefollowing command
 docker build-f tim.Dockerfile .
 ```
 
-
+## Note
+If you have troubles connecting liquibase to users-db, then use IP address instead the containerID
 
