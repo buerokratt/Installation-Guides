@@ -54,5 +54,6 @@ docker build-f tim.Dockerfile .
 ```
 
 ## Note
-If you have troubles connecting liquibase to users-db, then use IP address instead the containerID
+- If you have troubles connecting liquibase to users-db, then use IP address instead the containerID
+- It is advised to change the password before runningthe Dockerfile's
 
