@@ -50,7 +50,7 @@ EXPOSE 5432
 To install and run the container, usefollowing command
 
 ```
-docker build -f tim.Dockerfile .
+docker build -f tim.Dockerfile -t byk-tim-postgresql . && docker run --name tim-postresql -p 5433:5432 -d byk-tim-postgresql
 ```
 
 ## Note
