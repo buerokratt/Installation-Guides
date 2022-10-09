@@ -13,7 +13,7 @@ ENV POSTGRES_DB byk
 
 EXPOSE 5432
 ```
-Do instal and run the container, use following command
+To instal and run the container, use following command
 ```
 docker build -f usersdb.Dockerfile -t byk-users-db . && docker run --name users-db -p 5432:5432 -d byk-users-db
 ```
@@ -28,7 +28,7 @@ RUN liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=pass
 
 ```
 
-Do install and run the container, use following command
+To install and run the container, use following command
 ```
 docker build -f liquid.Docerfile .
 ```
@@ -47,7 +47,7 @@ ENV POSTGRES_DB tim
 EXPOSE 5432
 ```
 
-Do install and run the container, usefollowing command
+To install and run the container, usefollowing command
 
 ```
 docker build-f tim.Dockerfile .
