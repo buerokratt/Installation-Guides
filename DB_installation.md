@@ -50,7 +50,7 @@ EXPOSE 5432
 To install and run the container, usefollowing command
 
 ```
-docker build-f tim.Dockerfile .
+docker build -f tim.Dockerfile .
 ```
 
 ## Note
