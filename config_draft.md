@@ -72,6 +72,7 @@ sudo chown <YOUR-USERNAME> jwtkeystore.jks
 Stop the container
 ```
 docker stop tim-byk-tim
+```
 
 ### Databases
 Before installing TIM, you should deploy databases.
