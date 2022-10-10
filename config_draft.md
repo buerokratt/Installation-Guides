@@ -82,9 +82,9 @@ nano private.urls.docker.json
 Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
 Save and close the file:
 ```
+CTRL S
 CTRL X
 ```
-Type `Y` when it asks to save
 
 `private.urls.docker.json` config file example
 ```json
@@ -115,9 +115,10 @@ nano public.urls.docker.json
 Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
 Save and close the file:
 ```
+CTRL S
 CTRL X
 ```
-Type `Y` when it asks to save
+
 
 `public.urls.docker.json` config file example
 ```json
@@ -155,9 +156,9 @@ nano index.html
 Modify the lines `RUUTER_API_URL` and `TIM_AUTHENTICATION_URL` according to your information
 Save and close the file:
 ```
+CTRL S
 CTRL X
 ```
-Type `Y` when it asks to save
 
 `index.html` config example
 
@@ -250,16 +251,16 @@ Modify `env-config.js` url-s linking to your setups components.
 Open terminal    
 Under the `customer-support` folder use command:
 ```
-nano env-config.json
+nano env-config.js
 ```
 Modify the lines `RUUTER_API_URL` `TIM_API_URL` `TARA_REDIRECT_URL` `MONITORING_URL` according to your information
 Save and close the file:
 ```
+CTRL S
 CTRL X
 ```
-Type `Y` when it asks to save
 
-`env-config.js ecample`
+`env-config.js` example
 
 ```
 window._env_ = {
@@ -282,9 +283,9 @@ nano nginx.conf
 Modify the lines `https://RUUTER_URL` `https://TIM_URL` `https://CUSTOMER_SERVICE_URL` `https://PRIV-RUUTER_URL` according to your information
 Save and close the file:
 ```
+CTRL S
 CTRL X
 ```
-Type `Y` when it asks to save
 
 nginx.conf ecxample
 ```
