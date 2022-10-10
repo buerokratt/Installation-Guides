@@ -90,7 +90,7 @@ services:
 networks:
   bykstack:
     name: bykstack
-    ```
+ ```
 
 ## Note
 - If you have troubles connecting liquibase to users-db, then use IP address instead the containerID
