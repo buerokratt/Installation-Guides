@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  byk-tim:
+    image: riaee/byk-tim:07
+    environment:
+      - spring.datasource.url=jdbc:postgresql://byk-tim-postgresql:5432/tim
+      - spring.datasource.username=tim
+      - spring.datasource.password=123
+      - logging.level.root=INFO
+    ports:
+      - 8085:8443
+    volumes:
+      - ./server.xml:/usr/local/tomcat/conf/server.xml
+    networks:
+      - bykstack
+
+  byk-tim-postgresql:
+    image: postgres:14.1
+    environment:
+      - POSTGRES_USER=tim
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=tim
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 9876:5432
+    networks:
+      - bykstack
+
+networks:
+  bykstack:
+    name: bykstack
