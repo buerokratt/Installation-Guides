@@ -80,9 +80,9 @@ Under the `ruuter` folder use command:
 nano private.urls.docker.json
 ```
 Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
-Save and close the file:
+Save and close the file:  
 `
-CTRL S
+CTRL S  
 CTRL X
 `
 
@@ -113,11 +113,11 @@ Under the `ruuter` folder use command:
 nano public.urls.docker.json
 ```
 Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
-Save and close the file:
-```
-CTRL S
+Save and close the file:  
+`
+CTRL S  
 CTRL X
-```
+`
 
 
 `public.urls.docker.json` config file example
@@ -154,11 +154,11 @@ Under the `widget` folder use command:
 nano index.html
 ```
 Modify the lines `RUUTER_API_URL` and `TIM_AUTHENTICATION_URL` according to your information
-Save and close the file:  
-```
-CTRL S
+Save and close the file:    
+`
+CTRL S  
 CTRL X
-```
+`
 
 `index.html` config example
 
@@ -203,9 +203,9 @@ Under the `widget` folder use command:
 nano nginx.conf
 ```
 Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`  
-Save and close the file:
+Save and close the file:  
 `
-CTRL S
+CTRL S  
 CTRL X
 `
 
@@ -253,11 +253,11 @@ Under the `customer-support` folder use command:
 nano env-config.js
 ```
 Modify the lines `RUUTER_API_URL` `TIM_API_URL` `TARA_REDIRECT_URL` `MONITORING_URL` according to your information
-Save and close the file:
-```
-CTRL S
+Save and close the file:  
+`
+CTRL S  
 CTRL X
-```
+`
 
 `env-config.js` example
 
@@ -280,11 +280,11 @@ Under the `customer-support` folder use command:
 nano nginx.conf
 ```
 Modify the lines `https://RUUTER_URL` `https://TIM_URL` `https://CUSTOMER_SERVICE_URL` `https://PRIV-RUUTER_URL` according to your information
-Save and close the file:
-```
-CTRL S
+Save and close the file:  
+`
+CTRL S  
 CTRL X
-```
+`
 
 nginx.conf ecxample
 ```
