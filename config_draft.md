@@ -34,16 +34,22 @@ The Bykstack consists of 8 - containers, Bots - 3 containers They should be in o
 
 **Note!** Both keystore password and alias password should be the same.
 
-##### Certificate for JWT signature
+#### Certificate for JWT signature
+##### Run a standalone TIM container for creation of JWT key
+Go to folder `tim`  
+Run following command
+```
+docker-compose up -d
+```
+
 # NOTE: Following steps have to be executed inside `TIM` container
-Open terminal  
-Check your `TIM` container ID
+In the terminal check your `TIM` container ID
 ```
 docker ps -a
 ```
 Run following command
 ```
-docker exec -it tim-byk bash
+docker exec -it tim-byk-tim bash
 ```
 Inside the container run following command
 ```
@@ -62,6 +68,9 @@ Make sure, that the jwtkeystore.jks is in the `tim` folder if true, run followin
 ```
 sudo chown <YOUR-USERNAME> jwtkeystore.jks
 ```
+Stop the container
+```
+docker stop tim-byk-tim
 
 ### Databases
 Before installing TIM, you should deploy databases.
