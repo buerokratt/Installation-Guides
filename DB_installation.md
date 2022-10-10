@@ -53,6 +53,45 @@ To install and run the container, usefollowing command
 docker build -f tim.Dockerfile -t byk-tim-postgresql . && docker run --name tim-postresql -p 5433:5432 -d byk-tim-postgresql
 ```
 
+### Docker-compose files for database install
+
+##### Tim and users-db install
+```
+version: '3.9'
+services:
+  tim-db:
+    container_name: tim-db
+    build:
+      context: tim.Dockerfile
+    environment:
+      - db_url=tim-postgresql:5432/tim
+      - db_user= tim
+      - db_user_pswd=123
+    ports:
+      - 5433:5432
+    restart: always
+    networks:
+      - bykstack
+
+  users-db:
+    container_name: users-db
+    build:
+      context: usersdb.Dockerfile
+    environment:
+      - POSTGRES_USER=byk
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=byk
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
+    restart: always
+    networks:
+      - bykstack
+networks:
+  bykstack:
+    name: bykstack
+    ```
+
 ## Note
 - If you have troubles connecting liquibase to users-db, then use IP address instead the containerID
 - It is advised to change the password before runningthe Dockerfile's
