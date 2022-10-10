@@ -91,6 +91,28 @@ networks:
   bykstack:
     name: bykstack
  ```
+##### Liquibase install
+```
+version: '3.9'
+services:
+  byk-users-liquibase:
+    build:
+      context: liquid.Dockerfile
+    environment:
+      - db_url=users-db:5432/byk
+      - db_user=byk
+      - db_user_pswd=123
+    ports:
+      - 8000:8000
+    restart: always
+    networks:
+      - bykstack
+
+networks:
+  bykstack:
+    name: bykstack
+```
+
 
 ## Note
 - If you have troubles connecting liquibase to users-db, then use IP address instead the containerID
