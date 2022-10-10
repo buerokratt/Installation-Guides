@@ -81,10 +81,10 @@ nano private.urls.docker.json
 ```
 Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
 Save and close the file:
-```
+`
 CTRL S
 CTRL X
-```
+`
 
 `private.urls.docker.json` config file example
 ```json
@@ -154,7 +154,7 @@ Under the `widget` folder use command:
 nano index.html
 ```
 Modify the lines `RUUTER_API_URL` and `TIM_AUTHENTICATION_URL` according to your information
-Save and close the file:
+Save and close the file:  
 ```
 CTRL S
 CTRL X
@@ -202,13 +202,12 @@ Under the `widget` folder use command:
 ```
 nano nginx.conf
 ```
-Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`
+Modify the lines `bot_url` `raining_url` `training_user` `training_prv_key`  
 Save and close the file:
-```
+`
+CTRL S
 CTRL X
-```
-Type `Y` when it asks to save
-
+`
 
 ```
 server {
