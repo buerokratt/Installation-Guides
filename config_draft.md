@@ -41,9 +41,7 @@ Run following command
 ```
 docker-compose up -d
 ```
-
-# NOTE: Following steps have to be executed inside `TIM` container
-In the terminal check your `TIM` container ID
+Check, that container name matches `ti-byk-tim` if not, use the containerID or change the `docker exec` parameters according to container name
 ```
 docker ps -a
 ```
@@ -51,10 +49,13 @@ Run following command
 ```
 docker exec -it tim-byk-tim bash
 ```
+### NOTE: Following steps have to be executed inside `TIM` container
+
 Inside the container run following command
 ```
 keytool -genkeypair -alias jwtsign -keyalg RSA -keysize 2048 -keystore "jwtkeystore.jks" -validity 3650
 ```
+
 ### Password you create is necessary for later
 #####  Note: 'first and last name' == CN => jwt-integration.signature.issuer
 
