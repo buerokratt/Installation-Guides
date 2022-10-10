@@ -67,7 +67,7 @@ sudo chown <YOUR-USERNAME> jwtkeystore.jks
 Before installing TIM, you should deploy databases.
 TIM database (tim-postgresql is configures automatically during the first deployment)
 Users-Database requires manual configuration.
-### Run the [docker-compose.yml](../main/default-setup/backoffice-and-bykstack/sql-db/docker-compose.yml) and then [liquibase.yml](../main/default-setup/backoffice-and-bykstack/sql-db/liquibase.yml)
+### Run the [docker-compose.yml](../main/default-setup/backoffice-and-bykstack/sql-db/docker-compose.yml) and then follow instructions how to install databases [here](../main/DB_installation.md)
 
 ## Private-ruuter configuration
 
