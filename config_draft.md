@@ -36,7 +36,7 @@ The Bykstack consists of 8 - containers, Bots - 3 containers They should be in o
 
 ##### Certificate for JWT signature
 # NOTE: Following steps have to be executed inside `TIM` container
-Open terminal
+Open terminal  
 Check your `TIM` container ID
 ```
 docker ps -a
