@@ -72,6 +72,8 @@ Make sure, that following ports are allowed
 - [x] Move to this directory
 - [x] While being in this directory, open Terminal
 - [x] Clone the source code of Bürokratt
+- [X] Databases installation instructions are [here](../main/DB_installation.md)
+- [X] Configuration instructions are [here](.main/config_draft.md)
 ```
 git clone https://github.com/buerokratt/Installation-Guides.git
 ```
