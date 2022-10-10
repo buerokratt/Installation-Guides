@@ -13,7 +13,6 @@ create_cert = """openssl req -newkey rsa:4096 \
 give_ownership = """ https://stackoverflow.com/questions/55072221/deploying-postgresql-docker-with-ssl-certificate-and-key-with-volumes """
 
 directories = ["customer-support", "ruuter", "dmapper", "chat-widget", "tim", "resql"]
-dbDirectories = ["users-db", "tim-db"]
  
 for directory in directories:
     os.chdir(directory)
