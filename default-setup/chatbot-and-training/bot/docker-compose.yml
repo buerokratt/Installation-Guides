@@ -1,0 +1,93 @@
+version: '3.9'
+services:
+
+  train-bot:
+    container_name: train-bot
+    image: riaee/byk:bot-20220728
+    ports:
+      - 5005:5005
+    volumes:
+      - ./loba/:/app
+    command:
+      - train 
+      - --fixed-model-name
+      - loba-model
+    networks:
+      - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '0.25'
+          memory: 450M
+
+  run-action-server:
+    container_name: bot-action-server
+    image: riaee/byk:bot-action-server-20220728
+    ports:
+      - 5055:5055
+    volumes:
+      - ./loba/actions:/app/actions
+      - ./loba/data:/app/data
+    command:
+      - start
+      - --actions
+      - actions
+    restart: always
+    networks:
+      - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 650M
+        reservations:
+          cpus: '0.25'
+          memory: 450M
+
+  byk-bot:
+    container_name: byk-bot
+    image: riaee/byk:bot-20220728
+    ports:
+      - 5005:5005
+    volumes:
+      - ./loba/:/app
+      - ./cc.et.300.bin:/app/fasttext_et_model/cc.et.300.bin #https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.et.300.bin.gz
+    command:
+      - run
+    depends_on:
+      train-bot:
+        condition: service_completed_successfully
+    restart: always
+    networks:
+      - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2G
+        reservations:
+          cpus: '0.25'
+          memory: 450M
+
+networks:
+  bykstack:
+    name: bykstack
+    driver: bridge
