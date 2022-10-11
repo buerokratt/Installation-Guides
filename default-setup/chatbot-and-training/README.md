@@ -3,5 +3,5 @@
 
 Instructions/files for:  
 [Train-bot](../chatbot-and-training/bot_training/readme.md)  
-Bot  
+[Bot](../chatbot-and-training/bot)  
 
