@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#choo-choo!!
+DIR=/your/actual/directory
 
-# Replace $USER$ with user folder, where training files are located in
+cd $DIR || exit 1
 echo 'Started training' >> train.log
 rm -rf -v chatbot-train/data >> train.log
 rm -rf -v chatbot-train/models >> train.log
