@@ -1,33 +1,58 @@
 version: '3.9'
 services:
-  tim-db:
-    container_name: tim-db
-    build:
-      context: tim.Dockerfile
+
+  tim-postgresql:
+    container_name: tim-postgresql
+    image: postgres:14.1
+    command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
     environment:
-      - db_url=tim-postgresql:5432/tim
-      - db_user= tim
-      - db_user_pswd=123
+      - POSTGRES_USER=tim
+      - POSTGRES_PASSWORD=timpass
+      - POSTGRES_DB=tim
+    volumes:
+      - ./tim-db/cert.crt:/etc/tls/tls.crt
+      - ./tim-db/key.key:/etc/tls/tls.key
+      - tim-db:/var/lib/postgresql/data
     ports:
-      - 5433:5432
-    restart: always
+      - 5432:5432
     networks:
       - bykstack
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
 
   users-db:
     container_name: users-db
-    build:
-      context: usersdb.Dockerfile
+    image: postgres:14.1
+    command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
     environment:
       - POSTGRES_USER=byk
-      - POSTGRES_PASSWORD=123
+      - POSTGRES_PASSWORD=bykpass
       - POSTGRES_DB=byk
-      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - ./users-db/cert.crt:/etc/tls/tls.crt
+      - ./users-db/key.key:/etc/tls/tls.key
+      - users-db:/var/lib/postgresql/data
     ports:
-      - 5432:5432
-    restart: always
+      - 5433:5432
     networks:
       - bykstack
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+
+volumes:
+  users-db:
+    driver: local
+  tim-db:
+    driver: local
 networks:
   bykstack:
     name: bykstack
+    driver: bridge
