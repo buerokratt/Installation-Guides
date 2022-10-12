@@ -6,3 +6,4 @@ ENV db_user_pswd=123
 
 COPY liquibase.jar /home/liquibase.jar
 CMD ["java","-jar","/home/liquibase.jar", "--spring.datasource.url=jdbc:postgresql://${db_url}", "--spring.datasource.username=${db_user}", "--spring.datasource.password=${db_user_pswd}"]
+
