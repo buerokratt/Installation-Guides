@@ -19,14 +19,6 @@ services:
       options:
         max-size: "50m"
         max-file: "3"
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 2G
-        reservations:
-          cpus: '0.25'
-          memory: 450M
 
   run-action-server:
     container_name: bot-action-server
@@ -48,15 +40,6 @@ services:
       options:
         max-size: "50m"
         max-file: "3"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 650M
-        reservations:
-          cpus: '0.25'
-          memory: 450M
-
   byk-bot:
     container_name: byk-bot
     image: riaee/byk:bot-20220728
@@ -78,14 +61,6 @@ services:
       options:
         max-size: "50m"
         max-file: "3"
-    deploy:
-      resources:
-        limits:
-          cpus: '1.5'
-          memory: 2G
-        reservations:
-          cpus: '0.25'
-          memory: 450M
 
 networks:
   bykstack:
