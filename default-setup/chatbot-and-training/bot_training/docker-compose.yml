@@ -20,15 +20,7 @@ services:
       options:
         max-size: "50m"
         max-file: "3"
-    deploy:
-      resources:
-        limits:
-          cpus: '1.5'
-          memory: 2G
-        reservations:
-          cpus: '0.25'
-          memory: 450M
-
+        
   test-bot:
     container_name: test-bot
     image: riaee/byk:loba-bot-v0.2
