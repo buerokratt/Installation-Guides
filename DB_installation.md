@@ -97,5 +97,5 @@ liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=123 --ch
 #### Known issues
 - if you get `404` error in browser while redirecting to `TARA` check the TIM logs `docker logs <TIM container_ID> -f`
 Thus far the errors are related to 1) JWT generation error; 2) connection error bwtween TIM and TIM postgresql; 3) wrong info on the lines where TARA info goes
-- Remedy: 1) Follow the JWT generation as it is; 2) make sure that ports 5432 and 543 are allowed 3) make sure you enter correct information
+- Remedy: 1) Follow the JWT generation as it is; 2) make sure that ports 5432 and 5433 are allowed 3) make sure you enter correct information
 
