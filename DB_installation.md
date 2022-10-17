@@ -1,7 +1,7 @@
 ## About
 ##### Database installation for Buerokratt
 
-##### Users database install
+##### Users database and TIM-postresql install
 
 ### docker-compose.yml
 ```
@@ -83,8 +83,14 @@ networks:
     driver: bridge
 ```
 ### Users-db configuration
-
-
+Deploy the liquibase container
+```
+docker run -it --network=bykstack riaee/byk-users-db:liquibase20220615 bash
+```
+Run the following command inside liquibase container
+```
+liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=123 --changelog-file=/master.yml update
+```
 
 
 ## Note
