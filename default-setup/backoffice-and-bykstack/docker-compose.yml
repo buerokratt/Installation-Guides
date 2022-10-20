@@ -123,9 +123,9 @@ services:
       - security.oauth2.client.client-id=tara_client_id
       - security.oauth2.client.client-secret=tara_client_secret
       - security.oauth2.client.registered-redirect-uri=https://tim.byk.buerokratt.ee/authenticate
-      - security.oauth2.client.user-authorization-uri=https://tara.ria.ee/oidc/authorize
-      - security.oauth2.client.access-token-uri=https://tara.ria.ee/oidc/token
-      - security.oauth2.resource.jwk.key-set-uri=https://tara.ria.ee/oidc/jwks
+      - security.oauth2.client.user-authorization-uri=https://tara-test.ria.ee/oidc/authorize
+      - security.oauth2.client.access-token-uri=https://tara-test.ria.ee/oidc/token
+      - security.oauth2.resource.jwk.key-set-uri=https://tara-test.ria.ee/oidc/jwks
       - auth.success.redirect.whitelist=https://admin.byk.buerokratt.ee/auth/callback,https://byk.buerokratt.ee,https://byk.buerokratt.ee/auth/callback,https://admin.byk.buerokratt.ee
       - frontpage.redirect.url=https://admin.byk.buerokratt.ee
       - "headers.contentSecurityPolicy=upgrade-insecure-requests; default-src 'self' 'unsafe-inline' 'unsafe-eval' https://tim.byk.buerokratt.ee https://admin.byk.buerokratt.ee https://ruuter.byk.buerokratt.ee https://priv-ruuter.byk.buerokratt.ee byk-tim byk-public-ruuter byk-private-ruuter byk-customer-service; object-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://byk.buerokratt.ee https://admin.byk.buerokratt.ee https://tim.byk.buerokratt.ee; connect-src 'self' https://byk.buerokratt.ee https://tim.byk.buerokratt.eehttps://admin.byk.buerokratt.ee https://ruuter.byk.buerokratt.ee https://priv-ruuter.byk.buerokratt.ee; frame-src 'self'; media-src 'none'"
