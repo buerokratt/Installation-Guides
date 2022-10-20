@@ -24,7 +24,7 @@ services:
     command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
     environment:
       - POSTGRES_USER=byk
-      - POSTGRES_PASSWORD=123
+      - POSTGRES_PASSWORD=01234
       - POSTGRES_DB=byk
     volumes:
       - ./users-db/cert.crt:/etc/tls/tls.crt
