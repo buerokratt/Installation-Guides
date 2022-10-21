@@ -95,7 +95,7 @@ createdb -O byk -e -U byk byk
 ```
 ##### This command is optional. It allows to check and enter into created `byk` database. 
 Use these commands to check youd database:
-`\l` `\dt` `\db`
+`\l` `\dt` `\db`  
 To exit the database enviorment, use `\q` command
 ```
 psql -h ADDRESS_WHERE_PSQL_IS -p 5433 -U byk
@@ -132,7 +132,7 @@ createdb -O tim -e -U tim tim
 ```
 ##### This command is optional. It allows to check and enter into created `tim` database.
 Use these commands to check youd database:
-`\l` `\dt` `\db`
+`\l` `\dt` `\db`  
 To exit the database enviorment, use `\q` command
 ```
 psql -h ADDRESS_WHERE_PSQL_IS -p 5432 -U tim
