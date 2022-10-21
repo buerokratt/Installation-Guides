@@ -109,7 +109,7 @@ docker run -it --network=bykstack riaee/byk-users-db:liquibase20220615 bash
 ```
 Run the `liquibase` command to seed your `byk` database
 ```
-liquibase --url=jdbc:postgresql://USERS-DB-ADDRESS:5432/byk?user=byk --password=01234 --changelog-file=/master.yml update
+liquibase --url=jdbc:postgresql://USERS-DB-ADDRESS:5433/byk?user=byk --password=01234 --changelog-file=/master.yml update
 ```
 ```
 exit`
