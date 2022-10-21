@@ -93,7 +93,7 @@ Insde the container run the commands as follows
 ```
 createdb -O byk -e -U byk byk
 ```
-##### This command is optional. It allows to check and enter into created `byk` database. To exit the database enviorment, use `\q'command
+##### This command is optional. It allows to check and enter into created `byk` database. To exit the database enviorment, use \q command
 ```
 psql -h ADDRESS_WHERE_PSQL_IS -p 5433 -U byk
 ```
@@ -127,7 +127,7 @@ Insde the container run the commands as follows
 ```
 createdb -O tim -e -U tim tim
 ```
-##### This command is optional. It allows to check and enter into created `tim` database. To exit the database enviorment, use `\q'command
+##### This command is optional. It allows to check and enter into created `tim` database. To exit the database enviorment, use `\q` command
 ```
 psql -h ADDRESS_WHERE_PSQL_IS -p 5432 -U tim
 ```
