@@ -93,18 +93,23 @@ Insde the container run the commands as follows
 ```
 createdb -O byk -e -U byk byk
 ```
-##### This command is optional. It allows to check and enter into created `byk` database. 
+##### This command is optional. It allows to check and enter into created `byk` database. To exit the database enviorment, use `\q'command
 ```
 psql -h ADDRESS_WHERE_PSQL_IS -p 5433 -U byk
 ```
 ```
 exit
 ```
+Run the liquibase enviorment to seed your `byk` database
 ```
 docker run -it --network=bykstack riaee/byk-users-db:liquibase20220615 bash
 ```
+Run the `liquibase` command to seed your `byk` database
 ```
 liquibase --url=jdbc:postgresql://USERS-DB-ADDRESS:5432/byk?user=byk --password=01234 --changelog-file=/master.yml update
+```
+```
+exit`
 ```
 
 #### TIM database manual creation
@@ -122,7 +127,7 @@ Insde the container run the commands as follows
 ```
 createdb -O tim -e -U tim tim
 ```
-##### This command is optional. It allows to check and enter into created `tim` database.
+##### This command is optional. It allows to check and enter into created `tim` database. To exit the database enviorment, use `\q'command
 ```
 psql -h ADDRESS_WHERE_PSQL_IS -p 5432 -U tim
 ```
