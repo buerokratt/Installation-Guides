@@ -11,7 +11,138 @@
 ### Directory by dates
 - [29.09.22](#29-09-22)
 
-### 29.09.22
+#### 21.10
+##### Database creation, seeding and adding test-user
+Give `cert.crt` and `key.key` files rights. Do it under both `users-db` and `tim-db` folder
+```
+sudo chown 999:999 key.key
+```
+```
+sudo chmod 0600 key.key
+```
+```
+sudo chown 999:999 cert.crt
+```
+```
+sudo chmod 0600 cert.crt
+```
+
+##### Run the databases docker-compose.yml
+
+```
+version: '3.9'
+services:
+
+  users-db:
+    container_name: users-db
+    image: postgres:14.1
+    command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
+    environment:
+      - POSTGRES_USER=byk
+      - POSTGRES_PASSWORD=01234
+      - POSTGRES_DB=byk
+    volumes:
+      - ./users-db/cert.crt:/etc/tls/tls.crt
+      - ./users-db/key.key:/etc/tls/tls.key
+      - users-db:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    networks:
+      - bykstack
+
+  tim-postgresql:
+    container_name: tim-postgresql
+    image: postgres:14.1
+    command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
+    environment:
+      - POSTGRES_USER=tim
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=tim
+    volumes:
+      - ./tim-db/cert.crt:/etc/tls/tls.crt
+      - ./tim-db/key.key:/etc/tls/tls.key
+      - tim-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - bykstack
+
+
+volumes:
+  users-db:
+    driver: local
+  tim-db:
+    driver: local
+
+
+networks:
+  bykstack:
+    name: bykstack
+    driver: bridge
+```
+
+#### Creating the users database manualy and seeding it
+
+Go into container that is runnoing postgresql users database
+```
+docker exec -it USERS-DB-CONTAINER bash
+```
+
+Insde the container run the commands as follows
+
+```
+createdb -O byk -e -U byk byk
+```
+```
+psql -h ADDRESS_WHERE_PSQL_IS -p 5433 -U byk
+```
+```
+exit
+```
+```
+docker run -it --network=bykstack riaee/byk-users-db:liquibase20220615 bash
+```
+```
+liquibase --url=jdbc:postgresql://USERS-DB-ADDRESS:5432/byk?user=byk --password=01234 --changelog-file=/master.yml update
+```
+
+#### TIM database manual creation
+
+tim-postgresql
+createdb -O tim -e  -U tim tim
+
+Go into container that is running postgresql TIM database
+```
+docker exec -it TIM-CONTAINER bash
+```
+
+Insde the container run the commands as follows
+
+```
+createdb -O tim -e -U tim tim
+```
+```
+psql -h ADDRESS_WHERE_PSQL_IS -p 5432 -U tim
+```
+```
+exit
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 29.09.221
 ##### Varmo
 Installing the TIM separetaly. It is important, that the databases are installed beforehand, as the TIM relies on tim-postrgesql.
 
