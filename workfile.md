@@ -117,8 +117,6 @@ exit`
 
 #### TIM database manual creation
 
-tim-postgresql
-createdb -O tim -e  -U tim tim
 
 Go into container that is running postgresql TIM database
 ```
