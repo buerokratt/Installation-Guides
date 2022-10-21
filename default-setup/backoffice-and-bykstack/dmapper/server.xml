@@ -21,6 +21,7 @@
     <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
     <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
     <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
+
     <GlobalNamingResources>
         <Resource name="UserDatabase" auth="Container"
                   type="org.apache.catalina.UserDatabase"
@@ -28,6 +29,7 @@
                   factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
                   pathname="conf/tomcat-users.xml"/>
     </GlobalNamingResources>
+
     <Service name="Catalina">
         <Connector port="8443"
                    protocol="org.apache.coyote.http11.Http11NioProtocol"
@@ -37,9 +39,10 @@
                    maxThreads="150"
                    scheme="https"
                    secure="true"
-                   SSLCertificateFile="${catalina.base}/conf/cert.crt"
-                   SSLCertificateKeyFile="${catalina.base}/conf/key.key"
+                   SSLCertificateFile="${catalina.base}/conf/tls.crt"
+                   SSLCertificateKeyFile="${catalina.base}/conf/tls.key"
         />
+
         <Engine name="Catalina" defaultHost="localhost">
             <Realm className="org.apache.catalina.realm.LockOutRealm">
                 <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
@@ -48,7 +51,8 @@
 
             <Host name="localhost" appBase="webapps"
                   unpackWARs="true" autoDeploy="true">
-                <Valve className="org.apache.catalina.valves.ErrorReportValve" showReport="false" showServerInfo="false" />
+                <Valve className="org.apache.catalina.valves.ErrorReportValve" showReport="false"
+                       showServerInfo="false"/>
                 <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                        prefix="localhost_access_log" suffix=".txt"
                        pattern="%h %l %u %t &quot;%r&quot; %s %b"/>
