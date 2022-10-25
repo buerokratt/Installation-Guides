@@ -33,7 +33,7 @@ services:
     command:
       - test
       - --out
-      - results/test
+      - results
    depends_on:
       train-bot:
         condition: service_completed_successfully
