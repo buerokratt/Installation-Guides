@@ -1,0 +1,33 @@
+version: "3.0"
+nlu:
+- intent: common_klienditeenindajale_suunamine
+  examples: |
+    - soovin klienditeendajat
+    - soovin inimesega rääkida
+    - andke klienditeenindajale
+    - andke inimest
+    - anna klienditeenindajat
+    - anna teenindajat
+    - anna inimest
+    - soovin teenindajat
+    - sooviks inimest
+    - tahan inimesega suhelda
+    - tahan suhelda klienditeenindajaga
+    - tahan klienditeenindajat
+    - suuna klienditeenindajale
+    - suuna teenindajale
+    - suuna inimesele
+    - suuna mind klienditeenindajale
+    - suuna mind ümber
+    - agenti palun
+    - suuna ming agendile
+    - kõne agendile suunata
+    - soovin agendiga suhelda
+    - palun inimest
+    - palun teenindajat
+    - palun klienditeenindajat
+    - palun kasutajatuge
+    - suuna mind kasutajatoele
+    - suuna mind teenindajele
+    - soovin, et suunaksite mind
+    - kas saaksin nõustajaga suhelda 
