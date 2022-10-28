@@ -11,6 +11,18 @@
 ### Directory by dates
 - [29.09.22](#29-09-22)
 
+#### 28.10
+
+During databases creation, next step is important
+
+```
+docker run -it --network=bykstack ubuntu:latest bash
+apt-get -y update && apt-get -y install postgresql-client
+psql -d byk -U byk -h users-db -p 5432
+insert into configuration(key, value) values ('bot_institution_id', 'PLACEHOLDER BOT_NAME');
+CREATE EXTENSION hstore;
+```
+
 #### 21.10
 ##### Database creation, seeding and adding test-user
 Give `cert.crt` and `key.key` files rights. Do it under both `users-db` and `tim-db` folder
