@@ -1,0 +1,87 @@
+version: "3.0"
+stories:
+
+# - story: komisjoni_poordumise_soov_on_kaupleja_poole_poordunud
+#   steps:
+#   - intent: komisjoni_pöördumise_soov
+#   - action: form_komisjoni_poole_poordumine
+#   - active_loop: form_komisjoni_poole_poordumine
+#   - slot_was_set:
+#     - requested_slot: on_kaupleja_poole_poordunud
+#   - slot_was_set:
+#     - on_kaupleja_poole_poordunud: true
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_on_kaupleja_poole_poordunud
+#   - action: action_restart
+# - story: follwup
+#   steps:
+#   - checkpoint: check_asked_question
+#   - action: utter_on_kaupleja_poole_poordunud
+#   - action: action_restart
+
+# - story: komisjoni_poordumise_soov_on_kaupleja_poole_poordunud
+#   steps:
+#   - action: form_komisjoni_poole_poordumine
+#   - active_loop: form_komisjoni_poole_poordumine
+#   - slot_was_set:
+#     - requested_slot: on_kaupleja_poole_poordunud
+#   - slot_was_set:
+#     - on_kaupleja_poole_poordunud: true
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_on_kaupleja_poole_poordunud
+#   - action: action_restart
+
+
+# - story: komisjoni_poordumise_soov_pole_kaupleja_poole_poordunud
+#   steps:
+#   - intent: komisjoni_pöördumise_soov
+#   - action: form_komisjoni_poole_poordumine
+#   - active_loop: form_komisjoni_poole_poordumine
+#   - slot_was_set:
+#     - requested_slot: on_kaupleja_poole_poordunud
+#   - slot_was_set:
+#     - on_kaupleja_poole_poordunud: false
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_ei_ole_kaupleja_poole_poordunud
+#   - action: action_restart
+
+# - story: test
+#   steps:
+#   - intent: nlu_fallback
+#   - action: action_check_confidence
+#   - action: utter_not_confident
+#   - action: custom_fallback_form
+#   - active_loop: custom_fallback_form
+#   - slot_was_set:
+#     - requested_slot: affirm_deny
+#   - slot_was_set:
+#     - affirm_deny: jah
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - checkpoint: check_flow_finished
+
+# - story: test2
+#   steps:
+#   - checkpoint: check_flow_finished
+#   - action: action_react_to_affirm_deny_in_custom_fallback_form
+#   - slot_was_set:
+#     - affirm_deny: null
+#   - action: form_komisjoni_poole_poordumine
+#   - active_loop: form_komisjoni_poole_poordumine
+#   - slot_was_set:
+#     - requested_slot: on_kaupleja_poole_poordunud
+#   - slot_was_set:
+#     - on_kaupleja_poole_poordunud: false
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_ei_ole_kaupleja_poole_poordunud
+#   - action: action_restart
+    

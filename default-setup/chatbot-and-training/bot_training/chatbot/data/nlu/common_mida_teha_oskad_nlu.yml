@@ -1,0 +1,68 @@
+version: "3.0"
+nlu:
+- intent: common_mida_teha_oskad
+  examples: |
+    - mida sa oskad?
+    - mida sa oskad+
+    - Mida sa teha oskad?
+    - mille kohta sa infot oskad jagada?
+    - millist abi sinu käest saab?
+    - Ma tahaks teada, et mida sa oskad teha?
+    - Mida sa oskad teha?
+    - Millega sa aidata oskad?
+    - millega sa mind aidata saad
+    - millega saad abiks olla?
+    - Mis teemadel sa oskad vastata?
+    - Milles sinu töö põhineb ?
+    - Mida sa siis tead?
+    - kuidas mind aidata oskad?
+    - Mis teemal võib küsida?
+    - Mida sa oskad?
+    - Mis sa mulle rääkida oskad?
+    - mis küsimusi saab esitada?
+    - mis sa teha oskad
+    - Millega tegeled
+    - Mida teed
+    - mida sa teed
+    - Millist muusikat sa kuulad?
+    - mis möllad?
+    - mis möllad siis?
+    - mis möllad
+    - mis möllad muidu?
+    - Mida sa vabal ajal teed?
+    - Mis õhtul teed?
+    - Mis teed?
+    - Mida sa õhtuti teed?
+    - mis toimub?
+    - Mida sa teed?
+    - milleks Sa siin oled?
+    - millega sa tegeled?
+    - miks sa ei vasta
+    - miks sa ei vasta?
+    - miks sa mu küsimustele ei vasta?!
+    - Miks sa ei oska vastata?
+    - kas sa üldse küsimusel ja suvalisel lausungil teed vahet?
+    - miks sa ei tea mida ma küsin
+    - mis teenuseid te pakute
+    - Kuidas sa töötad?
+    - Kuidas sa õpid?
+    - Kuidas sa targaks oled saanud?
+    - Kuidas sa tehtud oled?
+    - Millest sa oled tehtud?
+    - mis ma teha saan
+    - Kuidas töötad?
+    - kuidas toimid?
+    - kuidas õpid?
+    - millest tehtud oled?
+    - mis moel Sa töötad?
+    - mis moel Sa toimid?
+    - mis moel Sa õpid?
+    - mis moodi töötad
+    - mis moodi sina tööd teed
+    - mis ma sinuga teha saan
+    - mis võimalised mul on
+    - millisel moel sa töötad?
+    - kuidas sina töötad
+    - kuidas sa küsimustele vastata oskad
+    - kas sa ise midagi ei oskagi?
+    - kas sa oskad vastata täiesti iseseisvalt

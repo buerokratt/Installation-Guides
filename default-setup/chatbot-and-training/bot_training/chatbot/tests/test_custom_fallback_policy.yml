@@ -1,0 +1,50 @@
+version: "3.0"
+stories:
+- story: fallback with confidence 0%-60% part 1
+  steps:
+  - user: |
+      asd asd asd asd asd asd aswefwefwefwefwefwefwef
+    intent: nlu_fallback
+  - action: action_check_confidence
+
+- story: fallback part 2
+  steps:
+  - action: utter_ei_pakkunud_õigesti
+  - action: direct_to_customer_support_form
+  - active_loop: direct_to_customer_support_form
+  - slot_was_set:
+    - requested_slot: affirm_deny
+  - user: |
+      jah palun
+    intent: common_kinnitamine
+  - action: direct_to_customer_support_form
+  - active_loop: direct_to_customer_support_form
+  - slot_was_set:
+    - affirm_deny: jah palun
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_react_to_affirm_deny_in_direct_to_customer_support_form
+
+
+
+
+#   - active_loop: custom_fallback_form
+#   - user: |
+#       jah
+#     intent: nlu_fallback
+#   - action: custom_fallback_form
+#   - active_loop: null
+#   - action: action_react_to_affirm_deny_in_custom_fallback_form
+  
+# - story: A test successful triggering and completion of direct_to_customer_support_form 
+#   steps:
+#   - action: utter_ei_pakkunud_õigesti
+#   - action: direct_to_customer_support_form
+#   - active_loop: direct_to_customer_support_form
+#   - user: |
+#       ei
+#     intent: nlu_fallback
+#   - action: direct_to_customer_support_form
+#   - active_loop: null
+#   - action: action_react_to_affirm_deny_in_direct_to_customer_support_form
