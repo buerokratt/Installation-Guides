@@ -74,6 +74,8 @@ services:
     image: riaee/byk-dmapper:10
     environment:
       - logging.level.root=INFO
+      - headers.contentSecurityPolicy=
+      - cors.allowedOrigins=ruuter.test.buerokratt.ee,https://ruuter.aadress.ee
     ports:
       - 8081:8443
     volumes:
