@@ -92,6 +92,7 @@ Run the following command inside liquibase container
 liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=123 --changelog-file=/master.yml update
 ```
 
+Run following commands
 ```
 docker run -it --network=bykstack ubuntu:latest bash
 ```
