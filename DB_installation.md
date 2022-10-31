@@ -95,9 +95,12 @@ liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=123 --ch
 ```
 docker run -it --network=bykstack ubuntu:latest bash
 ```
+```
 apt-get -y update && apt-get -y install postgresql-client
 ```
+```
 psql -d byk -U byk -h users-db -p 5432
+```
 ```
 insert into configuration(key, value) values ('bot_institution_id', 'PLACEHOLDER BOT_NAME');
 ```
