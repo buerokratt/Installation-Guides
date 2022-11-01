@@ -1,5 +1,59 @@
 ## About
 ##### Database installation for Buerokratt
+##### Manual install of `users-db` database (Debian based)
+
+Enter the VM designated for databases.
+Install Postgres
+```
+apt-get -y update && apt-get -y install postgresql-client
+```
+Enter to postgres as superuser
+```
+su - postgres
+```
+Create user `byk`
+```
+create user byk with encrypted password 'PASSWORD';
+```
+Chck if the ser `byk` has been created
+```
+\du+
+```
+Exit
+```
+\q
+```
+Enter to postgres as `byk`
+```
+PGPASSWORD=BYK psql -U byk -h DB_HOST -p 5432
+```
+Create database
+```
+createdb -O byk -e -U byk byk
+```
+Exit
+
+###### Seed the created database
+```
+docker run --network=bykstack riaee/byk-users-db:liquibase20220615 bash
+```
+```
+liquibase --url=jdbc:postgresql://DB_HOST:5433/byk?user=byk --password=PASSWORD --changelog-file=/master.yml update"
+```
+###### Add the configuration
+Enter to postgres
+```
+PGPASSWORD=BYK psql -U byk -h DB_HOST -p 5432
+```
+Insert configuration
+```
+insert into configuration(key, value) values ('bot_institution_id', '$bot_name');
+```
+```
+CREATE EXTENSION hstore;
+```
+You are done. Exit the postgres envorment
+
 
 ##### Users database and TIM-postresql install
 
@@ -14,7 +68,7 @@ services:
    #command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
     environment:
       - POSTGRES_USER=tim
-      - POSTGRES_PASSWORD=123
+   user `by`   - POSTGRES_PASSWORD=123
       - POSTGRES_DB=tim
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
