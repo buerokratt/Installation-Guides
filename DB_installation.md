@@ -16,7 +16,7 @@ Create user `byk`
 ```
 create user byk with encrypted password 'PASSWORD';
 ```
-Chck if the ser `byk` has been created
+Check if the user `byk` has been created
 ```
 \du+
 ```
@@ -48,7 +48,7 @@ PGPASSWORD=BYK psql -U byk -h DB_HOST -p 5432
 ```
 Insert configuration
 ```
-insert into configuration(key, value) values ('bot_institution_id', '$bot_name');
+insert into configuration(key, value) values ('bot_institution_id', 'bot_name');
 ```
 ```
 CREATE EXTENSION hstore;
