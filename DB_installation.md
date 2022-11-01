@@ -1,5 +1,6 @@
 ## About
 ##### Database installation for Buerokratt
+
 ##### Manual install of `users-db` database (Debian based)
 
 Enter the VM designated for databases.
@@ -55,9 +56,8 @@ CREATE EXTENSION hstore;
 You are done. Exit the postgres envorment
 
 
-##### Users database and TIM-postresql install
+##### Users database and TIM-postgresl docker-compose.yml
 
-### docker-compose.yml
 ```
 version: '3.9'
 services:
@@ -136,33 +136,6 @@ networks:
     name: bykstack
     driver: bridge
 ```
-### Users-db configuration
-Deploy the liquibase container
-```
-docker run -it --network=bykstack riaee/byk-users-db:liquibase20220615 bash
-```
-Run the following command inside liquibase container
-```
-liquibase --url=jdbc:postgresql://users-db:5432/byk?user=byk --password=123 --changelog-file=/master.yml update
-```
-
-Run following commands
-```
-docker run -it --network=bykstack ubuntu:latest bash
-```
-```
-apt-get -y update && apt-get -y install postgresql-client
-```
-```
-psql -d byk -U byk -h users-db -p 5432
-```
-```
-insert into configuration(key, value) values ('bot_institution_id', 'PLACEHOLDER BOT_NAME');
-```
-```
-CREATE EXTENSION hstore;
-```
-
 
 ## Note
 #### Known issues
