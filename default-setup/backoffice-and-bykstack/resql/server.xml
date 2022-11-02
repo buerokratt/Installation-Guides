@@ -119,8 +119,8 @@
                    maxThreads="150"
                    scheme="https"
                    secure="true"
-                   SSLCertificateFile="${catalina.base}/conf/tls.crt"
-                   SSLCertificateKeyFile="${catalina.base}/conf/tls.key"
+                   SSLCertificateFile="${catalina.base}/conf/cert.crt"
+                   SSLCertificateKeyFile="${catalina.base}/conf/key.key"
         />
 
         <!-- Define an AJP 1.3 Connector on port 8009 -->
