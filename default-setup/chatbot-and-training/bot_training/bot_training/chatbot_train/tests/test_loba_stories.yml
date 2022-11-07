@@ -1,0 +1,121 @@
+version: "3.0"
+stories:
+- story: klienditeenindajale_suunamine
+  steps:
+  - user: |
+      tahan suhelda klienditeenindajaga
+    intent: common_klienditeenindajale_suunamine
+  - action: utter_common_klienditeenindajale_suunamine
+
+- story: hüvasti_jätmine
+  steps:
+  - user: |
+      headaega
+    intent: common_hüvasti_jätmine
+  - action: utter_common_hüvasti_jätmine
+
+- story: kinnitamine
+  steps:
+  - user: |
+      jah
+    intent: common_kinnitamine
+  - action: action_listen
+
+- story: eitamine
+  steps:
+  - user: |
+      ei
+    intent: common_eitamine
+  - action: action_listen
+
+- story: tänamine
+  steps:
+  - user: |
+      aitähh
+    intent: common_tänamine
+  - action: utter_common_tänamine
+
+- story: kompliment_botile
+  steps:
+  - user: |
+      bürokratt oled tore
+    intent: common_kompliment_botile
+  - action: utter_common_kompliment_botile
+
+- story: kuidas_läheb
+  steps:
+  - user: |
+      kuidas läheb
+    intent: common_kuidas_läheb
+  - action: utter_common_kuidas_läheb
+
+- story: abi_küsimine
+  steps:
+  - user: |
+      mul on abi vaja
+    intent: common_abi_küsimine
+  - action: utter_common_abi_küsimine
+
+- story: kas_oled_robot
+  steps:
+  - user: |
+      kas sa oled inimene
+    intent: common_kas_oled_robot
+  - action: utter_common_kas_oled_robot
+  
+- story: mida_teha_oskad
+  steps:
+  - user: |
+      mida sa oskad
+    intent: common_mida_teha_oskad
+  - action: utter_common_mida_teha_oskad
+
+- story: kelle_loodud
+  steps:
+  - user: |
+      kelle toodang sa oled?
+    intent: common_kelle_loodud
+  - action: utter_common_kelle_loodud
+
+- story: tervitus
+  steps:
+  - user: |
+      Tere
+    intent: common_tervitus
+  - action: utter_common_tervitus
+
+- story: kui_vana_oled
+  steps:
+  - user: |
+      kui vana sa oled
+    intent: common_kui_vana_oled
+  - action: utter_common_kui_vana_oled
+
+- story: roppused
+  steps:
+  - user: |
+      mine perse
+    intent: common_roppused
+  - action: utter_common_roppused
+
+- story: hädaabi_number
+  steps:
+  - user: |
+      mis numbrilt saan kiirabi
+    intent: common_hädaabi_number
+  - action: utter_common_hädaabi_number
+  
+- story: mis_keeles
+  steps:
+  - user: |
+      kas sa vene keeles räägid?
+    intent: common_mis_keeles
+  - action: utter_common_mis_keeles
+
+- story: covid_küsimused
+  steps:
+  - user: |
+      Mitu nakatunud eile oli
+    intent: common_covid_küsimused
+  - action: utter_common_covid_küsimused
+

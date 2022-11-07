@@ -1,0 +1,33 @@
+version: "3.0"
+nlu:
+- intent: common_hüvasti_jätmine
+  examples: |
+    - head-aega
+    - headaega
+    - head aega
+    - head-aega!
+    - headaega!
+    - head aega.
+    - jälle nägemiseni
+    - kõike paremat
+    - hüvasti
+    - Head aega sulle kah
+    - nägemist
+    - ilusat päeva!
+    - kõike head
+    - nägemiseni
+    - ilusat õhtu jätku
+    - kena päeva
+    - ilusat õhtut
+    - head õhtut
+    - hüvasti
+    - päikest!
+    - hrad aega
+    - kõike head!
+    - head ööd
+    - ilusaid unenägusid
+    - head und
+    - värvilisi unesid
+    - värvilisi unenägusid
+    - ilusat und
+    - maga hästi

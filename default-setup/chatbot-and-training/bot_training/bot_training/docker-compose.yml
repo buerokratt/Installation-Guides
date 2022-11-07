@@ -1,0 +1,74 @@
+version: '3.0'
+
+services:
+
+  train-bot:
+    container_name: train-bot
+    image: riaee/byk:loba-bot-v0.2
+    environment:
+      - RASA_MAX_CACHE_SIZE=0
+    ports:
+      - 5006:5005
+    volumes:
+      - ./chatbot-train/:/app
+    command:
+      - train
+    networks:
+      - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        
+  test-bot:
+    container_name: test-bot
+    image: riaee/byk:loba-bot-v0.2
+    environment:
+      - RASA_MAX_CACHE_SIZE=0
+    ports:
+      - 5006:5005
+    volumes:
+      - ./chatbot-train/:/app
+    command:
+      - test
+      - --out
+      - results/test
+    depends_on:
+      train-bot:
+        condition: service_completed_successfully
+    networks:
+      - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+  test-bot-cv:
+    container_name: test-bot-cross-validate
+    image: riaee/byk:loba-bot-v0.2
+    environment:
+      - RASA_MAX_CACHE_SIZE=0
+    ports:
+      - 5007:5005
+    volumes:
+      - ./chatbot-train/:/app
+    command:
+      - test
+      - --cross-validation
+      - --folds
+      - "8"
+      - --out
+      - results/test-cross-validate
+    networks:
+      - bykstack
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+
+networks:
+  bykstack:
+    name: bykstack
+    driver: bridge
