@@ -25,7 +25,7 @@ services:
       - ./ruuter/public.urls.docker.json:/usr/local/tomcat/urls.env.json:ro
       - ./ruuter/cert.crt:/usr/local/tomcat/conf/cert.crt:ro
       - ./ruuter/key.key:/usr/local/tomcat/conf/key.key:ro
-      - ./location/of/training-prv-key:/root/.ssh/training-prv-key:ro
+      - /home/ubuntu/.ssh/rsa_key_name:/home/ubuntu/.ssh/rsa_key_name:ro
     ports:
       - 8080:8443
     restart: always
@@ -63,6 +63,7 @@ services:
       - ./ruuter/private.urls.docker.json:/usr/local/tomcat/urls.env.json:ro
       - ./ruuter/cert.crt:/usr/local/tomcat/conf/cert.crt:ro
       - ./ruuter/key.key:/usr/local/tomcat/conf/key.key:ro
+      - /home/ubuntu/.ssh/rsa_key_name:/home/ubuntu/.ssh/rsa_key_name:ro
     ports:
       - 8443:8443
     restart: always
