@@ -7,19 +7,22 @@
 - <ins>Description</ins> - After logging in as admin into backoffice GUI, the library "TEEMAD" will not load and you can see the loading circle non-stop. 
  
 - <ins>Cause</ins> - It is caused by non-functioning ssh private key. When using `kygen` command you create a key in OPENSH format, that java does not undersand.  
-        Looking at `private-ruuter` logs, you should see following example lines:    
-        ```
-        Caused by: com.jcraft.jsch.JSchException: invalid privatekey: [B@67ca1612
-        ```  
+Looking at `private-ruuter` logs, you should see following example lines:    
+```
+Caused by: com.jcraft.jsch.JSchException: invalid privatekey: [B@67ca1612
+```  
         
-        and  
-        
-        ``` Unable to call function getBlacklistedIntents  
-            java.lang.reflect.InvocationTargetException: null ```  
+and  
+     
+``` 
+Unable to call function getBlacklistedIntents  java.lang.reflect.InvocationTargetException: null 
+```  
             
-        This is caused by your RSA </ins>SSH key wrong format. When using `keygen` the defalt format is OPENSSH but it should be RSA  
+This is caused by your RSA </ins>SSH key wrong format. When using `keygen` the defalt format is OPENSSH but it should be RSA  
         
 - <ins>Solution</ins> - After you have created your SSH private key, use the command   
-        ```ssh-keygen -p -f /home/ubuntu/.ssh/id_rsa -m pem ```  
-        This ill change your key into RSA format.  
+ ```
+ ssh-keygen -p -f /home/ubuntu/.ssh/id_rsa -m pem 
+ ```  
+ This will change your key into RSA format.  
 
