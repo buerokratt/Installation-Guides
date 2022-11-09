@@ -25,6 +25,19 @@ This is caused by your RSA </ins>SSH key wrong format. When using `keygen` the d
  ssh-keygen -p -f /home/ubuntu/.ssh/id_rsa -m pem 
  ```  
  This will change your key into RSA format.  
+ In the `private.urls.docker.json` file, make sure the info is correct, most important, the training_bot_dir_path
+ ##### For example
+ ```
+ dmapper_url": "https://byk-dmapper:8443",
+    "ruuter_url": "https://localhost:8443",
+    "tim_url": "https://byk-tim:8443",
+    "resql_url": "https://byk-resql:8443",
+    "bot_url": "http://BOT_ADDRESS:5005",
+    "training_url": "TRAINING_BOT_ADDRESS",
+    "training_user": "ubuntu",
+    "training_prv_key":"/home/ubuntu/.ssh/id_rsa",
+    "training_bot_directory_name": "/srv/Buerokratt-onboarding/chatbot-installation/Installation-Guides/default-setup/chatbot-and-training/bot_training/chatbot",
+```
 
 
 ##### Issue
