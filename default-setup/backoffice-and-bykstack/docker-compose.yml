@@ -25,7 +25,6 @@ services:
       - ./ruuter/public.urls.docker.json:/usr/local/tomcat/urls.env.json:ro
       - ./ruuter/cert.crt:/usr/local/tomcat/conf/cert.crt:ro
       - ./ruuter/key.key:/usr/local/tomcat/conf/key.key:ro
-      - /home/ubuntu/.ssh/id_rsa:/home/ubuntu/.ssh/id_rsa:ro
     ports:
       - 8080:8443
     restart: always
