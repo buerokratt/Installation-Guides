@@ -25,7 +25,7 @@ This is caused by your RSA </ins>SSH key wrong format. When using `keygen` the d
  ssh-keygen -p -f /home/ubuntu/.ssh/id_rsa -m pem 
  ```  
  This will change your key into RSA format.  
- In the `private.urls.docker.json` file, make sure the info is correct, most important, the training_bot_dir_path
+ In the `private.urls.docker.json` and `public.urls.docker.json` files, make sure the info is correct, most important, the `training_bot_directory_name`
  ##### For example
  ```
  dmapper_url": "https://byk-dmapper:8443",
