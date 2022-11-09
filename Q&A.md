@@ -26,3 +26,18 @@ This is caused by your RSA </ins>SSH key wrong format. When using `keygen` the d
  ```  
  This will change your key into RSA format.  
 
+
+##### Issue
+###### Training the bot results in a "Trained with errors" issue
+- <ins>Description</ins> - In backoffice GUI, when you want to train a new bot model, it will result a issue, where it has trained, but with errors  
+
+- <ins>Cause</ins> - Looking in the private-ruuter` logs, you should see the following error/errors
+```
+2022-11-09T08:49:07.236Z ERROR []  : Unable to call function areLatestTestResultsPositive
+```
+More info to come
+
+- <ins>Solution</ins> - Solution on how to fix it, is to come
+
+
+
