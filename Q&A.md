@@ -50,7 +50,7 @@ This is caused by your RSA </ins>SSH key wrong format. When using `keygen` the d
 ```
 More info to come
 
-- <ins>Solution</ins> - Solution on how to fix it, is to come
+- <ins>Solution</ins> - Solution is to use `/home/username/` folder as the homefolder for trainbot files.
 
 
 
