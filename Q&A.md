@@ -54,6 +54,7 @@ More info to come
 
 
 - <ins>Follow-up solution</ins> - To use other folders, rather then /home/, then make sure, that train.sh file has correct paths added and that private.docker.urls.json has correct info. Example below
+`train.sh`
 ```
 #!/bin/bash
 echo 'Started training' >> train.log
@@ -67,6 +68,7 @@ docker compose up train-bot
 docker compose up test-bot
 docker compose down
 ```
+`deploy.sh`
 ```
 #!/bin/bash
 # Replace $DIR with user folder, where training files are located in
@@ -88,6 +90,7 @@ mv /opt/bot_training/models/latest-model models/model-$(date +%Y%m%d%H%M%S)
 scp -i $SSH_KEY chatbot-train/models/* $BOT_USER@$BOT_HOST:$BOT_DATA_DIR/models/
 ssh $BOT_HOST -i $SSH_KEY -l $BOT_USER "docker restart $BOT_CONTAINER_NAME"
 ```
+`private-ruuter.docker.urls.json`
 ```
 "training_bot_directory_name": "chatbot",
 ```
