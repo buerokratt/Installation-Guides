@@ -53,4 +53,42 @@ More info to come
 - <ins>Solution</ins> - Solution is to use `/home/username/` folder as the homefolder for trainbot files.
 
 
+- <ins>Follow-up solution</ins> - To use other folders, rather then /home/, then make sure, that train.sh file has correct paths added and that private.docker.urls.json has correct info. Example below
+```
+#!/bin/bash
+echo 'Started training' >> train.log
+rm -rf -v /opt/bot_training/chatbot-train/data >> train.log
+rm -rf -v /opt/bot_training/chatbot-train/models >> train.log
+rm -f -v /opt/bot_training/chatbot-train/domain.yml >> train.log
+cp -r -v  /opt/bot_training/chatbot/data chatbot-train >> train.log
+cp -v /opt/bot_training/chatbot/domain.yml chatbot-train >> train.log
+mkdir -v /opt/bot_training/chatbot-train/models >> train.log
+docker compose up train-bot
+docker compose up test-bot
+docker compose down
+```
+```
+#!/bin/bash
+# Replace $DIR with user folder, where training files are located in
+# Replace $SSH_KEY with ssh keyname for bot system
+# Replace $BOT_USER with username of user on bot system
+# Replace $BOT_HOST with hostname of bot system
+# Replace $BOT_CONTAINER_NAME with name of the bots container on bot system
+DIR=/home/ubuntu/lasttest/Installation-Guides/default-setup/chatbot-and-training/bot/loba
+BOT_HOST='buerokratt'
+BOT_USER='ubuntu'
+SSH_KEY='/home/ubuntu/.ssh/authorized_keys'
+BOT_CONTAINER_NAME='byk-bot'
+BOT_DATA_DIR='/opt/bot/loba'
+cd $DIR || exit 1
+mkdir -p models/latest-model
+cp /opt/bot_training/chatbot-train/models/* models/latest-model/
+cp -r /opt/bot_training/chatbot-train/results models/latest-model/
+mv /opt/bot_training/models/latest-model models/model-$(date +%Y%m%d%H%M%S)
+scp -i $SSH_KEY chatbot-train/models/* $BOT_USER@$BOT_HOST:$BOT_DATA_DIR/models/
+ssh $BOT_HOST -i $SSH_KEY -l $BOT_USER "docker restart $BOT_CONTAINER_NAME"
+```
+```
+"training_bot_directory_name": "chatbot",
+```
 
