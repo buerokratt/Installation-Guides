@@ -98,3 +98,8 @@ ssh $BOT_HOST -i $SSH_KEY -l $BOT_USER "docker restart $BOT_CONTAINER_NAME"
 ###### AUTH FAIL
 When your library "Teemad" is not loading and training the bot fails, take a look at your private ruuter logs.
 If you spot an error `auth failed` then check if the key type `ssh-rsa` is in `PubkeyAcceptedAlgorithms`
+
+
+##### Issue
+When training module in GUI tells, that "training module is flawed" and cannot be published and private-ruuter logs shw error cause "Cannot find the file"
+Make sure that your `bot` is running
