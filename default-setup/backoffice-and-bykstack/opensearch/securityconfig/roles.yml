@@ -1,0 +1,25 @@
+---
+_meta:
+  type: "roles"
+  config_version: 2
+
+byk-analyst:
+  reserved: false
+  hidden: false
+  cluster_permissions:
+    - "read"
+    - "cluster:monitor/nodes/stats"
+    - "cluster:monitor/task/get"
+  index_permissions:
+    - index_patterns:
+        - "*"
+      allowed_actions:
+        - "read"
+        - "write"
+  tenant_permissions:
+    - tenant_patterns:
+        - "global_tenant"
+        - "analyst_*"
+      allowed_actions:
+        - "kibana_all_write"
+  static: false
