@@ -12,15 +12,9 @@ create_cert = """openssl req -newkey rsa:4096 \
 
 give_ownership = """ https://stackoverflow.com/questions/55072221/deploying-postgresql-docker-with-ssl-certificate-and-key-with-volumes """
 
-directories = ["customer-support", "ruuter", "dmapper", "chat-widget", "tim", "resql"]
+directories = ["customer-support", "ruuter", "dmapper", "chat-widget", "tim", "resql","monitor"]
  
 for directory in directories:
     os.chdir(directory)
     subprocess.check_output(create_cert, shell=True, executable='/bin/bash')
-    os.chdir("..")
-
-for dir in dbDirectories:
-    os.chdir(directory)
-    subprocess.check_output(create_cert, shell=True, executable='/bin/bash')
-    subprocess.check_output(give_ownership)
     os.chdir("..")
