@@ -2,7 +2,7 @@
 ##### Here are listed issues we have witnesed during installation and how to solve them  and also notices to remember
 
 #### Notice - 
-While filing the configure.txt file or changint the calues manually, do not end the URL's with `/` as this will cause errors within the system.
+While editing the config.txt file or changing the values manually, do not end the URL's with `/` as this will cause errors within the system.
 
 ##### Issue   
 ###### Library "TEEMAD" does not load.
