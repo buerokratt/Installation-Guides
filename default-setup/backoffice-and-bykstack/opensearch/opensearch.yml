@@ -1,0 +1,53 @@
+---
+cluster.name: docker-cluster
+
+# Bind to all interfaces because we don't know what IP address Docker will assign to us.
+network.host: 0.0.0.0
+
+#cluster.initial_master_nodes: opensearch-node1
+node.name: byk-analytics-be
+#discovery.seed_hosts: opensearch-node1
+bootstrap.memory_lock: true
+discovery.type: single-node
+
+# # minimum_master_nodes need to be explicitly set when bound on a public IP
+# # set to 1 to allow single node clusters
+# discovery.zen.minimum_master_nodes: 1
+
+# Setting network.host to a non-loopback address enables the annoying bootstrap checks. "Single-node" mode disables them again.
+# discovery.type: single-node
+
+# TSL setup
+plugins.security.ssl.transport.pemcert_filepath: node1.pem
+plugins.security.ssl.transport.pemkey_filepath: node1-key.pem
+plugins.security.ssl.transport.pemtrustedcas_filepath: root-ca.pem
+
+# Hostname verification
+# https://opensearch.org/docs/latest/security-plugin/configuration/tls/#advanced-hostname-verification-and-dns-lookup
+plugins.security.ssl.transport.enforce_hostname_verification: false
+
+# Enable TLS on the REST layer, only https allowed
+plugins.security.ssl.http.enabled: true
+plugins.security.ssl.http.pemcert_filepath: node1.pem
+plugins.security.ssl.http.pemkey_filepath: node1-key.pem
+plugins.security.ssl.http.pemtrustedcas_filepath: root-ca.pem
+plugins.security.allow_unsafe_democertificates: false
+plugins.security.allow_default_init_securityindex: true
+plugins.security.authcz.admin_dn:
+  - 'CN=ADMIN,OU=UNIT,O=ORG,L=TALLINN,ST=HARJU,C=EE'
+plugins.security.nodes_dn:
+  - 'CN=node1,OU=UNIT,O=ORG,L=TALLINN,ST=HARJU,C=EE'
+
+plugins.security.audit.type: internal_opensearch
+plugins.security.enable_snapshot_restore_privilege: true
+plugins.security.check_snapshot_restore_write_privileges: true
+plugins.security.restapi.roles_enabled: [ "all_access" ]
+plugins.security.system_indices.enabled: true
+plugins.security.system_indices.indices: [ ".plugins-ml-model", ".plugins-ml-task", ".opendistro-alerting-config", ".opendistro-alerting-alert*", ".opendistro-anomaly-results*", ".opendistro-anomaly-detector*", ".opendistro-anomaly-checkpoints", ".opendistro-anomaly-detection-state", ".opendistro-reports-*", ".opensearch-notifications-*", ".opensearch-notebooks", ".opensearch-observability", ".opendistro-asynchronous-search-response*", ".replication-metadata-store", "*" ]
+#node.max_local_storage_nodes: 3
+plugins.security.roles_mapping_resolution: MAPPING_ONLY
+
+# Authentication cache timeout in minutes, disabled with 0, due to using jwt authentication
+plugins.security.cache.ttl_minutes: 0
+
+logger.level: DEBUG
