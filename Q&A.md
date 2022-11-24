@@ -4,6 +4,11 @@
 #### Notice - 
 While editing the config.txt file or changing the values manually, do not end the URL's with `/` as this will cause errors within the system.
 
+##### Issue - chat authentication error
+```
+GlobalExceptionHandler: Writing error: ErrorResponseBody[error=InvalidDataAccessApiUsageException, message=No value supplied for the SQL parameter 'receivedFromName': No value registered for key 'receivedFromName']
+```
+
 ##### Issue   
 ###### Library "TEEMAD" does not load.
 
