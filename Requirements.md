@@ -18,20 +18,21 @@ BYKSTACK VM
 4-8vCPU, 8-10GB RAM, min 5-10HDD
 ```
 #### URL requirements
-Production enviorment
-Customer-service - admin.buerokratt.YOURDOMAIN.ee
-TIM - tim.buerokratt.YOURDOMAIN.ee
-Public ruuter - ruuter.buerokratt.YOURDOMAIN.ee
-Private ruuter - priv-ruuter.buerokratt.YOURDOMAIN.ee
-Chat widget - buerokratt.YOURDOMAIN.ee
-Monitoring - seire.buerokratt.YOURDOMAIN.ee
-Analytics - analyytika.buerokratt.YOURDOMAIN.ee
+Production enviorment  
+Customer-service - admin.buerokratt.YOURDOMAIN.ee  
+TIM - tim.buerokratt.YOURDOMAIN.ee  
+Public ruuter - ruuter.buerokratt.YOURDOMAIN.ee   
+Private ruuter - priv-ruuter.buerokratt.YOURDOMAIN.ee  
+Chat widget - buerokratt.YOURDOMAIN.ee  
+Monitoring - seire.buerokratt.YOURDOMAIN.ee  
+Analytics - analyytika.buerokratt.YOURDOMAIN.ee  
 
-Test enviorment
-Customer-service - admin.test.buerokratt.YOURDOMAIN.ee
-TIM - tim.test.buerokratt.YOURDOMAIN.ee
-Public ruuter - ruuter.test.buerokratt.YOURDOMAIN.ee
-Private ruuter - priv-ruuter.test.buerokratt.YOURDOMAIN.ee
-Chat widget - buerokratt.test.YOURDOMAIN.ee
-Monitoring - seire.test.buerokratt.YOURDOMAIN.ee
-Analytics - analyytika.test.buerokratt.YOURDOMAIN.ee
+
+Test enviorment  
+Customer-service - admin.test.buerokratt.YOURDOMAIN.ee  
+TIM - tim.test.buerokratt.YOURDOMAIN.ee  
+Public ruuter - ruuter.test.buerokratt.YOURDOMAIN.ee  
+Private ruuter - priv-ruuter.test.buerokratt.YOURDOMAIN.ee  
+Chat widget - buerokratt.test.YOURDOMAIN.ee  
+Monitoring - seire.test.buerokratt.YOURDOMAIN.ee  
+Analytics - analyytika.test.buerokratt.YOURDOMAIN.ee  
