@@ -27,9 +27,7 @@ This document covers the installation of Bürokratt on [Ubuntu](https://ubuntu.c
 ### Prerequisites
 
 #### Approximate resource requirements
-- `Bykstack` and `Backoffice GUI` total of ~10GB RAM and 7CPU
-- `Bot` ~3GB RAM and 4CPU
-- `Training-bot` ~3GB RAM and 4CPU
+Check the requirements [here](../main/Requirements.md)
 
 Docker and docker-compose installation:
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04
