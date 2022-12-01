@@ -43,10 +43,6 @@ After ordering the VM's in RPLV follow these steps in Riigpiv (RPLV)
 - build the required VM's using the correct flavors (this automatically adds the required vcpu, ssd/hdd, ram) and choose Ubuntu 20.04 as OS (make sure to add extra ssh keys if necessary (alternatively you an add them under .ssh/authorized_keys)
 - add new networking security group to open required ports for buerokratt; add this security group to your existing VM's; make sure that you have also added web and ssh security groups
 - assign a floating IP to your bykstack VM
-- 
-
-
-
 
 #### VirtualMachine hosts file  
 vm-databases (for Database vm)  
@@ -75,3 +71,42 @@ ff02::2 ip6-allrouters
 ff02::3 ip6-allhosts
 ```
  
+#### Mounting the `data` disk  
+```
+sudo fdisk -l
+```
+
+```
+sudo parted /dev/vdb
+        mklabel gpt
+        quit
+```
+
+```
+sudo mkfs.ext4 /dev/vdb
+```
+
+```
+sudo mkdir /mnt/vdb
+```
+
+```
+sudo mount /dev/vdb /mnt/vdb
+```
+
+```
+sudo nano /etc/fstab
+        /dev/vdb    /mnt/vdb     ext4      defaults        0             0
+```
+
+```
+sudo mount | grep vdb
+```
+
+```
+sudo mount /dev/vdb /opt/
+```
+
+```
+sudo mount
+```
