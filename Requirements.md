@@ -17,13 +17,32 @@ BYKSTACK VirtualMachine (VM that runs buerokratt core services)
 ```
 4-8vCPU, 8-10GB RAM, min 5-10HDD
 ```
-#### VirtualMachine names for ssh traffic  
+#### VirtualMachine hosts file  
 vm-databases (for Database vm)  
 vm-bot (for Bot VM)  
 vm-trainingbot (for Bot train)  
 vm-bykstack (for buerokratt core services)  
 These addresses must be inserted into your VM's `/etc/hosts` file accompanied by their respected internal IP  
 
+for example:
+ ```
+ 
+ubuntu@client-bykstack:~$ nano /etc/hosts
+127.0.0.1 localhost
+192.168.11.1	 vm-Bykstack
+192.168.11.2	 vm-Databases
+192.168.11.3	 vm-Bot 
+192.168.11.4   vm-TrainingBot
+
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+```
 
 #### URL requirements
 Production enviorment  
