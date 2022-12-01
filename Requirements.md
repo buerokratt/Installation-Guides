@@ -1,7 +1,7 @@
 ### About
 #### Here is listed the requirements for buerokratt when depolying it
 
-Database VitualMachine (VM that runs postgres databases)
+Database VirtualMachine (VM that runs postgres databases)
 ```
 2vCPU, 4GB RAM, min 10-15GB HDD
 ```
