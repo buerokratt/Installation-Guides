@@ -4,6 +4,9 @@
 #### Notice - 
 While editing the config.txt file or changing the values manually, do not end the URL's with `/` as this will cause errors within the system.
 
+##### Issue - After logging you will be directed back to login page
+Make sure TARA has he correct IP (IP of your buerokratt project)
+
 ##### Issue - chat authentication error
 ```
 GlobalExceptionHandler: Writing error: ErrorResponseBody[error=InvalidDataAccessApiUsageException, message=No value supplied for the SQL parameter 'receivedFromName': No value registered for key 'receivedFromName']
