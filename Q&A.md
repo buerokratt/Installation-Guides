@@ -5,7 +5,7 @@
 While editing the config.txt file or changing the values manually, do not end the URL's with `/` as this will cause errors within the system.
 
 ##### Issue - After logging you will be directed back to login page
-Make sure TARA has he correct IP (IP of your buerokratt project)
+Make sure TARA has the correct IP (IP of your buerokratt project)
 
 ##### Issue - chat authentication error
 ```
