@@ -87,26 +87,11 @@ sudo mkfs.ext4 /dev/vdb
 ```
 
 ```
-sudo mkdir /mnt/vdb
-```
-
-```
-sudo mount /dev/vdb /mnt/vdb
-```
-
-```
 sudo nano /etc/fstab
-        /dev/vdb    /mnt/vdb     ext4      defaults        0             0
+        /dev/vdb    /opt    ext4      defaults        0             0
 ```
 
 ```
-sudo mount | grep vdb
+sudo mount -a | grep vdb
 ```
 
-```
-sudo mount /dev/vdb /opt/
-```
-
-```
-sudo mount
-```
