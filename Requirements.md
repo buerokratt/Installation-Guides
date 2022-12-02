@@ -112,7 +112,7 @@ cd /var/lib/
 sudo rm -rf docker/
 ```
 
-``
+```
 sudo ln -s /opt/docker
 ```
 
