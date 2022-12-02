@@ -94,4 +94,29 @@ sudo nano /etc/fstab
 ```
 sudo mount -a | grep vdb
 ```
+#### Move docker to `data` disk
 
+```
+cd /opt/
+```
+
+```
+sudo mkdir docker
+```
+
+```
+cd /var/lib/
+```
+
+```
+sudo rm -rf docker/
+```
+
+``
+sudo ln -s /opt/docker
+```
+
+Add user to docker group
+```
+sudo usermod -aG docker ${USER}
+```
