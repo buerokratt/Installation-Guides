@@ -11,6 +11,12 @@ Make sure TARA has the correct IP (IP of your buerokratt project)
 ```
 GlobalExceptionHandler: Writing error: ErrorResponseBody[error=InvalidDataAccessApiUsageException, message=No value supplied for the SQL parameter 'receivedFromName': No value registered for key 'receivedFromName']
 ```
+##### Issue - Error during script deployment
+```
+Creating network "bykstack" with driver "bridge"
+ERROR: failed to update bridge store for object type *bridge.networkConfiguration: open /var/lib/docker/network/files/local-kv.db: no such file or directory
+```
+Solution - sudo apt install --reinstall docker-ce
 
 ##### Issue   
 ###### Library "TEEMAD" does not load.
