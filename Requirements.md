@@ -109,12 +109,14 @@ cd /var/lib/
 ```
 
 ```
-sudo rm -rf docker/
+sudo mv -r docker/ /opt/docker
 ```
 
 ```
 sudo ln -s /opt/docker
 ```
+
+
 
 Add user to docker group
 ```
