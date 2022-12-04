@@ -31,7 +31,7 @@ class ActionDealWithAffirmationAnswer(Action):
             if "parse_data" in event.keys():
                 events_with_utterances.append(event)
         
-        if intent == "kinnitamine": # Kinnitus tuvastatud läbi intendi
+        if intent == "common_kinnitamine": # Kinnitus tuvastatud läbi intendi
             if events_with_utterances[-2]["parse_data"]["intent_ranking"][0]["name"] == "nlu_fallback":
                 vastus = events_with_utterances[-2]["parse_data"]["intent_ranking"][1]["name"]
                 if get_next_action(vastus) != None: #kontrollib rules ja kui sealt saab sisendi siis teeb...
