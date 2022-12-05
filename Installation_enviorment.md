@@ -5,6 +5,7 @@ Here it will be dscribed, how to prepaire BUEROKRATT installation enviorment in 
 - [x] DATA disk mounting
 - [x] Installation of dependancies (docker, docker-compose, PSQL etc.)
 - [x] Docker symlink
+- [x] SSH key preparation
 - [x] Caddy install
 
 #### VM prearation in Riigipilv GUI
@@ -63,6 +64,22 @@ Add user to docker group
 ```
 sudo usermod -aG docker ${USER}
 ```
+#### SSH preparation
+
+##### Create the key
+```
+cd ~/.ssh
+```
+```
+ssh-keygen -t rsa -m PEM "your_email@example.com"
+```
+Check your generated key
+```
+cat id_rsa.pub
+```
+Copy the public key into your VM's that need's to be accessed target file - `/home/ubuntu/.ssh/authorized_keys`
+
+
 
 #### Install `Caddy`
 ```
