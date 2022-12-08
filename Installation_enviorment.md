@@ -49,9 +49,6 @@ sudo mount -a | grep vdb
 cd /opt/
 ```
 ```
-sudo mkdir docker
-```
-```
 cd /var/lib/
 ```
 ```
