@@ -68,7 +68,7 @@ sudo ln -s /opt/docker
 cd ~/.ssh
 ```
 ```
-ssh-keygen -t rsa -m PEM "your_email@example.com"
+ssh-keygen -t rsa -m PEM
 ```
 Check your generated key
 ```
