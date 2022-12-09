@@ -157,3 +157,7 @@ sudo apt update
 ```
 sudo apt install caddy
 ```
+#### How to copy files from one VM to another
+```
+scp /path/to/file.name vm-name:/path/to/folder/
+```
