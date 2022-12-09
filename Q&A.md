@@ -23,7 +23,7 @@ Solution - sudo apt install --reinstall docker-ce
 
 - <ins>Description</ins> - After logging in as admin into backoffice GUI, the library "TEEMAD" will not load and you can see the loading circle non-stop. 
  
-- <ins>Cause</ins> - It is caused by non-functioning ssh private key. When using `kygen` command you create a key in OPENSH format, that java does not undersand.  
+- <ins>Cause</ins> - It is caused by non-functioning ssh private key. When using `keygen` command you create a key in OPENSSH format, that java does not undersand.  
 Looking at `private-ruuter` logs, you should see following example lines:    
 ```
 Caused by: com.jcraft.jsch.JSchException: invalid privatekey: [B@67ca1612
