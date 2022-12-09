@@ -4,6 +4,7 @@
 ###### After finished, this should be named to README.mdCreate 
 
 ###### Steps
+- [ ] Glossary
 - [ ] Rework existing documents (compile several into one, modify, delete, create)  
 - [x] Create a directory  
 - [ ] Present to team lead (tech team lead) and defend it and/or modify according to the notes received  
@@ -13,6 +14,18 @@
 
 ### About
 This document is the gateway to BUEROKRATT installation documentation
+
+#### Glossary
+
+### Glossary
+`Bykstack` - core components of Bürokratt that are essential for services to work  
+`Backoffice GUI` - graphical user interface as an administrative tool  
+`Chat Widget` - graphical user interface for End Users to chat via text messages  
+`Bot` - automated chatbot, responds to End Users without human interference  
+`Training-bot` - the same as `Bot` but is used only for training purposes  
+`Terminal` - [Linux command line tool](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)  
+`RPLV` - acronym of Riigipilv  
+
 
 #### Guides for buerokratt installation
 - Requirements - click [here](../main/Requirements.md) to find a guide for infrastructure requirements
