@@ -3,19 +3,19 @@
 
 Database VirtualMachine (VM that runs postgres databases)
 ```
-2vCPU, 4GB RAM, min 10-15GB HDD
+2vCPU, 4GB RAM, min 10-15GB SSD
 ```
 BOT VirtualMachine (VM that runs bot)
 ```
-4vCPU, 4GB RAM, min 10-15 GB HDD
+4vCPU, 4GB RAM, min 10-15 GB SSD
 ```
 BOT-TRAIN VirtualMachine (VM that runs bot train)
 ```
-4vCPU, 4-8GB RAM, min 10-15GB HDD
+4vCPU, 4-8GB RAM, min 10-15GB SSD
 ```
 BYKSTACK VirtualMachine (VM that runs buerokratt core services)
 ```
-4-8vCPU, 8-10GB RAM, min 5-10HDD
+4-8vCPU, 8-10GB RAM, min 5-10SSD
 ```
 ### Note
 Remember to add extra 8 - 10GB SSD for every VM's system disk.
