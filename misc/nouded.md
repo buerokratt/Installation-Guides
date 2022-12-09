@@ -18,7 +18,7 @@ BYKSTACK VM (virtuaal masin mille eesmärgiks on jooksutada buerokratti põhitee
 4-8vCPU, 8-10GB RAM, min 5-10 SSD/HDD
 ```
 ### Note
-Luues RPLV keskkonda, jäta meelde, et lisad iga masina kohta 8-10GB SSD/HDD süsteemi ketta (millel OS) jaoks.
+Luues RPLV keskkonda, jäta meelde, et lisad iga masina kohta 8-10GB SSD/HDD ekstra, süsteemi ketta (millel OS) jaoks.
 
 #### URL kirjeldused
 Toodangu keskkond  
