@@ -41,8 +41,11 @@ sudo nano /etc/fstab
 sudo mount -a | grep vdb
 ```
 
-#### Install `docker` and `docker-compoe`
-
+#### Install `docker` and `docker-compose`
+Add user to docker group
+```
+sudo usermod -aG docker ${USER}
+```
 
 #### Move docker to `data` disk
 ```
@@ -57,10 +60,7 @@ sudo mv -r docker/ /opt/docker
 ```
 sudo ln -s /opt/docker
 ```
-Add user to docker group
-```
-sudo usermod -aG docker ${USER}
-```
+
 #### SSH preparation
 
 ##### Create the key
