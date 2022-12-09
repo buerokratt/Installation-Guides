@@ -7,6 +7,8 @@ Here it will be dscribed, how to prepaire BUEROKRATT installation enviorment in 
 - [x] Docker symlink
 - [x] SSH key preparation
 - [x] Caddy install
+- [x] Caddy configuration
+- [x] Howt to use SCP
 
 ##### Initial VM preparation
 In Riigipilv GUI, under your tenant's security group management, make sure to allow following ports:
@@ -158,6 +160,7 @@ sudo apt update
 sudo apt install caddy
 ```
 ##### Caddyfile configuration
+```
 buerokratt.yourdomain.ee {
 	reverse_proxy /* X.X.X.X:3000 {
 		transport http { 
@@ -244,7 +247,7 @@ priv-ruuter.buerokratt.yourdomain.ee {
 	}
 }
 
-
+```
 #### How to copy files from one VM to another
 ```
 scp /path/to/file.name vm-name:/path/to/folder/
