@@ -15,6 +15,8 @@
 This document is the gateway to BUEROKRATT installation documentation
 
 #### Guides for buerokratt installation
+- Requirements - click [here](../main/Installation_enviorment.md) to find a guide for infrastructure requirements
 - Installation enviorment - click [here](../main/Installation_enviorment.md) to find a guide how to prepair your enviorment for buerokratt installation
-
+- Installing buerokratt - 
+- Troubleshooting Q&A - 
 
