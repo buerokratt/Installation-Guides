@@ -120,7 +120,7 @@ cd /opt/
 cd /var/lib/
 ```
 ```
-sudo mv -r docker/ /opt/docker
+sudo mv docker/ /opt/docker
 ```
 ```
 sudo ln -s /opt/docker
