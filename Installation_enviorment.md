@@ -1,17 +1,43 @@
 ### About  
 Here it will be dscribed, how to prepaire BUEROKRATT installation enviorment in your VM's
 
-- [x] In Riigipilv GUI, open your tenant and buis VM's. Follow the Riigipilv FAQ (for VM building) and Requirement.md (specs for VM's requirements)
+- [x] Initial VM preparation
 - [x] DATA disk mounting
 - [x] Installation of dependancies (docker, docker-compose, PSQL etc.)
 - [x] Docker symlink
 - [x] SSH key preparation
 - [x] Caddy install
 
-#### VM prearation in Riigipilv GUI
+##### Initial VM preparation
+In Riigipilv GUI, under your tenant's security group management, make sure to allow following ports:
+```
+    8081 Dmapper
+    3000 Chat-widget
+    3001 Customer-service
+    8082 Resql
+    8085 TIM
+    8443 Private ruuter
+    8080 Public ruuter
+```
+In terminal to access your VM use following command
+```
+ssh ubuntu@externalIP
+```
+After accessing VM in terminal, configure `/etc/hosts` to enable traix between VM's (you have to do it inside every VM you have created.
 
+```
+sudo nano /etc/hosts
+```
+Copy the following lines into the `hosts` file, make sure to change IP's according to what they are in your infrastructure
+```
+127.0.0.1 localhost
+192.168.11.1	 vm-Bykstack
+192.168.11.2	 vm-Databases
+192.168.11.3	 vm-Bot 
+192.168.11.4   vm-TrainingBot
+```
 
-#### DATA disk mounting
+##### DATA disk mounting
 Check your drives/disks  
 
 ```
@@ -41,7 +67,7 @@ sudo nano /etc/fstab
 sudo mount -a | grep vdb
 ```
 
-#### Install `docker` and `docker-compose`  
+##### Install `docker` and `docker-compose`  
 Install docker
 
 ```
@@ -79,7 +105,7 @@ Add user to docker group
 ```
 sudo usermod -aG docker ${USER}
 ```
-#### Install PSQL (Needed in your `DATABASE` VM)
+##### Install PSQL (Needed in your `DATABASE` VM)
 ```
 sudo apt install postgresql-client-common && sudo apt-get install postgresql-client
 ```
@@ -98,7 +124,7 @@ sudo mv -r docker/ /opt/docker
 sudo ln -s /opt/docker
 ```
 
-#### SSH preparation
+##### SSH preparation
 
 ##### Create the key
 ```
@@ -115,7 +141,7 @@ Copy the public key into your VM's that need's to be accessed target file - `/ho
 
 
 
-#### Install `Caddy`
+##### Install `Caddy`
 ```
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
 ```
