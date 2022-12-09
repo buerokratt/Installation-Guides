@@ -41,10 +41,46 @@ sudo nano /etc/fstab
 sudo mount -a | grep vdb
 ```
 
-#### Install `docker` and `docker-compose`
+#### Install `docker` and `docker-compose`  
+Install docker
+
+```
+sudo apt update
+```
+```
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+```
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+```
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+```
+```
+sudo apt install docker-ce
+```
+```
+sudo systemctl status docker
+```
+Install docker-compose
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+```
+sudo chmod +x /usr/local/bin/docker-compose
+```
+```
+docker-compose --version
+```
+Version output should be similar to this `docker-compose version 1.29.2, build 5becea4c`
+
 Add user to docker group
 ```
 sudo usermod -aG docker ${USER}
+```
+#### Install PSQL (Needed in your `DATABASE` VM)
+```
+sudo apt install postgresql-client-common && sudo apt-get install postgresql-client
 ```
 
 #### Move docker to `data` disk
