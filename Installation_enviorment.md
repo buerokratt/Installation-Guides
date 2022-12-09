@@ -157,6 +157,94 @@ sudo apt update
 ```
 sudo apt install caddy
 ```
+##### Caddyfile configuration
+buerokratt.yourdomain.ee {
+	reverse_proxy /* X.X.X.X:3000 {
+		transport http { 
+			tls 
+			tls_insecure_skip_verify 
+		}
+		flush_interval 0
+	}
+        log {
+                output file /var/log/caddy/access.log {
+                        roll_size 1gb
+                        roll_keep 5
+                        roll_keep_for 720h
+                }
+        }
+}
+
+admin.buerokratt.yourdomain.ee {
+	reverse_proxy /* X.X.X.X:3001 {
+		transport http { 
+			tls 
+			tls_insecure_skip_verify 
+		}
+		flush_interval 0
+	}
+        log {
+                output file /var/log/caddy/access.log {
+                        roll_size 1gb
+                        roll_keep 5
+                        roll_keep_for 720h
+                }
+        }
+
+}
+
+tim.buerokratt.yourdomain.ee {
+	reverse_proxy /* X.X.X.X:8085 {
+		transport http { 
+			tls 
+			tls_insecure_skip_verify 
+		}
+		flush_interval 0
+	}
+	log {
+	        output file /var/log/caddy/access.log {
+	                roll_size 1gb
+	                roll_keep 5
+	                roll_keep_for 720h
+	        }
+	}
+}
+
+ruuter.buerokratt.yourdomain.ee {
+	reverse_proxy /* X.X.X.X:8080 {
+		transport http { 
+			tls 
+			tls_insecure_skip_verify 
+		}
+		flush_interval 99
+	}
+        log {
+                output file /var/log/caddy/access.log {
+                        roll_size 1gb
+                        roll_keep 5
+                        roll_keep_for 720h
+                }
+        }
+}
+
+priv-ruuter.buerokratt.yourdomain.ee {
+	reverse_proxy /* X.X.X.X:8443 {
+		transport http { 
+			tls 
+			tls_insecure_skip_verify 
+		}
+		flush_interval 99
+	}
+	log {
+		output file /var/log/caddy/access.log {
+			roll_size 1gb
+			roll_keep 2
+			roll_keep_for 72h
+		}
+	}
+}
+
+
 #### How to copy files from one VM to another
 ```
 scp /path/to/file.name vm-name:/path/to/folder/
