@@ -1,24 +1,24 @@
 ### About
-#### Here is listed the requirements for buerokratt and how to build your infrastructure in Riigipilv
+#### Here is listed the requirements for buerokratt and how to build your infrastructure in Riigipilv (RPLV)
 
 Database VirtualMachine (VM that runs postgres databases)
 ```
-2vCPU, 4GB RAM, min 10-15GB SSD
+2vCPU, 4GB RAM, min 10-15GB SSD/HDD
 ```
 BOT VirtualMachine (VM that runs bot)
 ```
-4vCPU, 4GB RAM, min 10-15 GB SSD
+4vCPU, 4GB RAM, min 10-15 GB SSD/HDD
 ```
 BOT-TRAIN VirtualMachine (VM that runs bot train)
 ```
-4vCPU, 4-8GB RAM, min 10-15GB SSD
+4vCPU, 4-8GB RAM, min 10-15GB SSD/HDD
 ```
 BYKSTACK VirtualMachine (VM that runs buerokratt core services)
 ```
-4-8vCPU, 8-10GB RAM, min 5-10SSD
+4-8vCPU, 8-10GB RAM, min 5-10 SSD/HDD
 ```
 ### Note
-Remember to add extra 8 - 10GB SSD for every VM's system disk.
+Remember to add extra 8 - 10GB SSD/HDD for every VM's system disk.
 
 #### URL requirements
 Production enviorment  
@@ -40,8 +40,8 @@ Chat widget - buerokratt.test.YOURDOMAIN.ee
 Monitoring - seire.test.buerokratt.YOURDOMAIN.ee  
 Analytics - analyytika.test.buerokratt.YOURDOMAIN.ee 
 
-### Riigipilv infrastructure building for buerokratt
-After ordering the VM's in RPLV follow these steps in Riigpiv (RPLV)  
-- build the required VM's using the correct flavors (this automatically adds the required vcpu, ssd/hdd, ram) and choose Ubuntu 20.04 as OS (make sure to add extra ssh keys if necessary (alternatively you an add them under .ssh/authorized_keys)
+### RPLV infrastructure building for buerokratt
+After ordering the VM's in RPLV follow these steps in RPLV  
+- build the required VM's using the correct flavors (this automatically adds the required vcpu, ssd/hdd, ram) and choose Ubuntu 20.04 as OS (make sure to add extra ssh keys if necessary (alternatively you can add them under .ssh/authorized_keys)
 - add new networking security group to open required ports for buerokratt; add this security group to your existing VM's; make sure that you have also added web and ssh security groups
 - assign a floating IP to your bykstack VM
