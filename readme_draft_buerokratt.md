@@ -15,9 +15,7 @@
 ### About
 This document is the gateway to BUEROKRATT installation documentation
 
-#### Glossary
-
-### Glossary
+#### Glossary  
 `Bykstack` - core components of Bürokratt that are essential for services to work  
 `Backoffice GUI` - graphical user interface as an administrative tool  
 `Chat Widget` - graphical user interface for End Users to chat via text messages  
