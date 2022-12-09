@@ -4,10 +4,10 @@
 ###### After finished, this should be named to README.mdCreate 
 
 ###### Steps
-- Rework existing documents (compile several into one, modify, delete, create)
-- Create a directory
-- Present to team lead (tech team lead) and defend it and/or modify according to the notes received
-- Publish  
+- [ ] Rework existing documents (compile several into one, modify, delete, create)  
+- [x] Create a directory  
+- [ ] Present to team lead (tech team lead) and defend it and/or modify according to the notes received  
+- [ ] Publish    
 
 ` ** This is marked for deletion before the publishing ** `
 
