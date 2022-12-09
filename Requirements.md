@@ -17,6 +17,8 @@ BYKSTACK VirtualMachine (VM that runs buerokratt core services)
 ```
 4-8vCPU, 8-10GB RAM, min 5-10HDD
 ```
+### Note
+Remember to add extra 8 - 10GB SSD for every VM's system disk.
 
 #### URL requirements
 Production enviorment  
