@@ -250,7 +250,7 @@ For example:
 <script>
   window._env_ = {
     RUUTER_API_URL: 'https://PLACEHOLDER PUBLIC-RUUTER_URL',
-    TIM_AUTHENTICATION_URL: 'https://PLACEHOLDER TIM_URL/oauth2/authorization/tara?callback_url=https://PLACEHOLDER URL_WHERE_TO_WIDGET_IS_INSTALLED',
+    TIM_AUTHENTICATION_URL: 'https://PLACEHOLDER TIM_URL/oauth2/authorization/tara?callback_url=https://PLACEHOLDER URL_TO_WHERE_WIDGET_IS_INSTALLED',
     OFFICE_HOURS: {
       TIMEZONE: 'Europe/Tallinn',
       BEGIN: 0,
