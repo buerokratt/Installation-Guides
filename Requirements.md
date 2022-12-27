@@ -19,7 +19,8 @@ BYKSTACK VirtualMachine (VM that runs buerokratt core services)
 ```
 ### Note
 Remember to add extra 8 - 10GB SSD/HDD for every VM's system disk.
-
+#### Cooke Domain requirement
+Cookie domain level must match between the client domain and domain where buerokratt is installed
 #### URL requirements
 Production enviorment  
 Customer-service - admin.buerokratt.YOURDOMAIN.ee  
