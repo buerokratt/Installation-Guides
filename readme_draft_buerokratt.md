@@ -28,7 +28,7 @@ This document is the gateway to BUEROKRATT installation documentation
 #### Guides for buerokratt installation
 - Requirements - click [here](../main/Requirements.md) to find a guide for infrastructure requirements
 - Installation enviorment - click [here](../main/Installation_enviorment.md) to find a guide how to prepair your enviorment for buerokratt installation
-- Installing buerokratt - 
+- Installing buerokratt - click [here](../main/buerokratt_install.md)
 - Troubleshooting Q&A - click [here](../main/Q%26A.md) to find various errors and how to fix them
 - How to add your ssh key - click [here](../main/Tutorial for requesting and granting access by SSH keys.md)
 
