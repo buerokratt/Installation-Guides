@@ -23,11 +23,20 @@ Connection to your VM using terminal, has been established.
 
 ```
 cd ~/.ssh
-nano id_rsa.pub
-# Add the SSH key
-CTRL S
-CTRL X
 ```
+```
+nano id_rsa.pub
+```
+Copy your key and close the file
+
+##### Add the SSH key
+```
+nano .ssh/authorized_keys
+```
+Paste your key file into the file, save and exit
+`CTRL S`
+`CTRL X`
+
 
 ##### References: 
 Riigipilv Documentation
