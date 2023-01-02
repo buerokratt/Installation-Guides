@@ -30,5 +30,5 @@ This document is the gateway to BUEROKRATT installation documentation
 - Installation enviorment - click [here](../main/Installation_enviorment.md) to find a guide how to prepair your enviorment for buerokratt installation
 - Installing buerokratt - 
 - Troubleshooting Q&A - click [here](../main/Q%26A.md) to find various errors and how to fix them
-- How to add tour ssh key - click [here](../main/Tutorial for requesting and granting access by SSH keys.md)
+- How to add your ssh key - click [here](../main/Tutorial for requesting and granting access by SSH keys.md)
 
