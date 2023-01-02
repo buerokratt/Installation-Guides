@@ -25,7 +25,7 @@ Connection to your VM using terminal, has been established.
 cd ~/.ssh
 nano id_rsa.pub
 # Add the SSH key
-CTRL O
+CTRL S
 CTRL X
 ```
 
