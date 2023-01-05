@@ -1,15 +1,16 @@
 #!/bin/bash
 
 DIR=/your/actual/directory
+log_file="$DIR/train.log"
 
 cd $DIR || exit 1
-echo 'Started training' >> train.log
-rm -rf -v chatbot-train/data >> train.log
-rm -rf -v chatbot-train/models >> train.log
-rm -f -v chatbot-train/domain.yml >> train.log
-cp -r -v  chatbot/data chatbot-train >> train.log
-cp -v chatbot/domain.yml chatbot-train >> train.log
-mkdir -v chatbot-train/models >> train.log
-docker compose up train-bot
-docker compose up test-bot
-docker compose down
+date >> $log_file
+echo 'Started training' >> $log_file
+rm -rfv chatbot-train/data \
+  chatbot-train/models \
+  chatbot-train/domain.yml >> $log_file
+cp -rv  chatbot/data chatbot/domain.yml chatbot-train/ >> $log_file
+mkdir -v chatbot-train/models >> $log_file
+docker compose up train-bot >> $log_file
+docker compose up test-bot >> $log_file
+docker compose down >> $log_file
