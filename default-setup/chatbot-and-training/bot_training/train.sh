@@ -1,8 +1,7 @@
 #!/bin/bash
 
-DIR=/your/actual/directory
+#choo-choo!!
 
-cd $DIR || exit 1
 echo 'Started training' >> train.log
 rm -rf -v chatbot-train/data >> train.log
 rm -rf -v chatbot-train/models >> train.log
