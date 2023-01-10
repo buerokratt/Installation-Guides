@@ -68,7 +68,7 @@ services:
    #command: ["postgres", "-c", "ssl=on", "-c", "ssl_cert_file=/etc/tls/tls.crt", "-c", "ssl_key_file=/etc/tls/tls.key"]
     environment:
       - POSTGRES_USER=tim
-   user `by`   - POSTGRES_PASSWORD=123
+      - POSTGRES_PASSWORD=123
       - POSTGRES_DB=tim
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
