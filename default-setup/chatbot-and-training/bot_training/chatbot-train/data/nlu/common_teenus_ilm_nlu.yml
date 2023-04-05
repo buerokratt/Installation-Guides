@@ -1,0 +1,141 @@
+version: "3.0"
+nlu:
+- regex: asukoht
+  examples: |
+    - [Aa]bja[- ][Pp]aluoja
+    - [Aa]ntsla
+    - [Ee]lva
+    - [Hh]aapsalu
+    - [Hh]arju
+    - [Hh]iiu
+    - [Ii]da[- ][Vv]iru
+    - [Jj]õgeva
+    - [Jj]õhvi
+    - [Jj]ärva
+    - [Kk]allaste
+    - [Kk]ärdla
+    - [Kk]arksi[- ][Nn]uia
+    - [Kk]ehra
+    - [Kk]eila
+    - [Kk]ilingi[- ][Nn]õmme
+    - [Kk]iviõli
+    - [Kk]ohtla[- ][Jj]ärve
+    - [Kk]unda
+    - [Kk]uressaare
+    - [Ll]ihula
+    - [Ll]oksa
+    - [Ll]ääne
+    - [Ll]ääne[- ][Vv]iru
+    - [Mm]aardu
+    - [Mm]õisaküla
+    - [Mm]ustvee
+    - [Nn]arva
+    - [Nn]arva[- ][Jj]õesuu
+    - [Oo]tepää
+    - [Pp]aide
+    - [Pp]aldiski
+    - [Pp]ärnu
+    - [Pp]õltsamaa
+    - [Pp]õlva
+    - [Pp]üssi
+    - [Rr]akvere
+    - [Rr]apla
+    - [Rr]äpina
+    - [Ss]aaremaa
+    - [Ss]aue
+    - [Ss]illamäe
+    - [Ss]indi
+    - [Ss]uure[- ][Jj]aani
+    - [Tt]allinn
+    - [Tt]amsalu
+    - [Tt]apa
+    - [Tt]artu
+    - [Tt]õrva
+    - [Tt]üri
+    - [Vv]alga
+    - [Vv]iljandi
+    - [Vv]õhma
+    - [Vv]õru
+    - [Vv]õsu
+    - [Tt]abasalu
+    - [Uu]lu
+    - [Jj]õelähtme
+    - [Jj]üri
+    - [Ss]õmeru
+    - [Pp]eetri
+    - [Ss]aku
+    - [Vv]iimsi
+    - [Vv]äike[- ][Mm]aarja
+    - [Vv]ärska
+    - [Pp]ajusti
+    - [Kk]õrveküla
+
+- intent: common_teenus_ilm
+  examples: |
+    - mis ilm [tallinnas](asukoht) on
+    - mis ilm [tallinnas](asukoht) täna on
+    - kas homme on [tallinnas](asukoht) ilus ilm
+    - mis ilm homme [tallinnas](asukoht) tuleb
+    - ilm [tallinnas](asukoht).
+    - ilmaprognoos [tallinnas](asukoht)
+    - kas [Tallinnas](asukoht) hakkab sadama?
+    - milline tuleb ilm [Tallinna](asukoht) ümbruses
+    - kas [tallinna](asukoht) ilma kohta saab infot
+    - [tallinn](asukoht) ilma ennustus
+    - mis ilm [tartus](asukoht) on
+    - mis ilm [tartus](asukoht) täna on
+    - kas homme on [tartus](asukoht) ilus ilm
+    - mis ilm homme [tartus](asukoht) tuleb
+    - ilm [tartus](asukoht).
+    - ilmaprognoos [tartus](asukoht)
+    - kas [tartus](asukoht) hakkab sadama?
+    - milline tuleb ilm [tartu](asukoht) ümbruses
+    - kas [tartu](asukoht) ilma kohta saab infot
+    - [tartu](asukoht) ilma ennustus
+    - milline tuleb ilm?
+    - mis ilm tuleb
+    - mis ilm on
+    - mis ilma on oodata
+    - millist ilma on oodata
+    - milline ilmake tuleb kah
+    - kuidas meil ilmaga olukord on
+    - millist ilma oodata on
+    - kas ilm tuleb sajune
+    - kas ilma lubab päikest
+    - infot ilma kohta palun
+    - ilma päring
+    - ilm ennustus
+    - ilm
+    - mis ilm on maakonnas
+    - mis ilm on linnas
+    - ilm maakonna kohta
+    - ilma linna kohta
+    - kas hakkab sadama
+    - kas paistab päike
+    - kas õues on soe
+    - kas õues on külm
+    - kas täna on palav
+    - kas õues on tuuline
+    - kas tänaseks lubab päikest
+    - kas lubab vihma
+    - kas täna tuleb äikest
+    - kas võib tulla vihma
+    - kas väljas on soe
+    - kas väljas on vihmane
+    - kas väljas on tuult
+    - kas ilmateade lubab välja päikest
+    - kas ilm on väljas hea
+    - kas ilm on õues külm
+    - kas täna on rannailm
+    - mitu soojakraadi on
+    - mitu kraadi väljas on
+    - mitu kraadi ilm on
+    - mitu kraadi täna sooja on
+    - kas homme sajab
+    - millal äike tuleb
+    - millal sajab väljas vihma
+    - millal on päiksepaisteline
+    - kas täna on tormi oodata
+    - kas väljas on tormine
+    - kas ilm on tormine
+    - kas homme tuleb õues torm
