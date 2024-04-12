@@ -11,7 +11,7 @@ pipeline:
      max_ngram: 4
    - name: DIETClassifier
      entity_recognition: False
-     epochs: 40
+     epochs: 1
      random_seed: 50
    - name: RegexEntityExtractor
      use_regexes: True
