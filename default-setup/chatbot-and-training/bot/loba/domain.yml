@@ -83,6 +83,8 @@ responses:
       text: "Kahjuks ei saanud ma praegu piirkonnast aru ja ei oska ilma kohta midagi öelda. Kuidas saan abiks olla?"
     - text: "#weather; {common_teenus_ilm_asukoht};"
   
+  utter_nlu_fallback:
+  - text: "UNKNOWN"
   
   utter_fallback_kontroll:
   - text: "Jäi arusaamatuks, kas soovisite, et suunan edasi?"
