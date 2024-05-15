@@ -5,66 +5,10 @@ rules:
   - intent: andmekaitse_küsimused
   - action: utter_andmekaitse_küsimused
 
-- rule: nlu_fallback (1.0)(confidence kontrollimine)
+- rule: nlu_fallback
   steps:
   - intent: nlu_fallback
-  - action: action_check_confidence
-  
-- rule: nlu_fallback (2.1)(Kui confidence 60-80%, siis formsi aktiveerimine, mis küsib kasutajalt "Jah/Ei")
-  steps:
-  - action: utter_not_confident
-  - action: custom_fallback_form
-  - active_loop: custom_fallback_form
-
-- rule: nlu_fallback (3.1) (paneb formsi kinni ja kasutaja soovil aktiveerib intenti confidenciga 60-80%)
-  condition:
-  # Condition that form is active.
-  - active_loop: custom_fallback_form
-  steps:
-  # Form is deactivated
-  - action: custom_fallback_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  # The actions we want to run when the form is submitted.
-  - action: action_react_to_affirm_deny_in_custom_fallback_form
-
-- rule: nlu_fallback (2.2)(Kui confidence alla 60%)
-  steps:
-  - action: utter_ei_pakkunud_õigesti
-  - action: direct_to_customer_support_form
-  - active_loop: direct_to_customer_support_form
-  
-- rule: nlu_fallback (3.2)(kui conficende oli alla 60%, siis küsib, kas soovib klienditeenindajat)
-  condition:
-  # Condition that form is active.
-  - active_loop: direct_to_customer_support_form
-  steps:
-  # Form is deactivated
-  - action: direct_to_customer_support_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  # The actions we want to run when the form is submitted.
-  - action: action_react_to_affirm_deny_in_direct_to_customer_support_form
-
-- rule: nlu_fallback (3.3)(kui conficende oli alla 60%, siis küsib, kas soovib klienditeenindajat + kinnitamine path)
-  condition:
-  - slot_was_set:
-    - affirm_deny: kontroll
-  steps:
-  - action: action_react_to_affirm_deny_in_direct_to_customer_support_form
-  - intent: common_kinnitamine
-  - action: utter_common_klienditeenindajale_suunamine
-
-- rule: nlu_fallback (3.3)(kui conficende oli alla 60%, siis küsib, kas soovib klienditeenindajat + eitamine path)
-  condition:
-  - slot_was_set:
-    - affirm_deny: kontroll
-  steps:
-  - action: action_react_to_affirm_deny_in_direct_to_customer_support_form
-  - intent: common_eitamine
-  - action: utter_common_ei_suuna_klienditeenindajale
+  - action: utter_nlu_fallback
   
 - rule: common_hüvasti_jätmine
   steps:
