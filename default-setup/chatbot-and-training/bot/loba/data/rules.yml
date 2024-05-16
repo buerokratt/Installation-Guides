@@ -64,21 +64,11 @@ rules:
   steps:
   - intent: common_roppused
   - action: utter_common_roppused
- 
-- rule: common_hädaabi_number
-  steps:
-  - intent: common_hädaabi_number
-  - action: utter_common_hädaabi_number
 
 - rule: common_mis_keeles
   steps:
   - intent: common_mis_keeles
   - action: utter_common_mis_keeles
-
-- rule: common_covid_küsimused
-  steps:
-  - intent: common_covid_küsimused
-  - action: utter_common_covid_küsimused
 
 - rule: common_kinnitamine
   steps:
