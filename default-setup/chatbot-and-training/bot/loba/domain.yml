@@ -143,11 +143,5 @@ responses:
   utter_common_roppused:
   - text: "Mind pole õpetatud sellist sõnavara kasutama."
 
-  utter_common_hädaabi_number:
-  - text: "Numbrile 112 vastab Häirekeskuse päästekorraldaja, riigiinfo telefonile vastavad Häirekeskuse vanemspetsialistid. Häirekeskus on sinu esimene abistaja, kui tahad appi kutsuda kiirabi, päästjaid või politseid ning kui vajad või soovid anda infot."
-
   utter_common_mis_keeles:
   - text: "Täna räägin eesti keeles, tulevikus õpin suhtlema ka teistes keeltes."
-
-  utter_common_covid_küsimused:
-  - text: "Kriisitelefoni number on 1247. Vajadusel leiab infot ka lingilt https://www.kriis.ee/"
