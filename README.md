@@ -88,6 +88,7 @@ ls | grep default-setup
 default-setup
 ```
 
+
 #### Setting up Bykstack and Backoffice GUI
 
 > Continue in folder `Installation-GUides` by using Terminal 
@@ -108,6 +109,20 @@ backoffice-and-bykstack
 - [x] Move to folder `backoffice-and-bykstack`
 ```
 cd backoffice-and-bykstack
+```
+
+- [x] Generate keys
+```
+python3 generate-certs.py
+```
+
+- [X] Make sure, keys got generated
+```
+cat customer-support/key.key
+```
+
+```
+-----END PRIVATE KEY-----
 ```
 
 - [x] Use Docker Compose to set everything up
